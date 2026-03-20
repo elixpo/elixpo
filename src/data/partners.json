@@ -1,11 +1,11 @@
 {
   "label": "Backed & Featured By",
   "partners": [
-    { "name": "Microsoft", "logo": "https://img.icons8.com/color/48/microsoft.png" },
-    { "name": "Google", "logo": "https://img.icons8.com/color/48/google-logo.png" },
-    { "name": "Cloudflare", "logo": "https://img.icons8.com/color/48/cloudflare.png" },
-    { "name": "Firebase", "logo": "https://img.icons8.com/color/48/firebase.png" },
-    { "name": "GitHub", "logo": "https://img.icons8.com/ios-glyphs/48/github.png" },
-    { "name": "Vercel", "logo": "https://img.icons8.com/color/48/triangle--v1.png" }
+    { "name": "Pollinations", "logo": "https://pollinations.ai/favicon.ico" },
+    { "name": "Google", "logo": "https://www.google.com/favicon.ico" },
+    { "name": "Cloudflare", "logo": "https://www.cloudflare.com/favicon.ico" },
+    { "name": "Firebase", "logo": "https://firebase.google.com/favicon.ico" },
+    { "name": "GitHub", "logo": "https://github.com/favicon.ico" },
+    { "name": "Vercel", "logo": "https://vercel.com/favicon.ico" }
   ]
 }
