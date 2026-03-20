@@ -26,12 +26,12 @@ export default function Hero() {
         <div className="relative h-56 md:h-72 mb-8">
           {/* SVG Connection Lines */}
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 280" fill="none" preserveAspectRatio="xMidYMid meet">
-            <line x1="130" y1="80" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="250" y1="40" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="200" y1="200" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="550" y1="40" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="670" y1="80" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="600" y1="200" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="130" y1="80" x2="400" y2="140" stroke="#999" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="250" y1="40" x2="400" y2="140" stroke="#999" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="200" y1="200" x2="400" y2="140" stroke="#999" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="550" y1="40" x2="400" y2="140" stroke="#999" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="670" y1="80" x2="400" y2="140" stroke="#999" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="600" y1="200" x2="400" y2="140" stroke="#999" strokeWidth="1" strokeDasharray="6 4" />
           </svg>
 
           {/* Center Elixpo logo node */}
