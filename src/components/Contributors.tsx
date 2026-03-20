@@ -25,11 +25,16 @@ export default function Contributors() {
 
         {/* Solar System */}
         <div className="relative w-full aspect-square max-w-[600px] mx-auto">
-          {/* Center - Elixpo logo */}
+          {/* Center - Founder avatar */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent flex items-center justify-center shadow-xl shadow-accent/30">
-              <span className="text-white font-bold text-xl md:text-2xl">E</span>
-            </div>
+            <Image
+              src="https://github.com/Circuit-Overtime.png"
+              alt="Circuit-Overtime"
+              width={80}
+              height={80}
+              className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-accent shadow-xl shadow-accent/30"
+              unoptimized
+            />
           </div>
 
           {/* Orbit 1 - innermost */}
