@@ -79,9 +79,11 @@ export default function Hero() {
 
           {/* Center Elixpo logo node */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center shadow-xl shadow-accent/25">
-              <span className="text-white font-bold text-lg">E</span>
-            </div>
+            <img
+              src="/logo.png"
+              alt="Elixpo"
+              className="w-16 h-16 rounded-2xl shadow-xl shadow-accent/25"
+            />
           </div>
 
           {/* Surrounding nodes */}
