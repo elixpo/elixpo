@@ -15,8 +15,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elixpo - All-in-one Project Orchestrator",
-  description: "A modern, all-in-one platform designed to seamlessly orchestrate all your projects in one place.",
+  title: "Elixpo — Enhanced Learning and Intelligence Process Optimization",
+  description: "A developer-first open-source ecosystem of 13+ interconnected projects — AI art, intelligent search, collaborative sketching, and more. 100% free, forever.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    title: "Elixpo — Developer-First Open Source Ecosystem",
+    description: "13+ interconnected open-source projects spanning AI, web, and developer tools. Built by a global community of 35+ contributors.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
