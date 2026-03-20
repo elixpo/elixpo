@@ -10,6 +10,10 @@
     "role": "Founder & Lead Developer",
     "github": "Circuit-Overtime"
   },
+  "coreTeam": [
+    { "name": "Anwesha", "role": "Core Contributor", "github": "CSE-Anwesha" },
+    { "name": "Vivek", "role": "Core Contributor", "github": "ez-vivek" }
+  ],
   "programs": [
     { "name": "GSSOC", "description": "GirlScript Summer of Code" },
     { "name": "Hacktoberfest", "description": "2024 & 2025 Active Participant" },
