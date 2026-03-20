@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://elixpo.project.dev";
+const SITE_URL = "https://elixpo.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

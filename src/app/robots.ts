@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://elixpo.project.dev/sitemap.xml",
+    sitemap: "https://elixpo.com/sitemap.xml",
   };
 }
