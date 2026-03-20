@@ -1,11 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  experimental: {
-    turbo: {
-      unstablePersistentCaching: false,
-    },
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
