@@ -5,9 +5,14 @@ PROJECT_NAME="elixpo"
 BUILD_DIR="out"
 
 usage() {
-  echo "Usage: ./deploy.sh [build|deploy]"
+  echo "Usage: ./deploy.sh <command> [command...]"
   echo "  build   - Build the static site using Next.js"
   echo "  deploy  - Deploy the built site to Cloudflare Pages"
+  echo ""
+  echo "Examples:"
+  echo "  ./deploy.sh build"
+  echo "  ./deploy.sh deploy"
+  echo "  ./deploy.sh build deploy"
   exit 1
 }
 
@@ -28,14 +33,21 @@ deploy() {
   echo "Deploy complete."
 }
 
-case "${1}" in
-  build)
-    build
-    ;;
-  deploy)
-    deploy
-    ;;
-  *)
-    usage
-    ;;
-esac
+if [ $# -eq 0 ]; then
+  usage
+fi
+
+for arg in "$@"; do
+  case "$arg" in
+    build)
+      build
+      ;;
+    deploy)
+      deploy
+      ;;
+    *)
+      echo "Unknown command: $arg"
+      usage
+      ;;
+  esac
+done
