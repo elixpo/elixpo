@@ -18,8 +18,8 @@ usage() {
 
 build() {
   echo "Building static site..."
-  rm -rf "$BUILD_DIR" .next
-  npx next build
+  sudo rm -rf "$BUILD_DIR" .next
+  sudo npx next build
   echo "Build complete. Output in $BUILD_DIR/"
 }
 
@@ -29,7 +29,7 @@ deploy() {
     exit 1
   fi
   echo "Deploying to Cloudflare Pages..."
-  npx wrangler pages deploy "$BUILD_DIR" --project-name="$PROJECT_NAME"
+  sudo npx wrangler pages deploy "$BUILD_DIR" --project-name="$PROJECT_NAME"
   echo "Deploy complete."
 }
 
