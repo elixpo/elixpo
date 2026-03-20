@@ -1,52 +1,7 @@
 import Link from "next/link";
 import heroData from "@/data/hero.json";
-
+import partnersData from "@/data/partners.json";
 import GitHubStarButton from "@/components/GitHubStarButton";
-
-function NodeIcon({ icon, color }: { icon: string; color: string }) {
-  const bg = color + "15";
-  const iconMap: Record<string, JSX.Element> = {
-    brain: (
-      <svg className="w-6 h-6" style={{ color }} fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2a9 9 0 00-9 9c0 3.03 1.53 5.82 4 7.47V22h2v-2h2v2h2v-2h2v-2h-1v-1.03A9 9 0 0012 2zm-1 14h-1v-2h2v2h-1zm4-4H9v-2h6v2zm0-4H9V6h6v2z"/>
-      </svg>
-    ),
-    code: (
-      <svg className="w-6 h-6" style={{ color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
-    palette: (
-      <svg className="w-6 h-6" style={{ color }} fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.2-.64-1.67-.08-.1-.13-.21-.13-.33 0-.28.22-.5.5-.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 8 6.5 8 8 8.67 8 9.5 7.33 11 6.5 11zm3-4C8.67 7 8 6.33 8 5.5S8.67 4 9.5 4s1.5.67 1.5 1.5S10.33 7 9.5 7zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 4 14.5 4s1.5.67 1.5 1.5S15.33 7 14.5 7zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 8 17.5 8s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
-      </svg>
-    ),
-    search: (
-      <svg className="w-6 h-6" style={{ color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    ),
-    chat: (
-      <svg className="w-6 h-6" style={{ color }} fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-      </svg>
-    ),
-    bolt: (
-      <svg className="w-6 h-6" style={{ color }} fill="currentColor" viewBox="0 0 24 24">
-        <path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51L12.96 17.55 11 21z"/>
-      </svg>
-    ),
-  };
-
-  return (
-    <div
-      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg border border-white/50"
-      style={{ backgroundColor: bg }}
-    >
-      {iconMap[icon] || null}
-    </div>
-  );
-}
 
 export default function Hero() {
   const nodePositions = [
@@ -71,12 +26,12 @@ export default function Hero() {
         <div className="relative h-56 md:h-72 mb-8">
           {/* SVG Connection Lines */}
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 280" fill="none" preserveAspectRatio="xMidYMid meet">
-            <line x1="130" y1="80" x2="400" y2="140" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="250" y1="40" x2="400" y2="140" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="200" y1="200" x2="400" y2="140" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="550" y1="40" x2="400" y2="140" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="670" y1="80" x2="400" y2="140" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="6 4" />
-            <line x1="600" y1="200" x2="400" y2="140" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="130" y1="80" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="250" y1="40" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="200" y1="200" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="550" y1="40" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="670" y1="80" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
+            <line x1="600" y1="200" x2="400" y2="140" stroke="#777" strokeWidth="1" strokeDasharray="6 4" />
           </svg>
 
           {/* Center Elixpo logo node */}
@@ -88,13 +43,20 @@ export default function Hero() {
             />
           </div>
 
-          {/* Surrounding nodes */}
-          {heroData.nodes.map((node, i) => (
+          {/* Surrounding company logos */}
+          {partnersData.partners.map((partner, i) => (
             <div
-              key={node.icon}
+              key={partner.name}
               className={`absolute ${nodePositions[i]} ${i % 2 === 0 ? "animate-float-slow" : "animate-float-medium"} hidden md:block`}
             >
-              <NodeIcon icon={node.icon} color={node.color} />
+              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-lg border border-border/50">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="w-7 h-7"
+                  title={partner.name}
+                />
+              </div>
             </div>
           ))}
         </div>
