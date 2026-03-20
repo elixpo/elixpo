@@ -1,6 +1,6 @@
 import Link from "next/link";
 import heroData from "@/data/hero.json";
-import partnersData from "@/data/partners.json";
+
 import GitHubStarButton from "@/components/GitHubStarButton";
 
 function NodeIcon({ icon, color }: { icon: string; color: string }) {
@@ -67,19 +67,6 @@ export default function Hero() {
       }} />
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        {/* Partner Logos */}
-        <div className="flex items-center justify-center gap-8 md:gap-12 mb-12 opacity-40">
-          {partnersData.partners.map((partner) => (
-            <img
-              key={partner.name}
-              src={partner.logo}
-              alt={partner.name}
-              className="h-7 md:h-8 w-auto grayscale hover:grayscale-0 transition-all"
-              title={partner.name}
-            />
-          ))}
-        </div>
-
         {/* Floating Nodes */}
         <div className="relative h-56 md:h-72 mb-8">
           {/* SVG Connection Lines */}
