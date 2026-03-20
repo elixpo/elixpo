@@ -1,0 +1,11 @@
+{
+  "label": "Backed & Featured By",
+  "partners": [
+    { "name": "Microsoft", "logo": "https://img.icons8.com/color/48/microsoft.png" },
+    { "name": "Google", "logo": "https://img.icons8.com/color/48/google-logo.png" },
+    { "name": "Cloudflare", "logo": "https://img.icons8.com/color/48/cloudflare.png" },
+    { "name": "Firebase", "logo": "https://img.icons8.com/color/48/firebase.png" },
+    { "name": "GitHub", "logo": "https://img.icons8.com/ios-glyphs/48/github.png" },
+    { "name": "Vercel", "logo": "https://img.icons8.com/color/48/triangle--v1.png" }
+  ]
+}
