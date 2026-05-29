@@ -1,0 +1,6 @@
+{
+  "name": "Elixpo Chapter",
+  "description": "Welcome to Elixpo-Chapter, an Open Source Repository (OSS) series. A collaborative ecosystem of open source computer science projects maintained by @Circuit-Overtime.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
