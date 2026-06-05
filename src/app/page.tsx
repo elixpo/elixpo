@@ -1,11 +1,14 @@
-import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import Projects from "@/components/Projects";
-import Architecture from "@/components/Architecture";
-import TechStack from "@/components/TechStack";
-import Contributors from "@/components/Contributors";
-import Team from "@/components/Team";
-import CTA from "@/components/CTA";
+import { SmoothScroll } from "@/components/remastered/SmoothScroll";
+import { MegaNavbar } from "@/components/remastered/MegaNavbar";
+import { HeroSection } from "@/components/remastered/HeroSection";
+import { AboutSection } from "@/components/remastered/AboutSection";
+import { FeaturesSection } from "@/components/remastered/FeaturesSection";
+import { PackagesSection } from "@/components/remastered/PackagesSection";
+import { NewsletterSection } from "@/components/remastered/NewsletterSection";
+import { NominationSection } from "@/components/remastered/NominationSection";
+import { Contributors } from "@/components/remastered/Contributors";
+import { FAQSection } from "@/components/remastered/FAQSection";
+import { Footer } from "@/components/remastered/Footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -30,14 +33,22 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Hero />
-      <Stats />
-      <Projects />
-      <Architecture />
-      <TechStack />
-      <Contributors />
-      <Team />
-      <CTA />
+      <SmoothScroll />
+      <main
+        className="bg-black text-[#E1E0CC] min-h-screen overflow-x-hidden antialiased selection:bg-primary selection:text-black"
+        style={{ fontFamily: "var(--font-almarai), sans-serif" }}
+      >
+        <MegaNavbar />
+        <HeroSection />
+        <AboutSection />
+        <FeaturesSection />
+        <PackagesSection />
+        <NewsletterSection />
+        <NominationSection />
+        <Contributors />
+        <FAQSection />
+        <Footer />
+      </main>
     </>
   );
 }
