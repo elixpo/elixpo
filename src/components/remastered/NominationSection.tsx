@@ -8,12 +8,14 @@ import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 const ECOSYSTEM_STARS = "85+";
 const CONTRIBUTOR_COUNT = "35+";
 
+// Logos: Simple Icons CDN tinted cream (#E1E0CC) so they read on the dark card.
+// Pollinations isn't on Simple Icons, so we use its site favicon.
 const COMPUTE_PARTNERS = [
-  "Pollinations",
-  "Vercel",
-  "Cloudflare",
-  "DigitalOcean",
-  "Firebase",
+  { name: "Pollinations", href: "https://pollinations.ai", logo: "https://www.google.com/s2/favicons?domain=pollinations.ai&sz=128" },
+  { name: "Vercel", href: "https://vercel.com", logo: "https://cdn.simpleicons.org/vercel/E1E0CC" },
+  { name: "Cloudflare", href: "https://cloudflare.com", logo: "https://cdn.simpleicons.org/cloudflare/E1E0CC" },
+  { name: "DigitalOcean", href: "https://digitalocean.com", logo: "https://cdn.simpleicons.org/digitalocean/E1E0CC" },
+  { name: "Firebase", href: "https://firebase.google.com", logo: "https://cdn.simpleicons.org/firebase/E1E0CC" },
 ];
 
 export function NominationSection() {
@@ -193,16 +195,25 @@ export function NominationSection() {
                 Our AI workloads and infrastructure are powered by compute and platform support from:
               </p>
 
-              {/* Partner chips */}
+              {/* Partner logos */}
               <div className="flex flex-wrap gap-2 mb-2">
                 {COMPUTE_PARTNERS.map((partner) => (
-                  <span
-                    key={partner}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-[11px] font-mono text-[#DEDBC8]/90 hover:border-primary/30 hover:text-white transition-colors"
+                  <a
+                    key={partner.name}
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/partner inline-flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-[11px] font-mono text-[#DEDBC8]/90 hover:border-primary/30 hover:text-white hover:bg-white/[0.08] transition-colors"
                   >
-                    <span className="w-1 h-1 rounded-full bg-primary" />
-                    {partner}
-                  </span>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      loading="lazy"
+                      className="h-4 w-4 object-contain opacity-80 group-hover/partner:opacity-100 transition-opacity"
+                    />
+                    {partner.name}
+                  </a>
                 ))}
               </div>
             </div>
