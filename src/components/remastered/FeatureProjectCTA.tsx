@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight, Rocket, MessageCircle } from "lucide-react";
+import { ArrowRight, Rocket, MessagesSquare } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 
 export function FeatureProjectCTA() {
@@ -51,13 +51,13 @@ export function FeatureProjectCTA() {
           </motion.a>
 
           <a
-            href={ELIXPO_LINKS.whatsapp}
+            href={ELIXPO_LINKS.discussions}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 text-sm font-medium text-[#DEDBC8]/80 hover:text-white border border-white/10 hover:border-white/25 rounded-full px-6 py-3.5 transition-all"
           >
-            <MessageCircle size={15} className="text-primary/80" />
-            <span>Join our WhatsApp community</span>
+            <MessagesSquare size={15} className="text-primary/80" />
+            <span>Join the GitHub Discussions</span>
           </a>
         </div>
       </motion.div>

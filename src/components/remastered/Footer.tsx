@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Check, Github, MessageCircle, Heart } from "lucide-react";
+import { Copy, Check, Github, MessagesSquare, Heart } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 
 const ecosystem = [
@@ -16,7 +16,7 @@ const ecosystem = [
 const community = [
   { label: "GitHub Org", href: ELIXPO_LINKS.github },
   { label: "Chapter Monorepo", href: ELIXPO_LINKS.githubChapter },
-  { label: "WhatsApp Community", href: ELIXPO_LINKS.whatsapp },
+  { label: "GitHub Discussions", href: ELIXPO_LINKS.discussions },
   { label: "GitHub Sponsors", href: ELIXPO_LINKS.sponsors },
 ];
 
@@ -59,13 +59,13 @@ export function Footer() {
                 <Github size={16} />
               </a>
               <a
-                href={ELIXPO_LINKS.whatsapp}
+                href={ELIXPO_LINKS.discussions}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp Community"
+                aria-label="GitHub Discussions"
                 className="p-2 rounded-lg border border-white/10 text-[#DEDBC8]/70 hover:text-white hover:border-white/30 transition-colors"
               >
-                <MessageCircle size={16} />
+                <MessagesSquare size={16} />
               </a>
               <a
                 href={ELIXPO_LINKS.sponsors}
