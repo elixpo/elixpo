@@ -31,9 +31,9 @@ const featureCards = [
     badge: "02",
   },
   {
-    title: "AI Chat & Search.",
-    cta: "Explore Chat",
-    href: ELIXPO_LINKS.chat,
+    title: "Elixpo Accounts.",
+    cta: "Open Accounts",
+    href: ELIXPO_LINKS.accounts,
     video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4",
     badge: "03",
   },

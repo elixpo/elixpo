@@ -1,17 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, CheckCircle } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useRef } from "react";
+import { Sparkles } from "lucide-react";
+import { motion } from "motion/react";
 
 export function NewsletterSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const fadingOutRef = useRef<boolean>(false);
-
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState("");
 
   const fade = (video: HTMLVideoElement, targetOpacity: number, duration: number, callback?: () => void) => {
     if (animationFrameRef.current !== null) {
@@ -90,20 +86,6 @@ export function NewsletterSection() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) {
-      setError("Please specify an email address");
-      return;
-    }
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setError("Please check your email formatting");
-      return;
-    }
-    setError("");
-    setIsSubmitted(true);
-  };
-
   return (
     <section className="min-h-screen bg-black overflow-hidden relative flex flex-col justify-between select-none">
       {/* Background Video Player */}
@@ -125,7 +107,7 @@ export function NewsletterSection() {
       {/* Decorative Top Gap */}
       <div className="h-16 relative z-10" />
 
-      {/* Main Hero Newsletter Widget */}
+      {/* Main "Coming soon" widget */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-12 text-center -translate-y-[8%] md:-translate-y-[5%] max-w-4xl mx-auto w-full">
         {/* Animated Heading using Instrument Serif */}
         <motion.h2
@@ -138,7 +120,6 @@ export function NewsletterSection() {
           Built for the <span className="italic">curious</span>
         </motion.h2>
 
-        {/* Form area + subtitle wrapped inside beautiful animated glass */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -146,66 +127,17 @@ export function NewsletterSection() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="max-w-xl w-full space-y-6 flex flex-col items-center"
         >
-          <AnimatePresence mode="wait">
-            {!isSubmitted ? (
-              <motion.form
-                onSubmit={handleSubmit}
-                key="newsletter-input-form"
-                initial={{ opacity: 1 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="w-full"
-              >
-                {/* Email Submission Bar with Liquid Glass */}
-                <div className="liquid-glass rounded-full pl-6 pr-2 py-2 flex items-center gap-3 w-full border border-white/5 shadow-2xl backdrop-blur-md">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (error) setError("");
-                    }}
-                    placeholder="Enter your email"
-                    className="bg-transparent border-none outline-none flex-1 text-white placeholder:text-white/40 text-sm sm:text-base z-20"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-white rounded-full p-2.5 sm:p-3 text-black hover:bg-[#DEDBC8] active:scale-95 transition-all flex items-center justify-center cursor-pointer z-20"
-                    aria-label="Subscribe"
-                  >
-                    <ArrowRight size={20} className="w-5 h-5 sm:w-5 sm:h-5 text-black" />
-                  </button>
-                </div>
-
-                {error && (
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-xs font-mono text-primary mt-2 text-left pl-6"
-                  >
-                    {error}
-                  </motion.p>
-                )}
-              </motion.form>
-            ) : (
-              <motion.div
-                key="newsletter-success-state"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="liquid-glass rounded-full px-6 py-4 flex items-center gap-3 w-full max-w-md border border-white/10"
-              >
-                <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                <p className="text-xs sm:text-sm text-[#DEDBC8] font-mono pr-2">
-                  Subscription completed. Welcome to our network.
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Coming soon badge */}
+          <div className="liquid-glass rounded-full px-6 py-3 flex items-center gap-2.5 border border-white/10 backdrop-blur-md">
+            <Sparkles className="w-4 h-4 text-primary shrink-0" />
+            <span className="text-xs sm:text-sm text-[#DEDBC8] font-mono uppercase tracking-[0.2em]">
+              Newsletter · Coming soon
+            </span>
+          </div>
 
           {/* Subtitle text description */}
           <p className="text-[#DEDBC8]/70 text-xs sm:text-sm leading-relaxed px-4 max-w-md font-mono">
-            Stay updated with the latest news and insights. Subscribe to our newsletter today and never miss out on exciting updates.
+            We&rsquo;re putting the finishing touches on our newsletter. Subscriptions open soon — check back to stay in the loop on releases and insights.
           </p>
         </motion.div>
       </div>

@@ -1,11 +1,108 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import {
   ArrowUpRight, Sparkle, Figma, Framer, Palette, PenTool, Layers, Type, Aperture, Chrome, Camera, Brush, Box, Wand2, ExternalLink, Terminal, Download, Package
 } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
+
+interface SpecRow {
+  key: string;
+  value: string;
+  right: string;
+}
+
+interface NpmPackageCardProps {
+  label: string;
+  href: string;
+  name: string;
+  install: string;
+  downloads: string;
+  description: React.ReactNode;
+  specs: SpecRow[];
+}
+
+// Shared NPM package card — identical aesthetic for LixSketch and LixEditor.
+function NpmPackageCard({ label, href, name, install, downloads, description, specs }: NpmPackageCardProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-6 h-[420px] md:h-[440px] lg:h-[470px] border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
+    >
+      {/* Subtle glow / light flare at the top */}
+      <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      {/* Top label */}
+      <div className="relative z-10 flex items-center justify-between w-full">
+        <div className="flex items-center gap-1.5">
+          <Sparkle className="h-3 w-3 text-white/70" strokeWidth={1.5} />
+          <span className="uppercase tracking-[0.22em] text-[11px] text-white/70 font-mono">
+            {label}
+          </span>
+          <Sparkle className="h-3 w-3 text-white/70" strokeWidth={1.5} />
+        </div>
+        <ArrowUpRight className="text-white/40 group-hover:text-primary transition-colors duration-300" size={16} strokeWidth={1.5} />
+      </div>
+
+      {/* npm artifact — fills the card's mid-space with package identity */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center gap-3.5 py-4 w-full">
+        {/* Floating package mark */}
+        <div className="relative">
+          <div className="h-16 w-16 rounded-2xl liquid-glass border border-white/10 flex items-center justify-center shadow-inner group-hover:border-primary/25 transition-colors duration-300">
+            <Package className="h-7 w-7 text-primary/80" strokeWidth={1.5} />
+          </div>
+          <span className="absolute -bottom-1.5 -right-1.5 px-1.5 py-0.5 rounded-md bg-[#CB3837] text-white font-bold text-[9px] tracking-tight font-mono shadow-md">
+            npm
+          </span>
+        </div>
+
+        {/* Install command pill */}
+        <div className="w-full max-w-[240px] liquid-glass rounded-lg px-3 py-2 flex items-center gap-2 border border-white/5">
+          <Terminal size={12} className="text-primary/70 shrink-0" />
+          <code className="text-[11px] font-mono text-white/85 truncate">
+            <span className="text-white/40">$ </span>{install}
+          </code>
+        </div>
+
+        {/* Faux registry badges */}
+        <div className="flex items-center gap-3 text-[10px] font-mono text-white/45">
+          <span className="inline-flex items-center gap-1">
+            <Download size={11} className="text-white/40" /> {downloads}
+          </span>
+          <span className="w-px h-3 bg-white/10" />
+          <span>v1.x</span>
+          <span className="w-px h-3 bg-white/10" />
+          <span className="text-primary/70">GPL-3.0</span>
+        </div>
+      </div>
+
+      {/* Bottom: title + description + spec grid */}
+      <div className="relative z-10 w-full mb-1">
+        <h4 className="text-2xl font-bold font-serif italic text-white mb-2 leading-tight group-hover:text-primary transition-colors">
+          {name}
+        </h4>
+        <p className="text-xs text-[#DEDBC8]/65 leading-relaxed mb-6 font-mono">
+          {description}
+        </p>
+
+        <div className="grid grid-cols-[auto_auto_1fr_auto] gap-x-2 gap-y-2.5 font-mono text-[10px] sm:text-[11px] text-white/80 border-t border-white/5 pt-4">
+          {specs.map((row, i) => (
+            <React.Fragment key={`${name}-spec-${i}`}>
+              <span className="text-white/50">{row.key}</span>
+              <Sparkle className="h-2.5 w-2.5 self-center text-white/35" strokeWidth={1.5} />
+              <span className="truncate">{row.value}</span>
+              <span className="text-right text-white/40 font-light">{row.right}</span>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </a>
+  );
+}
 
 export function PackagesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -45,135 +142,59 @@ export function PackagesSection() {
           </a>
         </motion.div>
 
-        {/* Bento Grid System */}
+        {/* Bento Grid: two NPM cards + a stacked VS Code column */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 0.15 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 text-white"
         >
-          {/* Column 1 - Background card (LixSketch NPM Package) */}
-          <a
+          {/* Column 1 - LixSketch NPM */}
+          <NpmPackageCard
+            label="LixSketch NPM Package"
             href={ELIXPO_LINKS.npmLixSketch}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-6 h-[400px] md:h-[420px] lg:h-[450px] border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
-          >
-            <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            name="LixSketch"
+            install="npm i @elixpo/lixsketch"
+            downloads="1.2k/wk"
+            description={
+              <>
+                Open-source SVG whiteboard engine with a hand-drawn aesthetic. The core drawing engine behind <span className="text-primary">LixSketch</span>.
+              </>
+            }
+            specs={[
+              { key: "Core", value: "Interactive Canvas", right: "SVG Whiteboard" },
+              { key: "Theme", value: "Hand-Drawn Vector", right: "Copyleft Free" },
+              { key: "Docs", value: "github.com/elixpo/lixsketch", right: "GPL-3.0" },
+            ]}
+          />
 
-            <div className="relative z-10 flex items-center justify-between w-full">
-              <div className="flex items-center gap-1.5">
-                <Sparkle className="h-3 w-3 text-white/70" strokeWidth={1.5} />
-                <span className="uppercase tracking-[0.22em] text-[11px] text-white/70 font-mono">
-                  LixSketch NPM Package
-                </span>
-                <Sparkle className="h-3 w-3 text-white/70" strokeWidth={1.5} />
-              </div>
-              <ArrowUpRight className="text-white/40 group-hover:text-primary transition-colors duration-300" size={16} strokeWidth={1.5} />
-            </div>
+          {/* Column 2 - LixEditor NPM (same look as LixSketch) */}
+          <NpmPackageCard
+            label="LixEditor NPM Package"
+            href={ELIXPO_LINKS.npmLixEditor}
+            name="LixEditor"
+            install="npm i @elixpo/lixeditor"
+            downloads="0.9k/wk"
+            description={
+              <>
+                Rich WYSIWYG block editor &amp; renderer built on BlockNote — LaTeX, Mermaid &amp; syntax-highlighted code. The core editor engine behind <span className="text-primary">LixBlogs</span>.
+              </>
+            }
+            specs={[
+              { key: "Core", value: "Block Editor", right: "BlockNote" },
+              { key: "Theme", value: "Rich WYSIWYG", right: "Copyleft Free" },
+              { key: "Docs", value: "github.com/elixpo/lixeditor", right: "GPL-3.0" },
+            ]}
+          />
 
-            {/* npm artifact — fills the card's mid-space with package identity */}
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-center gap-3.5 py-4 w-full">
-              {/* Floating package mark */}
-              <div className="relative">
-                <div className="h-16 w-16 rounded-2xl liquid-glass border border-white/10 flex items-center justify-center shadow-inner group-hover:border-primary/25 transition-colors duration-300">
-                  <Package className="h-7 w-7 text-primary/80" strokeWidth={1.5} />
-                </div>
-                <span className="absolute -bottom-1.5 -right-1.5 px-1.5 py-0.5 rounded-md bg-[#CB3837] text-white font-bold text-[9px] tracking-tight font-mono shadow-md">
-                  npm
-                </span>
-              </div>
-
-              {/* Install command pill */}
-              <div className="w-full max-w-[240px] liquid-glass rounded-lg px-3 py-2 flex items-center gap-2 border border-white/5">
-                <Terminal size={12} className="text-primary/70 shrink-0" />
-                <code className="text-[11px] font-mono text-white/85 truncate">
-                  <span className="text-white/40">$ </span>npm i @elixpo/lixsketch
-                </code>
-              </div>
-
-              {/* Faux registry badges */}
-              <div className="flex items-center gap-3 text-[10px] font-mono text-white/45">
-                <span className="inline-flex items-center gap-1">
-                  <Download size={11} className="text-white/40" /> 1.2k/wk
-                </span>
-                <span className="w-px h-3 bg-white/10" />
-                <span>v1.x</span>
-                <span className="w-px h-3 bg-white/10" />
-                <span className="text-primary/70">GPL-3.0</span>
-              </div>
-            </div>
-
-            <div className="relative z-10 w-full mb-1">
-              <h4 className="text-2xl font-bold font-serif italic text-white mb-2 leading-tight group-hover:text-primary transition-colors">
-                LixSketch
-              </h4>
-              <p className="text-xs text-[#DEDBC8]/65 leading-relaxed mb-6 font-mono">
-                Open-source SVG whiteboard engine with a hand-drawn aesthetic. The core drawing engine behind <span className="text-primary hover:underline group-hover:text-primary/90">LixSketch</span>.
-              </p>
-
-              <div className="grid grid-cols-[auto_auto_1fr_auto] gap-x-2 gap-y-2.5 font-mono text-[10px] sm:text-[11px] text-white/80 border-t border-white/5 pt-4">
-                <span className="text-white/50">Core</span>
-                <Sparkle className="h-2.5 w-2.5 self-center text-white/35" strokeWidth={1.5} />
-                <span>Interactive Canvas</span>
-                <span className="text-right text-white/40 font-light">SVG Whiteboard</span>
-
-                <span className="text-white/50">Theme</span>
-                <Sparkle className="h-2.5 w-2.5 self-center text-white/35" strokeWidth={1.5} />
-                <span>Hand-Drawn Vector</span>
-                <span className="text-right text-white/40 font-light">Copyleft Free</span>
-
-                <span className="text-white/50">Docs</span>
-                <Sparkle className="h-2.5 w-2.5 self-center text-white/35" strokeWidth={1.5} />
-                <span>github.com/elixpo/lixsketch</span>
-                <span className="text-right text-white/40 font-light">GPL-3.0</span>
-              </div>
-            </div>
-          </a>
-
-          {/* Column 2 - Stacked rows */}
-          <div className="flex flex-col gap-4 md:gap-5">
-            {/* Top - LixEditor NPM Package */}
-            <a
-              href={ELIXPO_LINKS.npmLixEditor}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl bg-neutral-950 p-5 md:p-6 relative overflow-hidden flex flex-col justify-between min-h-[220px] h-full shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
-            >
-              <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div className="flex items-center justify-between relative z-10">
-                <div className="flex items-center gap-1.5">
-                  <Sparkle className="h-3.5 w-3.5 text-white/70" strokeWidth={1.5} />
-                  <span className="uppercase tracking-[0.22em] text-[11px] text-white/70 font-mono">
-                    LixEditor NPM Package
-                  </span>
-                </div>
-                <ArrowUpRight className="text-white/40 group-hover:text-white transition-colors duration-300" size={16} strokeWidth={1.5} />
-              </div>
-
-              <div className="my-3 relative z-10">
-                <h4 className="text-lg font-bold font-serif italic text-white mb-2 leading-tight">
-                  LixEditor
-                </h4>
-                <p className="text-[12px] sm:text-[13px] leading-[1.6] text-white/85 relative z-10 font-mono">
-                  &ldquo;A rich WYSIWYG block editor and renderer built on BlockNote — with LaTeX equations, Mermaid diagrams, syntax-highlighted code blocks, and more.&rdquo;
-                </p>
-              </div>
-
-              <div className="text-[11px] font-mono text-white/60 relative z-10 border-t border-white/5 pt-3">
-                The core editor engine behind <span className="text-white hover:underline">LixBlogs</span> (github.com/elixpo/elixpoblogs)
-              </div>
-            </a>
-
-            {/* Bottom - LixSketch VS Code Extension */}
+          {/* Column 3 - VS Code extensions stacked */}
+          <div className="flex flex-col gap-4 md:gap-5 md:col-span-2 lg:col-span-1 lg:h-[470px]">
+            {/* LixSketch VS Code Extension */}
             <a
               href={ELIXPO_LINKS.vsLixSketch}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-6 min-h-[200px] h-full shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
+              className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
             >
               <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -198,16 +219,13 @@ export function PackagesSection() {
                 Open-source whiteboard diagrams inside VS Code — draw, sketch, and save .lixsketch files
               </span>
             </a>
-          </div>
 
-          {/* Column 3 - Stacked rows */}
-          <div className="flex flex-col gap-4 md:gap-5 md:col-span-2 lg:col-span-1">
-            {/* Top - LixEditor VS Code Extension */}
+            {/* LixEditor VS Code Extension */}
             <a
               href={ELIXPO_LINKS.vsLixEditor}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-5 md:p-6 min-h-[290px] h-full shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
+              className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-5 md:p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
             >
               <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -259,35 +277,6 @@ export function PackagesSection() {
                 A rich block editor for .lixeditor files — LaTeX equations, Mermaid diagrams, syntax-highlighted code, and more.
               </p>
             </a>
-
-            {/* Bottom - Reach Me card */}
-            <div className="rounded-2xl bg-neutral-950 p-5 md:p-6 relative overflow-hidden flex flex-col justify-between min-h-[140px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group">
-              <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <span className="uppercase tracking-[0.22em] text-[11px] text-white/70 font-mono relative z-10">
-                DEVELOPER CONTACT
-              </span>
-
-              <a
-                href="mailto:vivektalent200@gmail.com"
-                className="h-9 w-9 rounded-full bg-white/10 text-white flex items-center justify-center absolute top-5 right-5 hover:bg-white/20 transition-all cursor-pointer hover:scale-105 active:scale-95 z-20"
-              >
-                <ArrowUpRight size={18} strokeWidth={1.5} />
-              </a>
-
-              <div className="relative z-10 mt-4 space-y-1">
-                <a
-                  href="mailto:vivektalent200@gmail.com"
-                  className="text-sm font-medium text-white/95 hover:text-white transition-colors block font-mono"
-                >
-                  vivektalent200@gmail.com
-                </a>
-                <span className="text-xs text-white/65 block font-mono">
-                  github.com/Circuit-Overtime
-                </span>
-              </div>
-            </div>
           </div>
         </motion.div>
       </div>

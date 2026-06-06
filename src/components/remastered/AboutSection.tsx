@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
 import { AnimatedParagraph } from "./AnimatedParagraph";
 import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
@@ -15,14 +15,6 @@ export function AboutSection() {
   ];
 
   const bodyText = "Begun in 2023 as a collegiate project, this series has grown into a collaborative workspace with 35+ global contributors. We empower developers and artists with fully copyleft tools, backed by Pollinations AI and Microsoft for Startups.";
-
-  const ecoLinks = [
-    { label: "Elixpo Art", href: ELIXPO_LINKS.generate },
-    { label: "Elix Blogs", href: ELIXPO_LINKS.blog },
-    { label: "Jackey Bot", href: ELIXPO_LINKS.discord },
-    { label: "Chrome Ext", href: ELIXPO_LINKS.extension },
-    { label: "Open GitHub", href: ELIXPO_LINKS.github },
-  ];
 
   return (
     <section
@@ -68,7 +60,7 @@ export function AboutSection() {
 
         </div>
 
-        {/* Elixpo Ecosystem Labs section */}
+        {/* Elixpo Chapter — open source innovations */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -77,27 +69,53 @@ export function AboutSection() {
           className="border-t border-white/5 pt-10"
         >
           <p className="text-[10px] uppercase font-mono tracking-[0.15em] text-neutral-500 mb-6 text-center">
-            Elixpo Labs · Open Source Innovations
+            Elixpo Chapter · Open Source Innovations
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 sm:gap-y-5 max-w-4xl mx-auto">
-            {ecoLinks.map((link, i) => (
-              <motion.a
-                key={`about-eco-link-${i}`}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-semibold border border-white/10 bg-white/[0.03] backdrop-blur-md text-[#DEDBC8]/90 rounded-full hover:border-[#DEDBC8]/40 hover:text-black hover:bg-[#DEDBC8] transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(222,219,200,0.12)]"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-              >
-                <span>{link.label}</span>
-                <ArrowRight
-                  size={14}
-                  className="transform -rotate-45 transition-transform duration-200 group-hover:rotate-0"
-                />
-              </motion.a>
-            ))}
+          {/* Cinematic art panel */}
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 max-w-4xl mx-auto aspect-[21/9] mb-8 group">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+            >
+              <source
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 pointer-events-none" />
+            <div className="absolute inset-0 noise-overlay opacity-[0.22] pointer-events-none" />
+
+            <div className="absolute bottom-0 left-0 p-5 sm:p-7">
+              <span className="text-[10px] uppercase font-mono tracking-widest text-primary/80 block mb-1">
+                Open Source · GPL-3.0
+              </span>
+              <p className="text-lg sm:text-2xl font-serif italic text-white leading-tight">
+                Built in the open, together.
+              </p>
+            </div>
+          </div>
+
+          {/* Single monorepo button */}
+          <div className="flex justify-center">
+            <motion.a
+              href={ELIXPO_LINKS.githubChapter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-semibold bg-[#DEDBC8] text-black rounded-full hover:bg-[#E1E0CC] transition-all duration-300 shadow-lg hover:shadow-[0_0_24px_rgba(222,219,200,0.18)]"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <Github size={16} />
+              <span className="font-mono">elixpo/elixpo_chapter</span>
+              <ArrowRight
+                size={14}
+                className="transform -rotate-45 transition-transform duration-200 group-hover:rotate-0"
+              />
+            </motion.a>
           </div>
         </motion.div>
 
