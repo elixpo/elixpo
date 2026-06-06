@@ -33,7 +33,7 @@ export const ELIXPO_LINKS = {
   email: "hello@elixpo.com",
   github: "https://github.com/elixpo",
   githubChapter: "https://github.com/elixpo/elixpo_chapter",
-  submitProject: "https://github.com/elixpo/elixpo_chapter/issues/new?title=Project%20Submission&labels=submission",
+  submitProject: "https://github.com/orgs/elixpo/discussions/new?category=show-and-tell",
   extension: "https://github.com/Circuit-Overtime/elixpo_chapter/discussions/42",
   sketch: "https://sketch.elixpo.com",
   chat: "https://chat.elixpo.com",
