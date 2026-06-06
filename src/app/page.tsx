@@ -2,12 +2,12 @@ import { SmoothScroll } from "@/components/remastered/SmoothScroll";
 import { MegaNavbar } from "@/components/remastered/MegaNavbar";
 import { HeroSection } from "@/components/remastered/HeroSection";
 import { AboutSection } from "@/components/remastered/AboutSection";
+import { NominationSection } from "@/components/remastered/NominationSection";
 import { FeaturesSection } from "@/components/remastered/FeaturesSection";
 import { PackagesSection } from "@/components/remastered/PackagesSection";
 import { NewsletterSection } from "@/components/remastered/NewsletterSection";
-import { NominationSection } from "@/components/remastered/NominationSection";
 import { Contributors } from "@/components/remastered/Contributors";
-import { FAQSection } from "@/components/remastered/FAQSection";
+import { FeatureProjectCTA } from "@/components/remastered/FeatureProjectCTA";
 import { Footer } from "@/components/remastered/Footer";
 
 const jsonLd = {
@@ -41,12 +41,12 @@ export default function Home() {
         <MegaNavbar />
         <HeroSection />
         <AboutSection />
+        <NominationSection />
         <FeaturesSection />
         <PackagesSection />
         <NewsletterSection />
-        <NominationSection />
         <Contributors />
-        <FAQSection />
+        <FeatureProjectCTA />
         <Footer />
       </main>
     </>
