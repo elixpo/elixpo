@@ -1,17 +1,50 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
 import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
 
-interface CardProps {
-  children: React.ReactNode;
+// Background clips per card. These reuse the three available Elixpo cloudfront
+// renders as placeholders — swap any `video` URL to give a tool its own clip.
+const featureCards = [
+  {
+    title: "Elixpo Art Generator.",
+    cta: "Generate now",
+    href: ELIXPO_LINKS.generate,
+    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4",
+    badge: "00",
+  },
+  {
+    title: "LixSketch Canvas.",
+    cta: "Explore Sketch",
+    href: ELIXPO_LINKS.sketch,
+    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4",
+    badge: "01",
+  },
+  {
+    title: "Elixpo Blogs.",
+    cta: "Explore Blogs",
+    href: ELIXPO_LINKS.blog,
+    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4",
+    badge: "02",
+  },
+  {
+    title: "AI Chat & Search.",
+    cta: "Explore Chat",
+    href: ELIXPO_LINKS.chat,
+    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4",
+    badge: "03",
+  },
+];
+
+interface FeatureVideoCardProps {
+  card: (typeof featureCards)[number];
   index: number;
 }
 
-function CardAnimate({ children, index }: CardProps) {
+function FeatureVideoCard({ card, index }: FeatureVideoCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -20,14 +53,41 @@ function CardAnimate({ children, index }: CardProps) {
       ref={ref}
       initial={{ scale: 0.95, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
-      transition={{
-        duration: 0.85,
-        delay: index * 0.15,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="bg-[#253535] rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col justify-between border border-white/10 hover:border-primary/20 transition-colors duration-300 relative overflow-hidden min-h-[380px] sm:min-h-[440px]"
+      transition={{ duration: 0.85, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className="relative rounded-2xl overflow-hidden bg-neutral-950 border border-white/10 hover:border-primary/20 transition-colors duration-300 group min-h-[380px] sm:min-h-[440px] lg:h-[480px] flex flex-col justify-between"
     >
-      {children}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+      >
+        <source src={card.video} type="video/mp4" />
+      </video>
+
+      {/* Gradient mask + noise for legibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40 pointer-events-none" />
+      <div className="absolute inset-0 noise-overlay opacity-[0.2] pointer-events-none" />
+
+      {/* Top index badge */}
+      <div className="relative z-10 flex items-center justify-end p-4 sm:p-6 md:p-8">
+        <span className="text-xs font-mono text-white/50">{card.badge}</span>
+      </div>
+
+      {/* Bottom title + CTA */}
+      <div className="relative z-10 p-4 sm:p-6 md:p-8">
+        <p className="text-xl font-medium text-[#E1E0CC] mb-2">{card.title}</p>
+        <a
+          href={card.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs text-primary/80 hover:text-primary transition-colors"
+        >
+          <span>{card.cta}</span>
+          <ArrowRight size={12} className="transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </a>
+      </div>
     </motion.div>
   );
 }
@@ -39,27 +99,6 @@ export function FeaturesSection() {
 
   const heading2: Segment[] = [
     { text: "An Open Source Project Series centered on Computer Science.", className: "font-normal text-neutral-500" },
-  ];
-
-  const storyboardItems = [
-    "WYSIWYG Canvas for presentations",
-    "Open-source SVG whiteboard engine",
-    "LixSketch NPM package integrated",
-    "VS Code offline canvas extension",
-  ];
-
-  const critiqueItems = [
-    "Write & publish technical blogs",
-    "BlockNote with LaTeX equations",
-    "Support for Mermaid & Code syntax",
-    "LixEditor NPM & VS Code engines",
-  ];
-
-  const immersionItems = [
-    "3-tier caching search architecture",
-    "AI Web Chat powered by lixSearch",
-    "Tommy Discord Issues orchestrator",
-    "100% open-source GPL-3.0",
   ];
 
   return (
@@ -90,152 +129,11 @@ export function FeaturesSection() {
           />
         </div>
 
-        {/* 4-column grid */}
+        {/* 4-column video card grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
-
-          {/* Card 1 - Pure Video Background card */}
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="relative lg:h-[480px] rounded-2xl overflow-hidden bg-neutral-950 border border-white/10 group min-h-[380px] sm:min-h-[440px] flex flex-col justify-end"
-          >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
-            >
-              <source
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4"
-                type="video/mp4"
-              />
-            </video>
-
-            {/* Gradient mask */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 noise-overlay opacity-[0.2] pointer-events-none" />
-
-            <div className="relative z-10 p-4 sm:p-6 md:p-8">
-              <p className="text-xl font-medium text-[#E1E0CC] mb-2">
-                Elixpo Art Generator.
-              </p>
-              <a
-                href={ELIXPO_LINKS.generate}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-primary/80 hover:text-primary transition-colors"
-              >
-                <span>Generate now</span>
-                <ArrowRight size={12} className="transform -rotate-45" />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Card 2 - Project Storyboard */}
-          <CardAnimate index={1}>
-            <div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171918_4a5edc79-d78f-4637-ac8b-53c43c220606.png&w=1280&q=85"
-                alt="Storyboard Icon"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover mb-6 border border-neutral-800"
-              />
-              <div className="flex flex-wrap gap-2 items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-[#E1E0CC]">LixSketch Canvas.</h3>
-                <span className="text-xs font-mono text-neutral-500">01</span>
-              </div>
-              <ul className="space-y-3">
-                {storyboardItems.map((item, id) => (
-                  <li key={`storyboard-item-${id}`} className="flex items-start gap-2 text-xs sm:text-xs">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-neutral-400">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <a
-              href={ELIXPO_LINKS.sketch}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-white transition-colors pt-6 border-t border-neutral-800/80 mt-6"
-            >
-              <span>Explore Sketch</span>
-              <ArrowRight size={12} className="transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </CardAnimate>
-
-          {/* Card 3 - Smart Critiques */}
-          <CardAnimate index={2}>
-            <div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171741_ed9845ab-f5b2-4018-8ce7-07cc01823522.png&w=1280&q=85"
-                alt="Critiques Icon"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover mb-6 border border-neutral-800"
-              />
-              <div className="flex flex-wrap gap-2 items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-[#E1E0CC]">Elixpo Blogs.</h3>
-                <span className="text-xs font-mono text-neutral-500">02</span>
-              </div>
-              <ul className="space-y-3">
-                {critiqueItems.map((item, id) => (
-                  <li key={`critique-item-${id}`} className="flex items-start gap-2 text-xs sm:text-xs">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-neutral-400">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <a
-              href={ELIXPO_LINKS.blog}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-white transition-colors pt-6 border-t border-neutral-800/80 mt-6"
-            >
-              <span>Explore Blogs</span>
-              <ArrowRight size={12} className="transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </CardAnimate>
-
-          {/* Card 4 - Immersion Capsule */}
-          <CardAnimate index={3}>
-            <div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260405_171809_f56666dc-c099-4778-ad82-9ad4f209567b.png&w=1280&q=85"
-                alt="Immersion Icon"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover mb-6 border border-neutral-800"
-              />
-              <div className="flex flex-wrap gap-2 items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-[#E1E0CC]">AI Chat & Search.</h3>
-                <span className="text-xs font-mono text-neutral-500">03</span>
-              </div>
-              <ul className="space-y-3">
-                {immersionItems.map((item, id) => (
-                  <li key={`immersion-item-${id}`} className="flex items-start gap-2 text-xs sm:text-xs">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-neutral-400">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <a
-              href={ELIXPO_LINKS.chat}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-white transition-colors pt-6 border-t border-neutral-800/80 mt-6"
-            >
-              <span>Explore Chat</span>
-              <ArrowRight size={12} className="transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </CardAnimate>
-
+          {featureCards.map((card, index) => (
+            <FeatureVideoCard key={card.title} card={card} index={index} />
+          ))}
         </div>
 
       </div>

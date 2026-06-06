@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import {
-  ArrowUpRight, Sparkle, Figma, Framer, Palette, PenTool, Layers, Type, Aperture, Chrome, Camera, Brush, Box, Wand2, ExternalLink
+  ArrowUpRight, Sparkle, Figma, Framer, Palette, PenTool, Layers, Type, Aperture, Chrome, Camera, Brush, Box, Wand2, ExternalLink, Terminal, Download, Package
 } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 
@@ -71,6 +71,38 @@ export function PackagesSection() {
                 <Sparkle className="h-3 w-3 text-white/70" strokeWidth={1.5} />
               </div>
               <ArrowUpRight className="text-white/40 group-hover:text-primary transition-colors duration-300" size={16} strokeWidth={1.5} />
+            </div>
+
+            {/* npm artifact — fills the card's mid-space with package identity */}
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center gap-3.5 py-4 w-full">
+              {/* Floating package mark */}
+              <div className="relative">
+                <div className="h-16 w-16 rounded-2xl liquid-glass border border-white/10 flex items-center justify-center shadow-inner group-hover:border-primary/25 transition-colors duration-300">
+                  <Package className="h-7 w-7 text-primary/80" strokeWidth={1.5} />
+                </div>
+                <span className="absolute -bottom-1.5 -right-1.5 px-1.5 py-0.5 rounded-md bg-[#CB3837] text-white font-bold text-[9px] tracking-tight font-mono shadow-md">
+                  npm
+                </span>
+              </div>
+
+              {/* Install command pill */}
+              <div className="w-full max-w-[240px] liquid-glass rounded-lg px-3 py-2 flex items-center gap-2 border border-white/5">
+                <Terminal size={12} className="text-primary/70 shrink-0" />
+                <code className="text-[11px] font-mono text-white/85 truncate">
+                  <span className="text-white/40">$ </span>npm i @elixpo/lixsketch
+                </code>
+              </div>
+
+              {/* Faux registry badges */}
+              <div className="flex items-center gap-3 text-[10px] font-mono text-white/45">
+                <span className="inline-flex items-center gap-1">
+                  <Download size={11} className="text-white/40" /> 1.2k/wk
+                </span>
+                <span className="w-px h-3 bg-white/10" />
+                <span>v1.x</span>
+                <span className="w-px h-3 bg-white/10" />
+                <span className="text-primary/70">GPL-3.0</span>
+              </div>
             </div>
 
             <div className="relative z-10 w-full mb-1">

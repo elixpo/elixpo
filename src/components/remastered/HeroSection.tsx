@@ -86,7 +86,7 @@ export function HeroSection() {
                 className="w-full"
               >
                 <motion.a
-                  href={ELIXPO_LINKS.generate}
+                  href={ELIXPO_LINKS.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center justify-between gap-6 pl-6 pr-1 bg-[#DEDBC8] text-black rounded-full py-1.5 font-medium text-sm border border-neutral-100/10 shadow-lg hover:shadow-primary/10 transition-all duration-300 w-[200px]"

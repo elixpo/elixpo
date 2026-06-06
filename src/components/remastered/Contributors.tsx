@@ -1,10 +1,42 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import contributorsData from "@/data/contributors.json";
 
+// The roster is refreshed by the @elixpoo bot (see
+// .github/workflows/update-contributors.yml) and served raw from main.
+// We read it live so new contributors show up without a redeploy, and fall
+// back to the bundled copy for first paint / offline / rate-limited reads.
+const RAW_ROSTER_URL =
+  "https://raw.githubusercontent.com/elixpo/elixpo/main/src/data/contributors.json";
+
 export function Contributors() {
-  const contributors = contributorsData.contributors;
+  const [contributors, setContributors] = useState<string[]>(
+    contributorsData.contributors,
+  );
+  const [subheadline, setSubheadline] = useState<string>(
+    contributorsData.subheadline,
+  );
+
+  useEffect(() => {
+    let active = true;
+    fetch(RAW_ROSTER_URL, { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!active || !data || !Array.isArray(data.contributors) || !data.contributors.length) {
+          return;
+        }
+        setContributors(data.contributors);
+        if (typeof data.subheadline === "string") setSubheadline(data.subheadline);
+      })
+      .catch(() => {
+        /* keep the bundled fallback */
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   // Split contributors into orbital rings
   const orbit1 = contributors.slice(0, 6);
@@ -28,7 +60,7 @@ export function Contributors() {
             Our <span className="italic font-serif text-primary">Contributors</span>
           </h2>
           <p className="text-[#DEDBC8]/60 max-w-xl mx-auto text-xs sm:text-sm font-mono leading-relaxed">
-            {contributorsData.subheadline}
+            {subheadline}
           </p>
         </div>
 
