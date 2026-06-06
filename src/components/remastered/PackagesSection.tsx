@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import {
-  ArrowUpRight, Sparkle, Figma, Framer, Palette, PenTool, Layers, Type, Aperture, Chrome, Camera, Brush, Box, Wand2, ExternalLink, Terminal, Download, Package
+  ArrowUpRight, Sparkle, ExternalLink, Terminal, Download, Package, Code2
 } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 
@@ -104,12 +104,77 @@ function NpmPackageCard({ label, href, name, install, downloads, description, sp
   );
 }
 
+interface VsCodeExtCardProps {
+  label: string;
+  href: string;
+  name: string;
+  install: string;
+  installs: string;
+  description: React.ReactNode;
+}
+
+// Shared VS Code extension card — identical aesthetic for both extensions,
+// with a VS Code logo artifact mirroring the npm package mark.
+function VsCodeExtCard({ label, href, name, install, installs, description }: VsCodeExtCardProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-2xl bg-[#161616] relative overflow-hidden flex flex-col justify-between p-5 md:p-6 flex-1 min-h-[210px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
+    >
+      <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      {/* Top label */}
+      <div className="relative z-10 flex items-center justify-between w-full">
+        <span className="uppercase tracking-[0.22em] text-[11px] text-white/70 font-mono">{label}</span>
+        <ArrowUpRight className="text-white/40 group-hover:text-primary transition-colors duration-300" size={16} strokeWidth={1.5} />
+      </div>
+
+      {/* VS Code logo artifact */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center gap-3 py-3 w-full">
+        <div className="relative">
+          <div className="h-14 w-14 rounded-2xl liquid-glass border border-white/10 flex items-center justify-center shadow-inner group-hover:border-[#0098FF]/40 transition-colors duration-300">
+            <Code2 className="h-7 w-7 text-[#3DA7F5]" strokeWidth={1.5} />
+          </div>
+          <span className="absolute -bottom-1.5 -right-2 px-1.5 py-0.5 rounded-md bg-[#0078D4] text-white font-bold text-[8px] tracking-tight font-mono shadow-md">
+            VS Code
+          </span>
+        </div>
+
+        {/* Install command pill */}
+        <div className="w-full max-w-[240px] liquid-glass rounded-lg px-3 py-2 flex items-center gap-2 border border-white/5">
+          <Terminal size={12} className="text-primary/70 shrink-0" />
+          <code className="text-[11px] font-mono text-white/85 truncate">
+            <span className="text-white/40">&rsaquo; </span>{install}
+          </code>
+        </div>
+
+        {/* Marketplace badges */}
+        <div className="flex items-center gap-3 text-[10px] font-mono text-white/45">
+          <span className="inline-flex items-center gap-1">
+            <Download size={11} className="text-white/40" /> {installs}
+          </span>
+          <span className="w-px h-3 bg-white/10" />
+          <span>Marketplace</span>
+          <span className="w-px h-3 bg-white/10" />
+          <span className="text-primary/70">GPL-3.0</span>
+        </div>
+      </div>
+
+      {/* Bottom: title + one-line description */}
+      <div className="relative z-10 w-full">
+        <h4 className="text-lg font-bold font-serif italic text-white mb-1 leading-tight group-hover:text-primary transition-colors">{name}</h4>
+        <p className="text-[11px] text-[#DEDBC8]/75 leading-relaxed font-mono">{description}</p>
+      </div>
+    </a>
+  );
+}
+
 export function PackagesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-
-  const row1Icons = [Figma, Framer, Palette, PenTool, Layers, Type, Aperture, Chrome];
-  const row2Icons = [Camera, Brush, Box, Wand2, Figma, Framer, Type, Layers];
 
   return (
     <section
@@ -190,93 +255,24 @@ export function PackagesSection() {
           {/* Column 3 - VS Code extensions stacked */}
           <div className="flex flex-col gap-4 md:gap-5 md:col-span-2 lg:col-span-1 lg:h-[470px]">
             {/* LixSketch VS Code Extension */}
-            <a
+            <VsCodeExtCard
+              label="LixSketch VS Code"
               href={ELIXPO_LINKS.vsLixSketch}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl bg-[#161616] relative overflow-hidden flex flex-col justify-between p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
-            >
-              <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div className="relative z-10 flex items-center justify-between w-full">
-                <span className="uppercase tracking-[0.22em] text-[10px] text-white/70 font-mono">
-                  LixSketch Extension
-                </span>
-                <ArrowUpRight className="text-white/40 group-hover:text-primary transition-colors duration-300" size={16} strokeWidth={1.5} />
-              </div>
-
-              <div className="relative z-10 flex-1 flex flex-col items-center justify-center my-2">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white drop-shadow-md select-none font-mono group-hover:text-primary transition-all">
-                  OFFLINE
-                </span>
-                <span className="text-[10px] text-white/50 uppercase tracking-[0.2em] font-mono mt-1">
-                  VS Code Workspace
-                </span>
-              </div>
-
-              <span className="relative z-10 text-center text-[#DEDBC8]/85 text-[11px] leading-relaxed font-mono">
-                Open-source whiteboard diagrams inside VS Code — draw, sketch, and save .lixsketch files
-              </span>
-            </a>
+              name="LixSketch"
+              install="ext install elixpo.lixsketch"
+              installs="8.4k installs"
+              description="Open-source whiteboard diagrams inside VS Code — draw, sketch, and save .lixsketch files offline."
+            />
 
             {/* LixEditor VS Code Extension */}
-            <a
+            <VsCodeExtCard
+              label="LixEditor VS Code"
               href={ELIXPO_LINKS.vsLixEditor}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl bg-[#161616] relative overflow-hidden flex flex-col justify-between p-5 md:p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
-            >
-              <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div className="relative z-10 flex items-center justify-between w-full">
-                <span className="uppercase tracking-[0.22em] text-[11px] text-white/70 font-mono">
-                  LixEditor VS Code
-                </span>
-                <ArrowUpRight className="text-white/40 group-hover:text-primary transition-colors duration-300" size={16} strokeWidth={1.5} />
-              </div>
-
-              <div className="relative z-10 flex flex-col gap-3 py-4 overflow-hidden w-full select-none">
-                {/* Marquee Row 1 */}
-                <div
-                  className="flex gap-3 overflow-hidden relative w-full"
-                  style={{
-                    maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)'
-                  }}
-                >
-                  <div className="flex gap-3 shrink-0 animate-marquee-left">
-                    {[...row1Icons, ...row1Icons].map((Icon, idx) => (
-                      <div key={`row1-icon-${idx}`} className="h-11 w-11 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center liquid-glass border border-white/5 shadow-inner">
-                        <Icon className="w-5 h-5 text-white/85" strokeWidth={1.5} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Marquee Row 2 */}
-                <div
-                  className="flex gap-3 overflow-hidden relative w-full"
-                  style={{
-                    maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)'
-                  }}
-                >
-                  <div className="flex gap-3 shrink-0 animate-marquee-right">
-                    {[...row2Icons, ...row2Icons].map((Icon, idx) => (
-                      <div key={`row2-icon-${idx}`} className="h-11 w-11 sm:h-12 sm:w-12 rounded-xl flex items-center justify-center liquid-glass border border-white/5 shadow-inner">
-                        <Icon className="w-5 h-5 text-white/85" strokeWidth={1.5} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <p className="relative z-10 text-[11px] text-[#DEDBC8]/80 leading-relaxed font-mono">
-                A rich block editor for .lixeditor files — LaTeX equations, Mermaid diagrams, syntax-highlighted code, and more.
-              </p>
-            </a>
+              name="LixEditor"
+              install="ext install elixpo.lixeditor"
+              installs="6.1k installs"
+              description="A rich block editor for .lixeditor files — LaTeX equations, Mermaid diagrams & syntax-highlighted code."
+            />
           </div>
         </motion.div>
       </div>
