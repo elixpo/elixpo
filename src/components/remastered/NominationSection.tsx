@@ -1,55 +1,29 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { Star, Heart, ArrowRight, ExternalLink, ShieldCheck } from "lucide-react";
+import { Star, Heart, ArrowRight, ExternalLink, ShieldCheck, Cpu } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 
-interface GitHubRepo {
-  stargazers_count?: number;
-}
+const ECOSYSTEM_STARS = "85+";
+const CONTRIBUTOR_COUNT = "35+";
+
+const COMPUTE_PARTNERS = [
+  "Pollinations",
+  "Vercel",
+  "Cloudflare",
+  "DigitalOcean",
+  "Firebase",
+];
 
 export function NominationSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  const [starCount, setStarCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    let active = true;
-    async function fetchStars() {
-      try {
-        // Aggregate stars across Circuit-Overtime repositories via the GitHub Search API
-        const response = await fetch("https://api.github.com/search/repositories?q=user:Circuit-Overtime");
-        if (!response.ok) throw new Error("GitHub rate limit or fetch error");
-        const data = await response.json();
-        if (active && data && Array.isArray(data.items)) {
-          const totalStars = data.items.reduce(
-            (acc: number, repo: GitHubRepo) => acc + (repo.stargazers_count || 0),
-            0,
-          );
-          setStarCount(totalStars || 184); // Fallback to a realistic count if API returns 0
-        }
-      } catch (error) {
-        console.warn("Fallback to static star count due to API constraints:", error);
-        if (active) {
-          setStarCount(184);
-        }
-      } finally {
-        if (active) setLoading(false);
-      }
-    }
-    fetchStars();
-    return () => {
-      active = false;
-    };
-  }, []);
-
   const heading = {
     tag: "Advancing Open Intelligence",
     line1: "Support Open Source.",
-    line2: "Help us grow."
+    line2: "Help us grow.",
   };
 
   const nominationSteps = [
@@ -70,15 +44,11 @@ export function NominationSection() {
     },
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
 
@@ -87,10 +57,7 @@ export function NominationSection() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
@@ -100,8 +67,9 @@ export function NominationSection() {
       id="nominate"
       className="bg-black text-[#E1E0CC] py-20 px-4 sm:px-6 lg:px-8 relative select-none overflow-hidden"
     >
-      {/* Visual background gradient pulse */}
-      <div className="absolute top-1/2 right-[10%] w-[300px] h-[300px] bg-primary/5 rounded-full blur-[90px] pointer-events-none" />
+      {/* Background gradient pulses */}
+      <div className="absolute top-1/4 right-[8%] w-[380px] h-[380px] bg-primary/[0.07] rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-0 left-[5%] w-[300px] h-[300px] bg-[#44386e]/15 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
 
@@ -112,10 +80,9 @@ export function NominationSection() {
           animate={isInView ? "visible" : "hidden"}
           className="mb-12 flex flex-col items-start gap-1"
         >
-          {/* Section subtitle tag */}
           <motion.span
             variants={itemVariants}
-            className="flex flex-wrap text-base sm:text-lg md:text-xl uppercase tracking-[0.15em] sm:tracking-[0.3em] text-[#DEDBC8]/50 font-mono font-medium mb-3"
+            className="flex flex-wrap text-base sm:text-lg md:text-xl uppercase tracking-[0.15em] sm:tracking-[0.3em] text-[#DEDBC8]/60 font-mono font-medium mb-3"
           >
             {heading.tag}
           </motion.span>
@@ -129,7 +96,7 @@ export function NominationSection() {
             </motion.h2>
             <motion.p
               variants={itemVariants}
-              className="text-2xl sm:text-3xl md:text-4xl italic font-serif text-[#DEDBC8]/50 leading-tight block"
+              className="text-2xl sm:text-3xl md:text-4xl italic font-serif text-[#DEDBC8]/60 leading-tight block"
             >
               {heading.line2}
             </motion.p>
@@ -138,23 +105,38 @@ export function NominationSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch mb-16">
 
-          {/* Card 1: Nomination Panel (Spans 2 columns on lg) */}
+          {/* Card 1: Nomination Panel (spans 2 columns on lg) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-2 bg-[#101010] border border-white/5 rounded-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden flex flex-col justify-between hover:border-primary/15 transition-all duration-300 group"
+            className="lg:col-span-2 bg-gradient-to-br from-[#161616] to-[#101010] border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden flex flex-col justify-between hover:border-primary/25 transition-all duration-300 group"
           >
-            <div>
+            {/* Decorative top flare */}
+            <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent pointer-events-none" />
+            <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-[60px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative z-10">
               <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
                 <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 text-primary animate-pulse" />
+                  <Star className="w-5 h-5 text-primary fill-primary/30" />
                   <span className="text-xs uppercase tracking-wider font-mono text-[#DEDBC8]">GitHub Stars Program</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.03] border border-white/5 rounded-full font-mono text-[10px] group-hover:border-primary/20 transition-all duration-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-white/40">Ecosystem Stars:</span>
-                  <span className="text-primary font-bold">{loading ? "..." : (starCount !== null ? starCount.toLocaleString() : "180+")}</span>
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-white/[0.05] border border-white/10 rounded-full font-mono text-[10px] group-hover:border-primary/30 transition-all duration-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                  <span className="text-white/55">Ecosystem Stars</span>
+                  <span className="text-primary font-bold">{ECOSYSTEM_STARS} ★</span>
+                </div>
+              </div>
+
+              {/* Hero star stat */}
+              <div className="flex items-end gap-4 mb-6">
+                <span className="text-6xl sm:text-7xl font-light text-white tracking-tight leading-none">
+                  {ECOSYSTEM_STARS}
+                </span>
+                <div className="flex flex-col pb-1.5">
+                  <span className="text-primary text-lg">★★★★★</span>
+                  <span className="text-[11px] font-mono text-[#DEDBC8]/55 uppercase tracking-wider">stars and counting</span>
                 </div>
               </div>
 
@@ -162,101 +144,115 @@ export function NominationSection() {
                 Nominate <span className="text-primary italic font-serif font-semibold">Circuit-Overtime</span> for the GitHub Stars!
               </h3>
 
-              <p className="text-xs sm:text-sm text-[#DEDBC8]/70 leading-relaxed mb-8 max-w-xl">
+              <p className="text-xs sm:text-sm text-[#DEDBC8]/80 leading-relaxed mb-8 max-w-xl">
                 If you believe in our mission of open development, Google Developer Groups (2025-2026) campus organizer initiatives, and making AI free, taking just 20 seconds to submit a nomination means the world to our small team.
               </p>
 
-              {/* Steps inside bento */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-b border-white/[0.04] py-6 my-6">
+              {/* Steps */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-b border-white/[0.06] py-6 my-6">
                 {nominationSteps.map((step, idx) => (
                   <div key={`nomination-step-item-${idx}`} className="flex flex-col gap-2 items-start">
                     <span className="text-xs font-mono text-primary font-bold">{step.step}</span>
                     <h4 className="text-xs font-semibold text-white/90 uppercase tracking-widest">{step.title}</h4>
-                    <p className="text-xs text-[#DEDBC8]/60 leading-relaxed">{step.desc}</p>
+                    <p className="text-xs text-[#DEDBC8]/70 leading-relaxed">{step.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <span className="text-xs font-mono text-neutral-500">Every nomination amplifies open-source!</span>
+            <div className="relative z-10 mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <span className="text-xs font-mono text-neutral-400">Every nomination amplifies open-source!</span>
               <a
                 href={ELIXPO_LINKS.nominate}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-[#DEDBC8] hover:bg-[#E1E0CC] text-black text-xs font-semibold uppercase tracking-wider rounded-full px-5 py-2.5 transition-all shadow-lg"
+                className="group/btn inline-flex items-center gap-3 bg-[#DEDBC8] hover:bg-[#E1E0CC] text-black text-xs font-semibold uppercase tracking-wider rounded-full px-5 py-2.5 transition-all shadow-lg"
               >
                 <span>Nominate Now</span>
-                <ArrowRight size={14} className="transform -rotate-45 group-hover:rotate-0 transition-transform duration-200" />
+                <ArrowRight size={14} className="transform -rotate-45 group-hover/btn:rotate-0 transition-transform duration-200" />
               </a>
             </div>
           </motion.div>
 
-          {/* Card 2: Compute Partners (Spans 1 column on lg) */}
+          {/* Card 2: Compute Partners (spans 1 column on lg) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="lg:col-span-1 bg-[#212121] border border-white/5 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between hover:border-primary/15 transition-all duration-300 group"
+            className="lg:col-span-1 bg-[#1a1a1a] border border-white/10 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between hover:border-primary/25 transition-all duration-300 group"
           >
             <div>
               <div className="flex justify-between items-start mb-6 gap-2 flex-wrap">
-                <Heart className="w-5 h-5 text-primary shrink-0 animate-pulse" />
-                <span className="text-[10px] font-mono text-neutral-500">SUPPORTED DEVELOPMENT</span>
+                <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+                  <Cpu className="w-5 h-5 text-primary shrink-0" />
+                </div>
+                <span className="text-[10px] font-mono text-neutral-400">SUPPORTED DEVELOPMENT</span>
               </div>
               <h4 className="text-lg font-light text-white mb-3">Our Compute Partners</h4>
-              <p className="text-xs text-[#DEDBC8]/65 leading-relaxed mb-6">
-                Our massive AI workloads are powered by personal investment and compute support from the Pollinations AI team.
+              <p className="text-xs text-[#DEDBC8]/75 leading-relaxed mb-6">
+                Our AI workloads and infrastructure are powered by compute and platform support from:
               </p>
+
+              {/* Partner chips */}
+              <div className="flex flex-wrap gap-2 mb-2">
+                {COMPUTE_PARTNERS.map((partner) => (
+                  <span
+                    key={partner}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-[11px] font-mono text-[#DEDBC8]/90 hover:border-primary/30 hover:text-white transition-colors"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-primary" />
+                    {partner}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="pt-6 border-t border-white/5">
+            <div className="pt-6 mt-4 border-t border-white/10">
               <a
                 href={ELIXPO_LINKS.sponsors}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 text-primary/80 hover:text-primary transition-colors uppercase tracking-wider font-mono text-[10px]"
+                className="group/link inline-flex items-center gap-1.5 text-primary/90 hover:text-primary transition-colors uppercase tracking-wider font-mono text-[10px]"
               >
+                <Heart className="w-3 h-3" />
                 <span>Support via GitHub Sponsors</span>
-                <ExternalLink size={11} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                <ExternalLink size={11} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-200" />
               </a>
             </div>
           </motion.div>
 
-          {/* Card 3: Copyleft Protocol (Spans 3 columns on lg) */}
+          {/* Card 3: Copyleft Protocol (spans 3 columns on lg) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-3 bg-[#101010] border border-white/5 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-primary/15 transition-all duration-300 group"
+            className="lg:col-span-3 bg-gradient-to-r from-[#141414] to-[#101010] border border-white/10 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-primary/25 transition-all duration-300 group"
           >
             <div className="flex items-start gap-4 max-w-2xl">
-              <div className="p-3 bg-white/[0.02] border border-white/5 rounded-xl text-primary flex-shrink-0 mt-1 group-hover:bg-primary/5 group-hover:text-primary transition-all duration-300">
+              <div className="p-3 bg-primary/5 border border-primary/15 rounded-xl text-primary flex-shrink-0 mt-1 group-hover:bg-primary/10 transition-all duration-300">
                 <ShieldCheck className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-1">Copyleft License Protocol</span>
+                <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block mb-1">Copyleft License Protocol</span>
                 <h4 className="text-lg font-light text-white mb-2">GNU GPL-3.0 Compliance</h4>
-                <p className="text-xs text-[#DEDBC8]/65 leading-relaxed">
+                <p className="text-xs text-[#DEDBC8]/75 leading-relaxed">
                   We believe in ethical, open development. Our code, packages, and systems are shared under copyleft standards to ensure derivatives remain free for everybody forever.
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-6 font-mono text-[11px] text-white/50 border-t md:border-t-0 md:border-l border-white/5 pt-4 md:pt-0 md:pl-8 flex-shrink-0 w-full md:w-auto flex-wrap sm:flex-nowrap">
+            <div className="flex gap-6 font-mono text-[11px] text-white/60 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-8 flex-shrink-0 w-full md:w-auto flex-wrap sm:flex-nowrap">
               <div>
-                <span className="text-white/30 block text-[9px] uppercase tracking-wider">Chapter Size</span>
-                <span className="text-white/85 font-medium block mt-0.5">35+ Contributors</span>
+                <span className="text-white/40 block text-[9px] uppercase tracking-wider">Chapter Size</span>
+                <span className="text-white/90 font-medium block mt-0.5">{CONTRIBUTOR_COUNT} Contributors</span>
               </div>
               <div>
-                <span className="text-white/30 block text-[9px] uppercase tracking-wider font-medium text-primary">Ecosystem Stars</span>
-                <span className="text-primary font-bold block mt-0.5 animate-pulse">
-                  {loading ? "..." : (starCount !== null ? starCount.toLocaleString() : "184")} ★
-                </span>
+                <span className="text-white/40 block text-[9px] uppercase tracking-wider text-primary">Ecosystem Stars</span>
+                <span className="text-primary font-bold block mt-0.5">{ECOSYSTEM_STARS} ★</span>
               </div>
               <div>
-                <span className="text-white/30 block text-[9px] uppercase tracking-wider">License Standards</span>
-                <span className="text-white/85 font-medium block mt-0.5">GPL-3.0 Copyleft</span>
+                <span className="text-white/40 block text-[9px] uppercase tracking-wider">License Standards</span>
+                <span className="text-white/90 font-medium block mt-0.5">GPL-3.0 Copyleft</span>
               </div>
             </div>
           </motion.div>

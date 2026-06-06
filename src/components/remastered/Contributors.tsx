@@ -176,8 +176,8 @@ export function Contributors() {
         </div>
 
         {/* Contributor count */}
-        <p className="text-center text-xs text-[#DEDBC8]/50 font-mono mt-8">
-          {contributors.length}+ contributors and growing
+        <p className="text-center text-xs text-[#DEDBC8]/65 font-mono mt-8">
+          35+ contributors and growing
         </p>
       </div>
     </section>

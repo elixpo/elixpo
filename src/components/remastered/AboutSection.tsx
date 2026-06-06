@@ -21,7 +21,7 @@ export function AboutSection() {
       id="about"
       className="bg-black text-[#E1E0CC] py-20 px-4 sm:px-6 lg:px-8 select-none"
     >
-      <div className="bg-[#101010] border-t border-white/5 rounded-[1.5rem] md:rounded-[2.5rem] p-8 sm:p-12 md:py-12 md:px-16 max-w-6xl mx-auto shadow-2xl relative overflow-hidden">
+      <div className="bg-[#161616] border-t border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] p-8 sm:p-12 md:py-12 md:px-16 max-w-6xl mx-auto shadow-2xl relative overflow-hidden">
         {/* Cinematic background highlight */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none select-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-neutral-950 rounded-full blur-[80px] pointer-events-none select-none" />

@@ -54,7 +54,7 @@ function FeatureVideoCard({ card, index }: FeatureVideoCardProps) {
       initial={{ scale: 0.95, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
       transition={{ duration: 0.85, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="relative rounded-2xl overflow-hidden bg-neutral-950 border border-white/10 hover:border-primary/20 transition-colors duration-300 group min-h-[380px] sm:min-h-[440px] lg:h-[480px] flex flex-col justify-between"
+      className="relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group min-h-[380px] sm:min-h-[440px] lg:h-[480px] flex flex-col justify-between"
     >
       <video
         autoPlay

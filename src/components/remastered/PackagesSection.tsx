@@ -30,7 +30,7 @@ function NpmPackageCard({ label, href, name, install, downloads, description, sp
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-6 h-[420px] md:h-[440px] lg:h-[470px] border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
+      className="rounded-2xl bg-[#161616] relative overflow-hidden flex flex-col justify-between p-6 h-[420px] md:h-[440px] lg:h-[470px] border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
     >
       {/* Subtle glow / light flare at the top */}
       <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
@@ -85,7 +85,7 @@ function NpmPackageCard({ label, href, name, install, downloads, description, sp
         <h4 className="text-2xl font-bold font-serif italic text-white mb-2 leading-tight group-hover:text-primary transition-colors">
           {name}
         </h4>
-        <p className="text-xs text-[#DEDBC8]/65 leading-relaxed mb-6 font-mono">
+        <p className="text-xs text-[#DEDBC8]/80 leading-relaxed mb-6 font-mono">
           {description}
         </p>
 
@@ -194,7 +194,7 @@ export function PackagesSection() {
               href={ELIXPO_LINKS.vsLixSketch}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
+              className="rounded-2xl bg-[#161616] relative overflow-hidden flex flex-col justify-between p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
             >
               <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -225,7 +225,7 @@ export function PackagesSection() {
               href={ELIXPO_LINKS.vsLixEditor}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-2xl bg-neutral-950 relative overflow-hidden flex flex-col justify-between p-5 md:p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
+              className="rounded-2xl bg-[#161616] relative overflow-hidden flex flex-col justify-between p-5 md:p-6 flex-1 min-h-[200px] shadow-lg border border-white/5 hover:border-primary/25 hover:bg-[#111a1a]/40 transition-all duration-300 group"
             >
               <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#111a1a]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
