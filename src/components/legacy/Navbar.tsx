@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import navigationData from "@/data/navigation.json";
-import GitHubStarButton from "@/components/GitHubStarButton";
+import GitHubStarButton from "@/components/legacy/GitHubStarButton";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);

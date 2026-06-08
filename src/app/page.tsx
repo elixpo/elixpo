@@ -1,14 +1,14 @@
-import { SmoothScroll } from "@/components/remastered/SmoothScroll";
-import { MegaNavbar } from "@/components/remastered/MegaNavbar";
-import { HeroSection } from "@/components/remastered/HeroSection";
-import { AboutSection } from "@/components/remastered/AboutSection";
-import { NominationSection } from "@/components/remastered/NominationSection";
-import { FeaturesSection } from "@/components/remastered/FeaturesSection";
-import { PackagesSection } from "@/components/remastered/PackagesSection";
-import { NewsletterSection } from "@/components/remastered/NewsletterSection";
-import { Contributors } from "@/components/remastered/Contributors";
-import { FeatureProjectCTA } from "@/components/remastered/FeatureProjectCTA";
-import { Footer } from "@/components/remastered/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { MegaNavbar } from "@/components/MegaNavbar";
+import { HeroSection } from "@/components/HeroSection";
+import { AboutSection } from "@/components/AboutSection";
+import { NominationSection } from "@/components/NominationSection";
+import { FeaturesSection } from "@/components/FeaturesSection";
+import { PackagesSection } from "@/components/PackagesSection";
+import { NewsletterSection } from "@/components/NewsletterSection";
+import { Contributors } from "@/components/Contributors";
+import { FeatureProjectCTA } from "@/components/FeatureProjectCTA";
+import { Footer } from "@/components/Footer";
 
 const jsonLd = {
   "@context": "https://schema.org",

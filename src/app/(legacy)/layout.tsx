@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/legacy/Navbar";
+import Footer from "@/components/legacy/Footer";
 
 // Layout for the original (pre-revamp) content pages. These keep the light
 // theme and the classic Navbar/Footer, independent of the revamped homepage.

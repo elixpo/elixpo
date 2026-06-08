@@ -158,7 +158,8 @@ export function Footer() {
             <a href={ELIXPO_LINKS.githubChapter} target="_blank" rel="noopener noreferrer" className="text-[#DEDBC8]/60 hover:text-white transition-colors">
               GitHub
             </a>
-          </div        </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

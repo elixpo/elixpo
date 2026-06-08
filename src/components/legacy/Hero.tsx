@@ -1,7 +1,7 @@
 import Link from "next/link";
 import heroData from "@/data/hero.json";
 import partnersData from "@/data/partners.json";
-import GitHubStarButton from "@/components/GitHubStarButton";
+import GitHubStarButton from "@/components/legacy/GitHubStarButton";
 
 export default function Hero() {
   const nodePositions = [
