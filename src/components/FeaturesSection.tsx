@@ -5,36 +5,37 @@ import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
 import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
+import { VIDEOS } from "@/lib/media";
 
-// Background clips per card. These reuse the three available Elixpo cloudfront
-// renders as placeholders — swap any `video` URL to give a tool its own clip.
+// Background clips per card. Reuse the available Elixpo clips as placeholders —
+// swap any `video` key to give a tool its own clip (see src/lib/media.ts).
 const featureCards = [
   {
     title: "Elixpo Art Generator.",
     cta: "Generate now",
     href: ELIXPO_LINKS.generate,
-    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4",
+    video: VIDEOS.art,
     badge: "00",
   },
   {
     title: "LixSketch Canvas.",
     cta: "Explore Sketch",
     href: ELIXPO_LINKS.sketch,
-    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4",
+    video: VIDEOS.hero,
     badge: "01",
   },
   {
     title: "Elixpo Blogs.",
     cta: "Explore Blogs",
     href: ELIXPO_LINKS.blog,
-    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4",
+    video: VIDEOS.blogs,
     badge: "02",
   },
   {
     title: "Elixpo Accounts.",
     cta: "Open Accounts",
     href: ELIXPO_LINKS.accounts,
-    video: "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4",
+    video: VIDEOS.hero,
     badge: "03",
   },
 ];

@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { WordsPullUp } from "./WordsPullUp";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
+import { VIDEOS } from "@/lib/media";
 
 export function HeroSection() {
   const containerEase = [0.16, 1, 0.3, 1] as const;
@@ -26,10 +27,7 @@ export function HeroSection() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none opacity-85"
           >
-            <source
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
-              type="video/mp4"
-            />
+            <source src={VIDEOS.hero} type="video/mp4" />
           </video>
         </div>
 

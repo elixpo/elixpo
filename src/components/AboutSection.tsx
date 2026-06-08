@@ -5,6 +5,7 @@ import { ArrowRight, Github } from "lucide-react";
 import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
 import { AnimatedParagraph } from "./AnimatedParagraph";
 import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
+import { VIDEOS } from "@/lib/media";
 
 export function AboutSection() {
   // Headings segments
@@ -81,10 +82,7 @@ export function AboutSection() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
             >
-              <source
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4"
-                type="video/mp4"
-              />
+              <source src={VIDEOS.art} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 pointer-events-none" />
             <div className="absolute inset-0 noise-overlay opacity-[0.22] pointer-events-none" />

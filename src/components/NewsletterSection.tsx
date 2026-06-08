@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { Sparkles } from "lucide-react";
 import { motion } from "motion/react";
+import { VIDEOS } from "@/lib/media";
 
 export function NewsletterSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -92,7 +93,7 @@ export function NewsletterSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <video
           ref={videoRef}
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4"
+          src={VIDEOS.blogs}
           muted
           autoPlay
           playsInline
