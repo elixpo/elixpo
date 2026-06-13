@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { WordsPullUp } from "./WordsPullUp";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 import { VIDEOS } from "@/lib/media";
+import { PingPongVideo } from "./PingPongVideo";
 
 export function HeroSection() {
   const containerEase = [0.16, 1, 0.3, 1] as const;
@@ -20,15 +21,10 @@ export function HeroSection() {
             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1024')" }}
           />
           <div className="absolute inset-0 bg-neutral-950/20 mix-blend-multiply" />
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
+          <PingPongVideo
+            src={VIDEOS.hero}
             className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none opacity-85"
-          >
-            <source src={VIDEOS.hero} type="video/mp4" />
-          </video>
+          />
         </div>
 
         {/* Noise overlay and gradients */}

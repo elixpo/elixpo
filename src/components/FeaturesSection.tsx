@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
+import { PingPongVideo } from "./PingPongVideo";
 import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
 import { VIDEOS } from "@/lib/media";
 
@@ -77,15 +78,10 @@ function FeatureVideoCard({ card, index }: FeatureVideoCardProps) {
       transition={{ duration: 0.85, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group aspect-[9/16] flex flex-col justify-between"
     >
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
+      <PingPongVideo
+        src={card.video}
         className={`absolute inset-0 w-full h-full object-cover ${card.pos} select-none pointer-events-none`}
-      >
-        <source src={card.video} type="video/mp4" />
-      </video>
+      />
 
       {/* Gradient mask + noise for legibility */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40 pointer-events-none" />

@@ -6,6 +6,7 @@ import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
 import { AnimatedParagraph } from "./AnimatedParagraph";
 import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
 import { VIDEOS } from "@/lib/media";
+import { PingPongVideo } from "./PingPongVideo";
 
 export function AboutSection() {
   // Headings segments
@@ -75,15 +76,10 @@ export function AboutSection() {
 
           {/* Cinematic art panel */}
           <div className="relative rounded-2xl overflow-hidden border border-white/10 max-w-4xl mx-auto aspect-[21/9] mb-8 group">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
+            <PingPongVideo
+              src={VIDEOS.about}
               className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
-            >
-              <source src={VIDEOS.about} type="video/mp4" />
-            </video>
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 pointer-events-none" />
             <div className="absolute inset-0 noise-overlay opacity-[0.22] pointer-events-none" />
 

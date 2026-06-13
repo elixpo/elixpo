@@ -1,102 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import { VIDEOS } from "@/lib/media";
+import { PingPongVideo } from "./PingPongVideo";
 
 export function NewsletterSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const animationFrameRef = useRef<number | null>(null);
-  const fadingOutRef = useRef<boolean>(false);
-
-  const fade = (video: HTMLVideoElement, targetOpacity: number, duration: number, callback?: () => void) => {
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
-
-    const startOpacity = parseFloat(video.style.opacity || "0");
-    const startTime = performance.now();
-
-    const animate = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      const currentOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
-      video.style.opacity = currentOpacity.toFixed(3);
-
-      if (progress < 1) {
-        animationFrameRef.current = requestAnimationFrame(animate);
-      } else {
-        animationFrameRef.current = null;
-        if (callback) callback();
-      }
-    };
-
-    animationFrameRef.current = requestAnimationFrame(animate);
-  };
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Set initial opacity to 0
-    video.style.opacity = "0";
-
-    const handlePlay = () => {
-      fadingOutRef.current = false;
-      fade(video, 1, 500);
-    };
-
-    const handleTimeUpdate = () => {
-      const duration = video.duration;
-      const currentTime = video.currentTime;
-      if (duration && duration - currentTime <= 0.55 && !fadingOutRef.current) {
-        fadingOutRef.current = true;
-        fade(video, 0, 500);
-      }
-    };
-
-    const handleEnded = () => {
-      video.style.opacity = "0";
-      setTimeout(() => {
-        video.currentTime = 0;
-        video.play().then(() => {
-          fadingOutRef.current = false;
-          fade(video, 1, 500);
-        }).catch((err) => console.log("Video playback error on loop end:", err));
-      }, 100);
-    };
-
-    video.addEventListener("play", handlePlay);
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    video.addEventListener("ended", handleEnded);
-
-    // Initial play trigger
-    video.play().catch((err) => {
-      console.log("Autoplay blocked, waiting for user interactions", err);
-    });
-
-    return () => {
-      video.removeEventListener("play", handlePlay);
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-      video.removeEventListener("ended", handleEnded);
-      if (animationFrameRef.current !== null) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, []);
-
   return (
     <section className="min-h-screen bg-black overflow-hidden relative flex flex-col justify-between select-none">
       {/* Background Video Player */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <video
-          ref={videoRef}
+        <PingPongVideo
           src={VIDEOS.contact}
-          muted
-          autoPlay
-          playsInline
           className="w-full h-full object-cover translate-y-[17%] pointer-events-none scale-105"
         />
         {/* Dark film tint overlays of the video */}
