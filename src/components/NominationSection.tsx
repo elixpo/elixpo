@@ -18,6 +18,62 @@ const COMPUTE_PARTNERS = [
   { name: "Firebase", href: "https://firebase.google.com", logo: "https://cdn.simpleicons.org/firebase/E1E0CC" },
 ];
 
+// Compute partners as a shuffling deck — square cards stacked back-to-back,
+// the front card cycling to the back like flipping through a photo album.
+function ShufflingPartners() {
+  const [order, setOrder] = useState<number[]>(() => COMPUTE_PARTNERS.map((_, i) => i));
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setOrder((prev) => {
+        const next = [...prev];
+        next.push(next.shift()!); // front → back
+        return next;
+      });
+    }, 2200);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="relative mx-auto w-40 h-40 sm:w-44 sm:h-44 my-2">
+      {order.map((partnerIdx, depth) => {
+        const partner = COMPUTE_PARTNERS[partnerIdx];
+        return (
+          <motion.a
+            key={partner.name}
+            href={partner.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={partner.name}
+            className="absolute inset-0 rounded-2xl bg-[#1d1d1d] border border-white/10 shadow-2xl flex flex-col items-center justify-center gap-3 overflow-hidden"
+            animate={{
+              y: depth * -9,
+              x: depth * 3,
+              scale: 1 - depth * 0.05,
+              rotate: depth === 0 ? 0 : depth % 2 ? depth * 3 : -depth * 3,
+              opacity: depth > 3 ? 0 : 1,
+              zIndex: COMPUTE_PARTNERS.length - depth,
+            }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="absolute inset-0 liquid-glass opacity-30 pointer-events-none" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={partner.logo}
+              alt={`${partner.name} logo`}
+              loading="lazy"
+              className="relative h-12 w-12 object-contain"
+            />
+            <span className="relative text-[10px] font-mono uppercase tracking-wider text-[#DEDBC8]/85">
+              {partner.name}
+            </span>
+          </motion.a>
+        );
+      })}
+    </div>
+  );
+}
+
 export function NominationSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
@@ -195,38 +251,8 @@ export function NominationSection() {
                 Our AI workloads and infrastructure are powered by compute and platform support from:
               </p>
 
-              {/* Partner logos — revolving marquee (pauses on hover) */}
-              <div
-                className="relative overflow-hidden -mx-2 mb-2"
-                style={{
-                  maskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
-                  WebkitMaskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
-                }}
-              >
-                <div className="flex items-center gap-8 w-max py-3 animate-marquee-left hover:[animation-play-state:paused]">
-                  {[...COMPUTE_PARTNERS, ...COMPUTE_PARTNERS].map((partner, i) => (
-                    <a
-                      key={`${partner.name}-${i}`}
-                      href={partner.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={partner.name}
-                      className="group/partner flex flex-col items-center gap-2 shrink-0"
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={partner.logo}
-                        alt={`${partner.name} logo`}
-                        loading="lazy"
-                        className="h-10 w-10 object-contain opacity-75 group-hover/partner:opacity-100 group-hover/partner:scale-110 transition-all duration-300"
-                      />
-                      <span className="text-[9px] font-mono uppercase tracking-wider text-[#DEDBC8]/55 group-hover/partner:text-[#DEDBC8] transition-colors whitespace-nowrap">
-                        {partner.name}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
+              {/* Partner logos — shuffling card deck */}
+              <ShufflingPartners />
             </div>
 
             <div className="pt-6 mt-4 border-t border-white/10">
