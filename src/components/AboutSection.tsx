@@ -16,7 +16,7 @@ export function AboutSection() {
     { text: "Built over 9 projects, engaged a global community, and participated in numerous programs.", className: "font-normal" }
   ];
 
-  const bodyText = "Begun in 2023 as a collegiate project, this series has grown into a collaborative workspace with 35+ global contributors. We empower developers and artists with fully copyleft tools, backed by Pollinations AI and Microsoft for Startups.";
+  const bodyText = "Begun in 2023 as a collegiate project, this series has grown into a collaborative workspace with 45+ global contributors. We empower developers and artists with fully copyleft tools, backed by Pollinations AI and Microsoft for Startups.";
 
   return (
     <section

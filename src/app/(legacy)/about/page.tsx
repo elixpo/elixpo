@@ -21,7 +21,7 @@ export default function AboutPage() {
           <p className="text-lg text-muted leading-relaxed mb-6">
             <strong>Enhanced Learning and Intelligence Process Optimization</strong> — Elixpo is a
             developer-first open-source ecosystem started in 2023 as a college initiative. In just
-            two years, we have built over 13 projects, engaged a global community of 35+ contributors,
+            two years, we have built over 13 projects, engaged a global community of 45+ contributors,
             and participated in 20+ hackathons.
           </p>
           <p className="text-lg text-muted leading-relaxed">

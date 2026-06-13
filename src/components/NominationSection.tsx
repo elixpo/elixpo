@@ -6,7 +6,7 @@ import { Star, Heart, ArrowRight, ExternalLink, ShieldCheck, Cpu } from "lucide-
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 
 const ECOSYSTEM_STARS = "85+";
-const CONTRIBUTOR_COUNT = "35+";
+const CONTRIBUTOR_COUNT = "45+";
 
 // Logos: Simple Icons CDN tinted cream (#E1E0CC) so they read on the dark card.
 // Pollinations isn't on Simple Icons, so we use its site favicon.

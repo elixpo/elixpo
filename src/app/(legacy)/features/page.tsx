@@ -23,7 +23,7 @@ const features = [
   },
   {
     title: "Community-Driven",
-    description: "35+ contributors from around the world. We welcome contributions and feature proposals from everyone.",
+    description: "45+ contributors from around the world. We welcome contributions and feature proposals from everyone.",
   },
   {
     title: "Interconnected Ecosystem",

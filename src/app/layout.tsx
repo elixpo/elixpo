@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     siteName: "Elixpo",
     title: "Elixpo — Developer-First Open Source Ecosystem",
     description:
-      "13+ interconnected open-source projects spanning AI, web, and developer tools. Built by a global community of 35+ contributors.",
+      "13+ interconnected open-source projects spanning AI, web, and developer tools. Built by a global community of 45+ contributors.",
     images: [
       {
         url: "/og-image.png",

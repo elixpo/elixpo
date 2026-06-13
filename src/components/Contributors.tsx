@@ -177,7 +177,7 @@ export function Contributors() {
 
         {/* Contributor count */}
         <p className="text-center text-xs text-[#DEDBC8]/65 font-mono mt-8">
-          35+ contributors and growing
+          45+ contributors and growing
         </p>
       </div>
     </section>
