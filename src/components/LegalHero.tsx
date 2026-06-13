@@ -8,11 +8,19 @@ interface LegalHeroProps {
   subtitle: string;
   video: string;
   updated: string;
+  /** Tailwind height classes for the video section. */
+  heightClass?: string;
 }
 
-export function LegalHero({ title, subtitle, video, updated }: LegalHeroProps) {
+export function LegalHero({
+  title,
+  subtitle,
+  video,
+  updated,
+  heightClass = "h-[44vh] min-h-[320px]",
+}: LegalHeroProps) {
   return (
-    <section className="relative h-[44vh] min-h-[320px] w-full overflow-hidden flex items-end select-none">
+    <section className={`relative ${heightClass} w-full overflow-hidden flex items-end select-none`}>
       <PingPongVideo
         src={video}
         className="absolute inset-0 w-full h-full object-cover opacity-45 pointer-events-none"

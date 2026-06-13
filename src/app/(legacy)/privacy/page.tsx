@@ -17,6 +17,7 @@ export default function PrivacyPage() {
         subtitle="Privacy-first by design. Here's exactly what we do — and don't — collect across the Elixpo ecosystem."
         video={VIDEOS.accounts}
         updated="June 2026"
+        heightClass="h-[80vh] min-h-[560px]"
       />
 
       <article className="prose prose-invert max-w-3xl mx-auto px-6 py-16 prose-headings:font-serif prose-headings:text-white prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-white">

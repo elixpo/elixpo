@@ -4,15 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { Copy, Check, Github, MessagesSquare, Heart, Star } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
+import { PROJECTS, projectName } from "@/lib/projects";
 
-const ecosystem = [
-  { label: "Elixpo Art", href: ELIXPO_LINKS.generate },
-  { label: "Elixpo Blogs", href: ELIXPO_LINKS.blog },
-  { label: "LixSketch", href: ELIXPO_LINKS.sketch },
-  { label: "Elixpo Chat", href: ELIXPO_LINKS.chat },
-  { label: "Elixpo Search", href: ELIXPO_LINKS.search },
-  { label: "Elixpo Accounts", href: ELIXPO_LINKS.accounts },
-];
+// Single source of truth — exactly the projects shown on /projects.
+const ecosystem = PROJECTS.map((p) => ({ label: projectName(p), href: p.href }));
 
 const community = [
   { label: "GitHub Org", href: ELIXPO_LINKS.github },

@@ -4,68 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { PingPongVideo } from "./PingPongVideo";
-import { ELIXPO_LINKS } from "@/lib/elixpo-links";
-import { VIDEOS } from "@/lib/media";
-
-// Product cards — only the products that ship a clip are listed here.
-// `pos` = object-position for the panda subject, `aspect` = card ratio (drives
-// the masonry rhythm). They link out to the deployed sites.
-const projectCards = [
-  {
-    title: "LixSketch.",
-    cta: "Explore Sketch",
-    href: ELIXPO_LINKS.sketch,
-    video: VIDEOS.sketch,
-    pos: "object-center",
-    aspect: "aspect-[16/9]",
-    badge: "01",
-  },
-  {
-    title: "Elixpo Blogs.",
-    cta: "Explore Blogs",
-    href: ELIXPO_LINKS.blog,
-    video: VIDEOS.blogs,
-    pos: "object-center",
-    aspect: "aspect-[9/16]",
-    badge: "02",
-  },
-  {
-    title: "Elixpo Accounts.",
-    cta: "Open Accounts",
-    href: ELIXPO_LINKS.accounts,
-    video: VIDEOS.accounts,
-    pos: "object-center",
-    aspect: "aspect-[16/9]",
-    badge: "03",
-  },
-  {
-    title: "Elixpo URL.",
-    cta: "Shorten a URL",
-    href: ELIXPO_LINKS.urlShortener,
-    video: VIDEOS.url,
-    pos: "object-center",
-    aspect: "aspect-[16/9]",
-    badge: "04",
-  },
-  {
-    title: "Portfolios.",
-    cta: "View Portfolio",
-    href: ELIXPO_LINKS.portfolio,
-    video: VIDEOS.portfolio,
-    pos: "object-center",
-    aspect: "aspect-[9/16]",
-    badge: "05",
-  },
-  {
-    title: "Oreo.",
-    cta: "Explore Oreo",
-    href: "https://oreo.elixpo.com",
-    video: VIDEOS.oreo,
-    pos: "object-center",
-    aspect: "aspect-[16/9]",
-    badge: "06",
-  },
-];
+import { PROJECTS, type Project } from "@/lib/projects";
 
 // Responsive column count for the masonry.
 function useColumnCount() {
@@ -90,7 +29,7 @@ function relHeight(aspect: string): number {
 }
 
 interface ProjectCardProps {
-  card: (typeof projectCards)[number];
+  card: Project;
   index: number;
 }
 
@@ -140,10 +79,10 @@ function ProjectCard({ card, index }: ProjectCardProps) {
 /** Balanced, tightly-packed masonry of the product cards (mixes 9:16 & 16:9). */
 export function ProjectsGrid() {
   const colCount = useColumnCount();
-  const columns: { card: (typeof projectCards)[number]; index: number }[][] =
+  const columns: { card: Project; index: number }[][] =
     Array.from({ length: colCount }, () => []);
   const heights = new Array(colCount).fill(0);
-  projectCards.forEach((card, index) => {
+  PROJECTS.forEach((card, index) => {
     let shortest = 0;
     for (let i = 1; i < colCount; i++) {
       if (heights[i] < heights[shortest]) shortest = i;
