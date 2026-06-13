@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContributorAvatar } from "@/components/ContributorAvatar";
 import contributorsData from "@/data/contributors.json";
 
 export const metadata = {
@@ -87,14 +87,11 @@ export default async function CommunityPage() {
         title={`${c.login}${c.contributions ? ` · ${c.contributions} contributions` : ""}`}
         className="relative block group/av"
       >
-        <Image
-          src={c.avatar_url || `https://github.com/${c.login}.png`}
-          alt={c.login}
-          width={size}
-          height={size}
-          unoptimized
-          style={{ width: size, height: size }}
-          className={`rounded-full border-2 ${rank < 3 ? "border-primary" : "border-[#DEDBC8]/30"} shadow-md group-hover/av:border-primary transition-colors`}
+        <ContributorAvatar
+          login={c.login}
+          src={c.avatar_url}
+          size={size}
+          className={`border-2 ${rank < 3 ? "border-primary" : "border-[#DEDBC8]/30"} shadow-md group-hover/av:border-primary transition-colors`}
         />
         {rank < 3 && (
           <span
