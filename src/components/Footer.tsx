@@ -16,6 +16,12 @@ const community = [
   { label: "GitHub Sponsors", href: ELIXPO_LINKS.sponsors },
 ];
 
+const legal = [
+  { label: "Terms of Service", href: ELIXPO_LINKS.terms, external: false },
+  { label: "Privacy Policy", href: ELIXPO_LINKS.privacy, external: false },
+  { label: "License", href: `${ELIXPO_LINKS.githubChapter}/blob/main/LICENSE`, external: true },
+];
+
 export function Footer() {
   const [copied, setCopied] = useState(false);
 
@@ -35,7 +41,7 @@ export function Footer() {
       <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[60vw] h-[240px] bg-primary/[0.05] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-8 mb-14">
 
           {/* Brand block */}
           <div className="lg:col-span-1">
@@ -113,6 +119,33 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Legal links */}
+          <div>
+            <h4 className="text-[10px] uppercase tracking-widest font-mono text-[#DEDBC8]/50 mb-4">Legal</h4>
+            <ul className="space-y-2.5">
+              {legal.map((item) =>
+                item.external ? (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-[#DEDBC8]/75 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ) : (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-sm text-[#DEDBC8]/75 hover:text-white transition-colors">
+                      {item.label}
+                    </Link>
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
+
           {/* Developer contact */}
           <div>
             <h4 className="text-[10px] uppercase tracking-widest font-mono text-[#DEDBC8]/50 mb-4">Get in touch</h4>
@@ -145,12 +178,6 @@ export function Footer() {
             © 2026 Elixpo Chapter · MIT &amp; CC-BY-4.0 · Built in the open
           </span>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            <Link href={ELIXPO_LINKS.terms} className="text-[#DEDBC8]/60 hover:text-white transition-colors">
-              Terms
-            </Link>
-            <Link href={ELIXPO_LINKS.privacy} className="text-[#DEDBC8]/60 hover:text-white transition-colors">
-              Privacy
-            </Link>
             <a href={ELIXPO_LINKS.blog} target="_blank" rel="noopener noreferrer" className="text-[#DEDBC8]/60 hover:text-white transition-colors">
               Blog
             </a>
