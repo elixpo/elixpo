@@ -18,7 +18,7 @@ const featureCards = [
     href: ELIXPO_LINKS.sketch,
     video: VIDEOS.sketch,
     pos: "object-center",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[16/9]",
     badge: "01",
   },
   {
@@ -36,7 +36,7 @@ const featureCards = [
     href: ELIXPO_LINKS.accounts,
     video: VIDEOS.accounts,
     pos: "object-center",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[16/9]",
     badge: "03",
   },
   {
@@ -45,7 +45,7 @@ const featureCards = [
     href: ELIXPO_LINKS.urlShortener,
     video: VIDEOS.url,
     pos: "object-center",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[16/9]",
     badge: "04",
   },
   {
@@ -63,7 +63,7 @@ const featureCards = [
     href: "https://oreo.elixpo.com",
     video: VIDEOS.oreo,
     pos: "object-center",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[16/9]",
     badge: "06",
   },
 ];
@@ -153,8 +153,8 @@ export function FeaturesSection() {
           />
         </div>
 
-        {/* Masonry product grid (CSS columns) */}
-        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 mb-20">
+        {/* Masonry product grid (CSS columns) — mixes 9:16 & 16:9 cards */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 mb-20">
           {featureCards.map((card, index) => (
             <FeatureVideoCard key={card.title} card={card} index={index} />
           ))}

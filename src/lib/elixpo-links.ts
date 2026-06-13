@@ -31,6 +31,8 @@ export const ELIXPO_LINKS = {
   blog: "https://blogs.elixpo.com",
   discussions: "https://github.com/orgs/elixpo/discussions",
   email: "hello@elixpo.com",
+  terms: "/terms",
+  privacy: "/privacy",
   github: "https://github.com/elixpo",
   githubChapter: "https://github.com/elixpo/elixpo_chapter",
   submitProject: "https://github.com/orgs/elixpo/discussions/new?category=show-and-tell",

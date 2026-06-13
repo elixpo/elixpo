@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { WordsPullUp } from "./WordsPullUp";
-import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 import { VIDEOS } from "@/lib/media";
 import { PingPongVideo } from "./PingPongVideo";
 
@@ -66,7 +65,7 @@ export function HeroSection() {
                   ease: containerEase,
                 }}
               >
-                <p className="text-xs sm:text-sm md:text-sm leading-relaxed text-[#E1E0CC]/70 max-w-[320px]">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed text-[#E1E0CC]/80 max-w-[380px]">
                   An open source project series begun as a college initiative, growing into a collaborative computer science ecosystem of interconnected tools and platforms.
                 </p>
               </motion.div>
@@ -83,9 +82,11 @@ export function HeroSection() {
                 className="w-full"
               >
                 <motion.a
-                  href={ELIXPO_LINKS.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#features"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="group inline-flex items-center justify-between gap-6 pl-6 pr-1 bg-[#DEDBC8] text-black rounded-full py-1.5 font-medium text-sm border border-neutral-100/10 shadow-lg hover:shadow-primary/10 transition-all duration-300 w-[200px]"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
