@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "The terms that govern your use of Elixpo's open-source tools, packages, and services.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

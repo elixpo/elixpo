@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How Elixpo handles your data - a privacy-first, no-tracking approach across our open-source tools.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
