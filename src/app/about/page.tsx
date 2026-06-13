@@ -1,4 +1,4 @@
-import { Code2, Gift, Sparkles, Users, ArrowUpRight } from "lucide-react";
+import { Code2, Gift, Sparkles, Users, ArrowUpRight, Leaf, Rocket, GitFork, type LucideIcon } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { VIDEOS } from "@/lib/media";
 import statsData from "@/data/stats.json";
@@ -35,6 +35,14 @@ const TEAM_LEADS = [
     img: "/members/anwe-ch.jpeg",
   },
 ];
+
+const PROGRAM_ICONS: Record<string, LucideIcon> = {
+  GSSOC: Code2,
+  Hacktoberfest: Leaf,
+  "Pollinations.AI": Sparkles,
+  "MS Startup Foundations": Rocket,
+  OSCI: GitFork,
+};
 
 const VALUES = [
   { icon: Code2, title: "Open Source", text: "Code under MIT and assets under CC-BY-4.0. Transparent and open for contribution." },
@@ -148,20 +156,26 @@ export default function AboutPage() {
       </section>
 
       {/* Recognition & Programs */}
-      <section className="max-w-7xl mx-auto px-6 pb-24">
+      <section className="max-w-7xl mx-auto px-6 pb-24 text-center">
         <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white mb-10">
           Recognition &amp; <span className="italic font-serif text-primary">Programs</span>
         </h2>
-        <div className="flex flex-wrap gap-4">
-          {teamData.programs.map((program) => (
-            <div
-              key={program.name}
-              className="rounded-2xl bg-[#141414] border border-white/10 px-6 py-4 hover:border-primary/25 transition-colors"
-            >
-              <p className="font-medium text-white">{program.name}</p>
-              <p className="text-xs text-[#DEDBC8]/55 font-mono mt-0.5">{program.description}</p>
-            </div>
-          ))}
+        <div className="flex flex-wrap justify-center gap-4">
+          {teamData.programs.map((program) => {
+            const Icon = PROGRAM_ICONS[program.name] ?? Sparkles;
+            return (
+              <div
+                key={program.name}
+                className="rounded-2xl bg-[#141414] border border-white/10 px-6 py-5 w-[180px] flex flex-col items-center text-center gap-2.5 hover:border-primary/25 transition-colors"
+              >
+                <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+                  <Icon size={18} strokeWidth={1.75} />
+                </div>
+                <p className="font-medium text-white text-sm">{program.name}</p>
+                <p className="text-[11px] text-[#DEDBC8]/55 font-mono leading-snug">{program.description}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
