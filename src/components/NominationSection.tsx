@@ -195,26 +195,37 @@ export function NominationSection() {
                 Our AI workloads and infrastructure are powered by compute and platform support from:
               </p>
 
-              {/* Partner logos */}
-              <div className="flex flex-wrap gap-2 mb-2">
-                {COMPUTE_PARTNERS.map((partner) => (
-                  <a
-                    key={partner.name}
-                    href={partner.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/partner inline-flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-[11px] font-mono text-[#DEDBC8]/90 hover:border-primary/30 hover:text-white hover:bg-white/[0.08] transition-colors"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={partner.logo}
-                      alt={`${partner.name} logo`}
-                      loading="lazy"
-                      className="h-4 w-4 object-contain opacity-80 group-hover/partner:opacity-100 transition-opacity"
-                    />
-                    {partner.name}
-                  </a>
-                ))}
+              {/* Partner logos — revolving marquee (pauses on hover) */}
+              <div
+                className="relative overflow-hidden -mx-2 mb-2"
+                style={{
+                  maskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+                  WebkitMaskImage: "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+                }}
+              >
+                <div className="flex items-center gap-8 w-max py-3 animate-marquee-left hover:[animation-play-state:paused]">
+                  {[...COMPUTE_PARTNERS, ...COMPUTE_PARTNERS].map((partner, i) => (
+                    <a
+                      key={`${partner.name}-${i}`}
+                      href={partner.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={partner.name}
+                      className="group/partner flex flex-col items-center gap-2 shrink-0"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        loading="lazy"
+                        className="h-10 w-10 object-contain opacity-75 group-hover/partner:opacity-100 group-hover/partner:scale-110 transition-all duration-300"
+                      />
+                      <span className="text-[9px] font-mono uppercase tracking-wider text-[#DEDBC8]/55 group-hover/partner:text-[#DEDBC8] transition-colors whitespace-nowrap">
+                        {partner.name}
+                      </span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
