@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Copy, Check, Github, MessagesSquare, Heart } from "lucide-react";
+import Link from "next/link";
+import { Copy, Check, Github, MessagesSquare, Heart, Star } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 
 const ecosystem = [
@@ -146,17 +147,27 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <span className="text-[#DEDBC8]/55 font-mono">
-            © 2026 Elixpo Chapter · GNU GPL-3.0 · Built in the open
+            © 2026 Elixpo Chapter · MIT &amp; CC-BY-4.0 · Built in the open
           </span>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            <a href={ELIXPO_LINKS.generate} target="_blank" rel="noopener noreferrer" className="text-[#DEDBC8]/60 hover:text-white transition-colors">
-              elixpo.com
-            </a>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            <Link href={ELIXPO_LINKS.terms} className="text-[#DEDBC8]/60 hover:text-white transition-colors">
+              Terms
+            </Link>
+            <Link href={ELIXPO_LINKS.privacy} className="text-[#DEDBC8]/60 hover:text-white transition-colors">
+              Privacy
+            </Link>
             <a href={ELIXPO_LINKS.blog} target="_blank" rel="noopener noreferrer" className="text-[#DEDBC8]/60 hover:text-white transition-colors">
               Blog
             </a>
-            <a href={ELIXPO_LINKS.githubChapter} target="_blank" rel="noopener noreferrer" className="text-[#DEDBC8]/60 hover:text-white transition-colors">
-              GitHub
+            {/* GitHub star CTA (replaces the elixpo.com link) */}
+            <a
+              href={ELIXPO_LINKS.githubChapter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-primary text-black font-semibold px-4 py-1.5 hover:opacity-90 transition-opacity"
+            >
+              <Star size={12} className="group-hover:fill-black transition-all" />
+              <span>Star on GitHub</span>
             </a>
           </div>
         </div>
