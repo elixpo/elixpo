@@ -50,62 +50,67 @@ const instrumentSerif = Instrument_Serif({
 
 const SITE_URL = "https://elixpo.com";
 
+const SITE_DESCRIPTION =
+  "Elixpo is a developer-first, open-source ecosystem of interconnected AI and developer tools - LixSketch whiteboards, LixEditor, Elixpo Blogs, Accounts, URL, and more. Free and open under MIT and CC-BY-4.0, built by 45+ contributors.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: "Elixpo",
   title: {
-    default: "Elixpo - Enhanced Learning and Intelligence Process Optimization",
+    default: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
     template: "%s | Elixpo",
   },
-  description:
-    "A developer-first open-source ecosystem of 13+ interconnected projects - AI art, intelligent search, collaborative sketching, and more. 100% free, forever.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "Elixpo",
     "open source",
-    "AI",
+    "AI tools",
     "developer tools",
-    "art generation",
-    "search engine",
-    "collaborative canvas",
-    "discord bot",
-    "URL shortener",
+    "LixSketch",
+    "LixEditor",
+    "Elixpo Blogs",
+    "Elixpo Accounts",
+    "SVG whiteboard",
+    "block editor",
+    "AI art generation",
     "Next.js",
     "Cloudflare",
     "Pollinations AI",
     "Hacktoberfest",
+    "copyleft",
   ],
   authors: [{ name: "Ayushman Bhattacharya", url: "https://github.com/Circuit-Overtime" }],
   creator: "Elixpo",
   publisher: "Elixpo",
+  category: "technology",
+  alternates: { canonical: "/" },
+  formatDetection: { email: false, address: false, telephone: false },
   icons: {
-    icon: [
-      { url: "/logos/base_logo.png", type: "image/png" },
-    ],
-    apple: [
-      { url: "/logos/base_logo.png", type: "image/png" },
-    ],
+    icon: [{ url: "/logos/base_logo.png", type: "image/png" }],
+    shortcut: ["/logos/base_logo.png"],
+    apple: [{ url: "/logos/base_logo.png", type: "image/png" }],
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
     siteName: "Elixpo",
-    title: "Elixpo - Developer-First Open Source Ecosystem",
-    description:
-      "13+ interconnected open-source projects spanning AI, web, and developer tools. Built by a global community of 45+ contributors.",
+    title: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Elixpo - Enhanced Learning and Intelligence Process Optimization",
+        alt: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elixpo - Developer-First Open Source Ecosystem",
+    title: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
     description:
-      "13+ interconnected open-source projects spanning AI, web, and developer tools. 100% free, forever.",
+      "A free, open-source ecosystem of interconnected AI and developer tools, built by 45+ contributors.",
     images: ["/og-image.png"],
     creator: "@elixpo",
   },
