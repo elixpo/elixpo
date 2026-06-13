@@ -68,6 +68,28 @@ const featureCards = [
   },
 ];
 
+// Responsive column count for the masonry.
+function useColumnCount() {
+  const [cols, setCols] = useState(3);
+  useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth;
+      setCols(w < 640 ? 1 : w < 1024 ? 2 : 3);
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+  return cols;
+}
+
+// Relative height (per unit width) from a Tailwind aspect class like "aspect-[16/9]".
+function relHeight(aspect: string): number {
+  const m = aspect.match(/\[(\d+)\/(\d+)\]/);
+  if (!m) return 1;
+  return Number(m[2]) / Number(m[1]);
+}
+
 interface FeatureVideoCardProps {
   card: (typeof featureCards)[number];
   index: number;
@@ -83,7 +105,7 @@ function FeatureVideoCard({ card, index }: FeatureVideoCardProps) {
       initial={{ scale: 0.95, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
       transition={{ duration: 0.85, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group ${card.aspect} flex flex-col justify-between mb-3 sm:mb-4 break-inside-avoid`}
+      className={`relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group ${card.aspect} flex flex-col justify-between`}
     >
       <PingPongVideo
         src={card.video}
@@ -125,6 +147,21 @@ export function FeaturesSection() {
     { text: "An Open Source Project Series centered on Computer Science.", className: "font-normal text-neutral-500" },
   ];
 
+  // Greedy masonry: place each card in the currently-shortest column so the
+  // columns stay balanced and tightly packed (no trailing gaps).
+  const colCount = useColumnCount();
+  const columns: { card: (typeof featureCards)[number]; index: number }[][] =
+    Array.from({ length: colCount }, () => []);
+  const heights = new Array(colCount).fill(0);
+  featureCards.forEach((card, index) => {
+    let shortest = 0;
+    for (let i = 1; i < colCount; i++) {
+      if (heights[i] < heights[shortest]) shortest = i;
+    }
+    columns[shortest].push({ card, index });
+    heights[shortest] += relHeight(card.aspect);
+  });
+
   return (
     <section
       id="features"
@@ -153,10 +190,14 @@ export function FeaturesSection() {
           />
         </div>
 
-        {/* Masonry product grid (CSS columns) — mixes 9:16 & 16:9 cards */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 mb-20">
-          {featureCards.map((card, index) => (
-            <FeatureVideoCard key={card.title} card={card} index={index} />
+        {/* Masonry — balanced columns, tightly packed (mixes 9:16 & 16:9) */}
+        <div className="flex items-start gap-3 sm:gap-4 mb-20">
+          {columns.map((col, ci) => (
+            <div key={ci} className="flex-1 min-w-0 flex flex-col gap-3 sm:gap-4">
+              {col.map(({ card, index }) => (
+                <FeatureVideoCard key={card.title} card={card} index={index} />
+              ))}
+            </div>
           ))}
         </div>
 
