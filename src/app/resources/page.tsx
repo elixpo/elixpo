@@ -7,6 +7,7 @@ export const metadata = {
   title: "Open Source",
   description:
     "Contributing guides, documentation, and community resources for the Elixpo ecosystem. Free and open under MIT and CC-BY-4.0.",
+  alternates: { canonical: "/resources" },
   openGraph: {
     title: "Open Source | Elixpo",
     description: "Contributing guides and community resources for the Elixpo ecosystem.",

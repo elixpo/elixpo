@@ -83,7 +83,6 @@ export const metadata: Metadata = {
   creator: "Elixpo",
   publisher: "Elixpo",
   category: "technology",
-  alternates: { canonical: "/" },
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
     icon: [{ url: "/logos/base_logo.png", type: "image/png" }],

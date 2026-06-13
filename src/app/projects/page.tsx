@@ -4,6 +4,7 @@ export const metadata = {
   title: "Projects",
   description:
     "Explore the Elixpo ecosystem - interconnected open-source projects spanning AI, web, and developer tools.",
+  alternates: { canonical: "/projects" },
   openGraph: {
     title: "Projects | Elixpo",
     description: "Interconnected open-source projects spanning AI, web, and developer tools.",

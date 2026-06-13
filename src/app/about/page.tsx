@@ -8,6 +8,7 @@ export const metadata = {
   title: "About",
   description:
     "The mission, vision, and people behind Elixpo, a developer-first open-source ecosystem started in 2023.",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: "About | Elixpo",
     description: "The mission, vision, and community behind Elixpo.",

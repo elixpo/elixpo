@@ -5,6 +5,7 @@ export const metadata = {
   title: "Community",
   description:
     "Meet the contributors powering the Elixpo ecosystem. Join discussions, contribute code, and help shape the future of open-source AI tools.",
+  alternates: { canonical: "/community" },
   openGraph: {
     title: "Community | Elixpo",
     description:

@@ -8,6 +8,7 @@ export const metadata = {
   title: "Features",
   description:
     "What makes the Elixpo ecosystem unique: 100% open source, AI-powered, edge-first, and community-driven.",
+  alternates: { canonical: "/features" },
   openGraph: {
     title: "Features | Elixpo",
     description: "What makes the Elixpo ecosystem unique.",

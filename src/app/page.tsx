@@ -7,6 +7,10 @@ import { NewsletterSection } from "@/components/NewsletterSection";
 import { Contributors } from "@/components/Contributors";
 import { FeatureProjectCTA } from "@/components/FeatureProjectCTA";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
