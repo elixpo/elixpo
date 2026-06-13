@@ -1,5 +1,3 @@
-import { SmoothScroll } from "@/components/SmoothScroll";
-import { MegaNavbar } from "@/components/MegaNavbar";
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { NominationSection } from "@/components/NominationSection";
@@ -8,7 +6,6 @@ import { PackagesSection } from "@/components/PackagesSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { Contributors } from "@/components/Contributors";
 import { FeatureProjectCTA } from "@/components/FeatureProjectCTA";
-import { Footer } from "@/components/Footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -17,7 +14,7 @@ const jsonLd = {
   url: "https://elixpo.com",
   logo: "/logos/base_logo.png",
   description:
-    "A developer-first open-source ecosystem of 13+ interconnected projects — AI art, intelligent search, collaborative sketching, and more.",
+    "A developer-first open-source ecosystem of interconnected projects spanning AI art, intelligent search, collaborative sketching, and more.",
   founder: {
     "@type": "Person",
     name: "Ayushman Bhattacharya",
@@ -28,27 +25,19 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <>
+    <main className="bg-black text-[#E1E0CC]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SmoothScroll />
-      <main
-        className="bg-black text-[#E1E0CC] min-h-screen overflow-x-hidden antialiased selection:bg-primary selection:text-black"
-        style={{ fontFamily: "var(--font-almarai), sans-serif" }}
-      >
-        <MegaNavbar />
-        <HeroSection />
-        <AboutSection />
-        <NominationSection />
-        <FeaturesSection />
-        <PackagesSection />
-        <NewsletterSection />
-        <Contributors />
-        <FeatureProjectCTA />
-        <Footer />
-      </main>
-    </>
+      <HeroSection />
+      <AboutSection />
+      <NominationSection />
+      <FeaturesSection />
+      <PackagesSection />
+      <NewsletterSection />
+      <Contributors />
+      <FeatureProjectCTA />
+    </main>
   );
 }

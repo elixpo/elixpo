@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <section className="bg-black text-[#E1E0CC] py-16 px-4 sm:px-6 lg:px-8 min-h-screen select-none">
+    <section className="bg-black text-[#E1E0CC] pt-32 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen select-none">
       <div className="max-w-7xl mx-auto">
         <header className="mb-12 sm:mb-16">
           <span className="text-[10px] uppercase tracking-widest font-mono text-primary/80 block mb-3">

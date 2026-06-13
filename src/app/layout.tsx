@@ -1,6 +1,28 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import type { CSSProperties } from "react";
 import { Geist, Geist_Mono, Almarai, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { MegaNavbar } from "@/components/MegaNavbar";
+import { Footer } from "@/components/Footer";
+
+// Global dark shell — overrides the semantic theme tokens to dark so every
+// route matches, and applies the design font.
+const darkShell = {
+  "--background": "#000000",
+  "--foreground": "#E1E0CC",
+  "--card": "#161616",
+  "--card-hover": "#1d1d1d",
+  "--muted": "#9a988c",
+  "--border": "rgba(255,255,255,0.12)",
+  "--accent": "#DEDBC8",
+  "--accent-light": "#E1E0CC",
+  fontFamily: "var(--font-almarai), sans-serif",
+} as CSSProperties;
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -110,7 +132,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${almarai.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <SmoothScroll />
+        <div
+          className="bg-background text-foreground min-h-screen flex flex-col overflow-x-hidden antialiased selection:bg-primary selection:text-black"
+          style={darkShell}
+        >
+          <MegaNavbar />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

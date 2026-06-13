@@ -20,7 +20,7 @@ export function PageHero({
   heightClass = "h-[58vh] min-h-[440px]",
 }: PageHeroProps) {
   return (
-    <section className={`relative ${heightClass} w-full overflow-hidden flex items-end select-none -mt-28`}>
+    <section className={`relative ${heightClass} w-full overflow-hidden flex items-end select-none`}>
       <PingPongVideo
         src={video}
         className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none"
