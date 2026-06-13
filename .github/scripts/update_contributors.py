@@ -1,5 +1,5 @@
 """
-update_contributors.py — Refresh the contributor roster artifact as @elixpoo.
+update_contributors.py - Refresh the contributor roster artifact as @elixpoo.
 
 Fetches the contributor list from the source repository (default:
 elixpo/elixpo_chapter) via the GitHub REST API, then commits the result to
@@ -119,7 +119,7 @@ def main() -> int:
 
     # Skip the commit when nothing meaningful changed (ignore key order).
     if existing.get("contributors") == logins and existing.get("source") == SOURCE_REPO:
-        print("No contributor changes — skipping commit.")
+        print("No contributor changes - skipping commit.")
         return 0
 
     body = {

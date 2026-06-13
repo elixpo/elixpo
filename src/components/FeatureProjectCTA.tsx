@@ -34,7 +34,7 @@ export function FeatureProjectCTA() {
 
         <p className="text-sm sm:text-base text-[#DEDBC8]/75 max-w-xl mx-auto mb-10 leading-relaxed">
           Building something open source? Share it with the chapter and it could be
-          featured across our ecosystem — packages, tools, and community projects all welcome.
+          featured across our ecosystem - packages, tools, and community projects all welcome.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -8,7 +8,7 @@ interface PingPongVideoProps {
  *
  * The forward + reverse passes are baked into the source file itself (an ffmpeg
  * palindrome: `[0]split[a][b];[b]reverse[rb];[a][rb]concat`), so a plain native
- * `loop` gives a smooth back-and-forth with no JS seeking — reliable across
+ * `loop` gives a smooth back-and-forth with no JS seeking - reliable across
  * browsers and cheap to run.
  */
 export function PingPongVideo({ src, className }: PingPongVideoProps) {

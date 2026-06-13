@@ -6,7 +6,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { MegaNavbar } from "@/components/MegaNavbar";
 import { Footer } from "@/components/Footer";
 
-// Global dark shell — overrides the semantic theme tokens to dark so every
+// Global dark shell - overrides the semantic theme tokens to dark so every
 // route matches, and applies the design font.
 const darkShell = {
   "--background": "#000000",
@@ -53,11 +53,11 @@ const SITE_URL = "https://elixpo.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Elixpo — Enhanced Learning and Intelligence Process Optimization",
+    default: "Elixpo - Enhanced Learning and Intelligence Process Optimization",
     template: "%s | Elixpo",
   },
   description:
-    "A developer-first open-source ecosystem of 13+ interconnected projects — AI art, intelligent search, collaborative sketching, and more. 100% free, forever.",
+    "A developer-first open-source ecosystem of 13+ interconnected projects - AI art, intelligent search, collaborative sketching, and more. 100% free, forever.",
   keywords: [
     "Elixpo",
     "open source",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Elixpo",
-    title: "Elixpo — Developer-First Open Source Ecosystem",
+    title: "Elixpo - Developer-First Open Source Ecosystem",
     description:
       "13+ interconnected open-source projects spanning AI, web, and developer tools. Built by a global community of 45+ contributors.",
     images: [
@@ -97,13 +97,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Elixpo — Enhanced Learning and Intelligence Process Optimization",
+        alt: "Elixpo - Enhanced Learning and Intelligence Process Optimization",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elixpo — Developer-First Open Source Ecosystem",
+    title: "Elixpo - Developer-First Open Source Ecosystem",
     description:
       "13+ interconnected open-source projects spanning AI, web, and developer tools. 100% free, forever.",
     images: ["/og-image.png"],

@@ -3,7 +3,7 @@ import { ProjectsGrid } from "@/components/ProjectsGrid";
 export const metadata = {
   title: "Projects",
   description:
-    "Explore the Elixpo ecosystem — interconnected open-source projects spanning AI, web, and developer tools.",
+    "Explore the Elixpo ecosystem - interconnected open-source projects spanning AI, web, and developer tools.",
   openGraph: {
     title: "Projects | Elixpo",
     description: "Interconnected open-source projects spanning AI, web, and developer tools.",

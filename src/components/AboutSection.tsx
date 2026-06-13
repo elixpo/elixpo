@@ -62,7 +62,7 @@ export function AboutSection() {
 
         </div>
 
-        {/* Elixpo Chapter — open source innovations */}
+        {/* Elixpo Chapter - open source innovations */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}

@@ -23,7 +23,7 @@ interface NpmPackageCardProps {
   specs: SpecRow[];
 }
 
-// Shared NPM package card — identical aesthetic for LixSketch and LixEditor.
+// Shared NPM package card - identical aesthetic for LixSketch and LixEditor.
 function NpmPackageCard({ label, href, name, install, downloads, description, specs }: NpmPackageCardProps) {
   return (
     <a
@@ -48,7 +48,7 @@ function NpmPackageCard({ label, href, name, install, downloads, description, sp
         <ArrowUpRight className="text-white/40 group-hover:text-primary transition-colors duration-300" size={16} strokeWidth={1.5} />
       </div>
 
-      {/* npm artifact — fills the card's mid-space with package identity */}
+      {/* npm artifact - fills the card's mid-space with package identity */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center gap-3.5 py-4 w-full">
         {/* Floating package mark */}
         <div className="relative">
@@ -113,7 +113,7 @@ interface VsCodeExtCardProps {
   description: React.ReactNode;
 }
 
-// Shared VS Code extension card — identical aesthetic for both extensions,
+// Shared VS Code extension card - identical aesthetic for both extensions,
 // with a VS Code logo artifact mirroring the npm package mark.
 function VsCodeExtCard({ label, href, name, install, installs, description }: VsCodeExtCardProps) {
   return (
@@ -242,7 +242,7 @@ export function PackagesSection() {
             downloads="0.9k/wk"
             description={
               <>
-                Rich WYSIWYG block editor &amp; renderer built on BlockNote — LaTeX, Mermaid &amp; syntax-highlighted code. The core editor engine behind <span className="text-primary">LixBlogs</span>.
+                Rich WYSIWYG block editor &amp; renderer built on BlockNote - LaTeX, Mermaid &amp; syntax-highlighted code. The core editor engine behind <span className="text-primary">LixBlogs</span>.
               </>
             }
             specs={[
@@ -261,7 +261,7 @@ export function PackagesSection() {
               name="LixSketch"
               install="ext install elixpo.lixsketch"
               installs="8.4k installs"
-              description="Open-source whiteboard diagrams inside VS Code — draw, sketch, and save .lixsketch files offline."
+              description="Open-source whiteboard diagrams inside VS Code - draw, sketch, and save .lixsketch files offline."
             />
 
             {/* LixEditor VS Code Extension */}
@@ -271,7 +271,7 @@ export function PackagesSection() {
               name="LixEditor"
               install="ext install elixpo.lixeditor"
               installs="6.1k installs"
-              description="A rich block editor for .lixeditor files — LaTeX equations, Mermaid diagrams & syntax-highlighted code."
+              description="A rich block editor for .lixeditor files - LaTeX equations, Mermaid diagrams & syntax-highlighted code."
             />
           </div>
         </motion.div>

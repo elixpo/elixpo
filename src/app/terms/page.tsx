@@ -14,7 +14,7 @@ export default function TermsPage() {
     <>
       <LegalHero
         title="Terms of Service"
-        subtitle="The terms that govern your use of the Elixpo ecosystem — our open-source tools, packages, and services."
+        subtitle="The terms that govern your use of the Elixpo ecosystem - our open-source tools, packages, and services."
         video={VIDEOS.sketch}
         updated="June 2026"
       />
@@ -22,9 +22,9 @@ export default function TermsPage() {
       <article className="prose prose-invert max-w-3xl mx-auto px-6 py-16 prose-headings:font-serif prose-headings:text-white prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-white">
         <h2>1. Acceptance of terms</h2>
         <p>
-          By accessing or using any Elixpo project — including Elixpo Art, Elixpo
+          By accessing or using any Elixpo project - including Elixpo Art, Elixpo
           Blogs, LixSketch, LixEditor, Elixpo Chat, Elixpo Search, Elixpo
-          Accounts, and related tools — you agree to these Terms. If you do not
+          Accounts, and related tools - you agree to these Terms. If you do not
           agree, please do not use the services.
         </p>
 

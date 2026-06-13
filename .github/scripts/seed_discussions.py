@@ -1,5 +1,5 @@
 """
-seed_discussions.py — Seed ecosystem-fit GitHub Discussions as @elixpoo.
+seed_discussions.py - Seed ecosystem-fit GitHub Discussions as @elixpoo.
 
 GitHub doesn't expose a mutation to create discussion *categories* (those are a
 one-time UI step under Org/Repo Settings → Discussions). This script seeds the
@@ -36,12 +36,12 @@ SEEDS = [
         "body": """\
 # Welcome to **Elixpo Chapter** 👋
 
-Elixpo is an open-source ecosystem of interconnected AI and developer tools — built in the open by a global community of **35+ contributors** and shared under **GNU GPL-3.0**, free forever.
+Elixpo is an open-source ecosystem of interconnected AI and developer tools - built in the open by a global community of **35+ contributors** and shared under **GNU GPL-3.0**, free forever.
 
 ## What lives in the ecosystem
-- 🎨 **Elixpo Art** — AI image generation · <https://elixpo.com>
-- ✍️ **Elixpo Blogs / LixEditor** — rich WYSIWYG block editor (LaTeX, Mermaid, code) · <https://blogs.elixpo.com>
-- 🖊️ **LixSketch** — open-source SVG whiteboard engine (npm + VS Code) · <https://sketch.elixpo.com>
+- 🎨 **Elixpo Art** - AI image generation · <https://elixpo.com>
+- ✍️ **Elixpo Blogs / LixEditor** - rich WYSIWYG block editor (LaTeX, Mermaid, code) · <https://blogs.elixpo.com>
+- 🖊️ **LixSketch** - open-source SVG whiteboard engine (npm + VS Code) · <https://sketch.elixpo.com>
 - 💬 **Elixpo Chat** & 🔎 **Elixpo Search** · <https://chat.elixpo.com> · <https://search.elixpo.com>
 - 👤 **Elixpo Accounts** · <https://accounts.elixpo.com>
 
@@ -65,7 +65,7 @@ Welcome! Drop a quick intro so the community can get to know you 👇
 - **Which Elixpo tools** caught your eye (Art, LixSketch, LixEditor, Chat, Search…)
 - Anything you'd love to contribute to or collaborate on
 
-No experience required — designers, writers, first-time contributors, and seasoned devs are all welcome. 💛
+No experience required - designers, writers, first-time contributors, and seasoned devs are all welcome. 💛
 """,
     },
     {
@@ -86,21 +86,21 @@ Maintainers review submissions regularly. Packages, tools, integrations, and com
 """,
     },
     {
-        "title": "🧭 Roadmap & ideas — what should we build next?",
+        "title": "🧭 Roadmap & ideas - what should we build next?",
         "categories": ["Ideas", "General"],
         "body": """\
 This is the place to shape where Elixpo goes next. 🧭
 
 Tell us:
-- A **feature or improvement** you'd love (for any tool — Art, LixSketch, LixEditor, Chat, Search, Accounts)
+- A **feature or improvement** you'd love (for any tool - Art, LixSketch, LixEditor, Chat, Search, Accounts)
 - A **rough problem** worth solving, even if you don't have the solution
 - **Integrations** you'd like to see between ecosystem tools
 
-Upvote ideas you care about with 👍 — it helps us prioritise. Nothing is too small or too ambitious.
+Upvote ideas you care about with 👍 - it helps us prioritise. Nothing is too small or too ambitious.
 """,
     },
     {
-        "title": "❓ Q&A — get help with Elixpo tools",
+        "title": "❓ Q&A - get help with Elixpo tools",
         "categories": ["Q&A", "General"],
         "body": """\
 Stuck on something? Ask here and the community will help. 🙌

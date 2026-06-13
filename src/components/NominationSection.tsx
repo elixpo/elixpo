@@ -18,7 +18,7 @@ const COMPUTE_PARTNERS = [
   { name: "Firebase", href: "https://firebase.google.com", logo: "https://cdn.simpleicons.org/firebase/E1E0CC" },
 ];
 
-// Compute partners as a shuffling deck — square cards stacked back-to-back,
+// Compute partners as a shuffling deck - square cards stacked back-to-back,
 // the front card cycling to the back like flipping through a photo album.
 function ShufflingPartners() {
   const [order, setOrder] = useState<number[]>(() => COMPUTE_PARTNERS.map((_, i) => i));
@@ -251,7 +251,7 @@ export function NominationSection() {
                 Our AI workloads and infrastructure are powered by compute and platform support from:
               </p>
 
-              {/* Partner logos — shuffling card deck */}
+              {/* Partner logos - shuffling card deck */}
               <ShufflingPartners />
             </div>
 

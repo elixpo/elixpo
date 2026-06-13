@@ -6,7 +6,7 @@ import { VIDEOS } from "@/lib/media";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Elixpo handles your data — a privacy-first, no-tracking approach across our open-source tools.",
+    "How Elixpo handles your data - a privacy-first, no-tracking approach across our open-source tools.",
 };
 
 export default function PrivacyPage() {
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     <>
       <LegalHero
         title="Privacy Policy"
-        subtitle="Privacy-first by design. Here's exactly what we do — and don't — collect across the Elixpo ecosystem."
+        subtitle="Privacy-first by design. Here's exactly what we do - and don't - collect across the Elixpo ecosystem."
         video={VIDEOS.accounts}
         updated="June 2026"
         heightClass="h-[80vh] min-h-[560px]"
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
 
         <h2>Third-party services</h2>
         <p>
-          Some features rely on infrastructure and compute partners — including{" "}
+          Some features rely on infrastructure and compute partners - including{" "}
           <strong>Pollinations</strong>, Vercel, Cloudflare, DigitalOcean, and
           Firebase. When a request is routed to a provider to fulfil a feature,
           that provider&rsquo;s own privacy terms apply to that request.

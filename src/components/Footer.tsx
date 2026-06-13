@@ -6,7 +6,7 @@ import { Copy, Check, Github, MessagesSquare, Heart, Star } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 import { PROJECTS, projectName } from "@/lib/projects";
 
-// Single source of truth — exactly the projects shown on /projects.
+// Single source of truth - exactly the projects shown on /projects.
 const ecosystem = PROJECTS.map((p) => ({ label: projectName(p), href: p.href }));
 
 const community = [

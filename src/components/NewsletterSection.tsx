@@ -53,7 +53,7 @@ export function NewsletterSection() {
 
           {/* Subtitle text description */}
           <p className="text-[#DEDBC8]/70 text-xs sm:text-sm leading-relaxed px-4 max-w-md font-mono">
-            We&rsquo;re putting the finishing touches on our newsletter. Subscriptions open soon — check back to stay in the loop on releases and insights.
+            We&rsquo;re putting the finishing touches on our newsletter. Subscriptions open soon - check back to stay in the loop on releases and insights.
           </p>
         </motion.div>
       </div>

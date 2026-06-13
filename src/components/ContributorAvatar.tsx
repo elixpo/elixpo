@@ -15,7 +15,7 @@ interface ContributorAvatarProps {
  * thin-line broken image.
  *
  * Uses a plain <img> with inline width/height/object-fit so the box is always
- * a fixed square — next/image's internal sizing can otherwise collapse the
+ * a fixed square - next/image's internal sizing can otherwise collapse the
  * element while loading or on error.
  */
 export function ContributorAvatar({ login, src, size, className = "" }: ContributorAvatarProps) {

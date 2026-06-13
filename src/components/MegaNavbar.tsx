@@ -47,7 +47,7 @@ export function MegaNavbar() {
           Elixpo
         </Link>
 
-        {/* Desktop primary links — centered */}
+        {/* Desktop primary links - centered */}
         <div className="hidden md:flex items-center justify-center gap-1 flex-1">
           {PRIMARY_LINKS.map((link) => {
             const isActive = pathname === link.href;
@@ -65,7 +65,7 @@ export function MegaNavbar() {
           })}
         </div>
 
-        {/* Desktop secondary links — icons, to the right */}
+        {/* Desktop secondary links - icons, to the right */}
         <div className="hidden md:flex items-center gap-0.5 shrink-0 pr-2">
           {ICON_LINKS.map((link) => {
             const isActive = pathname === link.href;

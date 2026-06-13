@@ -207,12 +207,12 @@ export default async function CommunityPage() {
           </a>
         </p>
 
-        {/* Solar system — ranked by contributions, top 3 badged */}
+        {/* Solar system - ranked by contributions, top 3 badged */}
         <div className="relative w-full aspect-square max-w-[760px] mx-auto">
           {/* Ambient glow */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[55%] rounded-full bg-primary/[0.06] blur-[120px] pointer-events-none" />
 
-          {/* Center — #1 contributor */}
+          {/* Center - #1 contributor */}
           {center && (
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
               <Avatar c={center} rank={0} size={96} />

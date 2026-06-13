@@ -10,7 +10,7 @@ export const VIDEOS = {
   about: "/videos/headphones.mp4", // "Built in the open, together" panel
   contact: "/videos/paddy-sky.mp4", // contact / newsletter section
 
-  // Product clips (Projects grid) — only products with a clip are shown
+  // Product clips (Projects grid) - only products with a clip are shown
   sketch: "/videos/sketch.mp4",
   blogs: "/videos/blogs.mp4",
   accounts: "/videos/accounts.mp4",

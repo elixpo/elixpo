@@ -100,7 +100,7 @@ export function Contributors() {
           </p>
         </div>
 
-        {/* Core team — named leads with role chips */}
+        {/* Core team - named leads with role chips */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
           {LEADS.map((lead) => (
             <a
