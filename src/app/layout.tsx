@@ -56,10 +56,10 @@ export const metadata: Metadata = {
   publisher: "Elixpo",
   icons: {
     icon: [
-      { url: "/logo.png", type: "image/png" },
+      { url: "/logos/base_logo.png", type: "image/png" },
     ],
     apple: [
-      { url: "/logo.png", type: "image/png" },
+      { url: "/logos/base_logo.png", type: "image/png" },
     ],
   },
   openGraph: {

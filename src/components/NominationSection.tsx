@@ -35,7 +35,7 @@ function ShufflingPartners() {
   }, []);
 
   return (
-    <div className="relative mx-auto w-40 h-40 sm:w-44 sm:h-44 my-2">
+    <div className="relative mx-auto w-40 h-40 sm:w-44 sm:h-44 mt-12 mb-6">
       {order.map((partnerIdx, depth) => {
         const partner = COMPUTE_PARTNERS[partnerIdx];
         return (
@@ -47,10 +47,10 @@ function ShufflingPartners() {
             aria-label={partner.name}
             className="absolute inset-0 rounded-2xl bg-[#1d1d1d] border border-white/10 shadow-2xl flex flex-col items-center justify-center gap-3 overflow-hidden"
             animate={{
-              y: depth * -9,
-              x: depth * 3,
+              y: depth * -6,
+              x: depth * 7,
               scale: 1 - depth * 0.05,
-              rotate: depth === 0 ? 0 : depth % 2 ? depth * 3 : -depth * 3,
+              rotate: depth === 0 ? 0 : depth % 2 ? depth * 5 : -depth * 5,
               opacity: depth > 3 ? 0 : 1,
               zIndex: COMPUTE_PARTNERS.length - depth,
             }}

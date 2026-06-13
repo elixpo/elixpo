@@ -9,7 +9,8 @@ import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
 import { VIDEOS } from "@/lib/media";
 
 // Product cards — only the products that ship a clip are listed here.
-// `pos` is the Tailwind object-position for the panda subject — tweak per card.
+// `pos` = object-position for the panda subject, `aspect` = card ratio (drives
+// the masonry rhythm). Tweak both per card.
 const featureCards = [
   {
     title: "LixSketch.",
@@ -17,6 +18,7 @@ const featureCards = [
     href: ELIXPO_LINKS.sketch,
     video: VIDEOS.sketch,
     pos: "object-center",
+    aspect: "aspect-[3/4]",
     badge: "01",
   },
   {
@@ -25,6 +27,7 @@ const featureCards = [
     href: ELIXPO_LINKS.blog,
     video: VIDEOS.blogs,
     pos: "object-center",
+    aspect: "aspect-[9/16]",
     badge: "02",
   },
   {
@@ -33,6 +36,7 @@ const featureCards = [
     href: ELIXPO_LINKS.accounts,
     video: VIDEOS.accounts,
     pos: "object-center",
+    aspect: "aspect-[4/5]",
     badge: "03",
   },
   {
@@ -41,6 +45,7 @@ const featureCards = [
     href: ELIXPO_LINKS.urlShortener,
     video: VIDEOS.url,
     pos: "object-center",
+    aspect: "aspect-[4/5]",
     badge: "04",
   },
   {
@@ -49,6 +54,7 @@ const featureCards = [
     href: ELIXPO_LINKS.portfolio,
     video: VIDEOS.portfolio,
     pos: "object-center",
+    aspect: "aspect-[9/16]",
     badge: "05",
   },
   {
@@ -57,6 +63,7 @@ const featureCards = [
     href: "https://oreo.elixpo.com",
     video: VIDEOS.oreo,
     pos: "object-center",
+    aspect: "aspect-[3/4]",
     badge: "06",
   },
 ];
@@ -76,7 +83,7 @@ function FeatureVideoCard({ card, index }: FeatureVideoCardProps) {
       initial={{ scale: 0.95, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
       transition={{ duration: 0.85, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group aspect-[9/16] flex flex-col justify-between"
+      className={`relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group ${card.aspect} flex flex-col justify-between mb-3 sm:mb-4 break-inside-avoid`}
     >
       <PingPongVideo
         src={card.video}
@@ -146,8 +153,8 @@ export function FeaturesSection() {
           />
         </div>
 
-        {/* Portrait (9:16) product card grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-20">
+        {/* Masonry product grid (CSS columns) */}
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 mb-20">
           {featureCards.map((card, index) => (
             <FeatureVideoCard key={card.title} card={card} index={index} />
           ))}

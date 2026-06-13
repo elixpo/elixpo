@@ -23,17 +23,33 @@ export function PingPongVideo({ src, className }: PingPongVideoProps) {
     let raf = 0;
     let direction: 1 | -1 = 1;
     let last = 0;
-    const EDGE = 0.04; // seconds of slack at each end
+    const EDGE = 0.05; // seconds of slack near the start
+    const TAIL = 0.2; // start reversing this far before the end (avoids a visible pause)
 
     const reverseStep = (now: number) => {
       const dt = (now - last) / 1000;
       last = now;
-      video.currentTime = Math.max(0, video.currentTime - dt);
-      if (video.currentTime <= EDGE) {
+      const next = video.currentTime - dt;
+      if (next <= EDGE) {
+        video.currentTime = 0;
         direction = 1;
         video.play().catch(() => {});
-        return; // resume forward; rAF stops until next end is reached
+        return; // resume forward; rAF stops until the end is reached again
       }
+      video.currentTime = next;
+      raf = requestAnimationFrame(reverseStep);
+    };
+
+    const startReverse = () => {
+      if (direction !== 1) return;
+      direction = -1;
+      video.pause();
+      // If we're sitting exactly at the end, nudge inside the clip first.
+      if (Number.isFinite(video.duration) && video.currentTime >= video.duration) {
+        video.currentTime = Math.max(0, video.duration - 0.001);
+      }
+      last = performance.now();
+      cancelAnimationFrame(raf);
       raf = requestAnimationFrame(reverseStep);
     };
 
@@ -41,20 +57,19 @@ export function PingPongVideo({ src, className }: PingPongVideoProps) {
       if (
         direction === 1 &&
         Number.isFinite(video.duration) &&
-        video.currentTime >= video.duration - EDGE
+        video.currentTime >= video.duration - TAIL
       ) {
-        direction = -1;
-        video.pause();
-        last = performance.now();
-        raf = requestAnimationFrame(reverseStep);
+        startReverse();
       }
     };
 
     video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("ended", startReverse); // fallback if timeupdate misses the tail
     video.play().catch(() => {});
 
     return () => {
       video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("ended", startReverse);
       cancelAnimationFrame(raf);
     };
   }, [src]);

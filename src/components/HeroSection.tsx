@@ -23,13 +23,16 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-neutral-950/20 mix-blend-multiply" />
           <PingPongVideo
             src={VIDEOS.hero}
-            className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none opacity-85"
+            className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none opacity-70"
           />
         </div>
 
         {/* Noise overlay and gradients */}
         <div className="absolute inset-0 noise-overlay opacity-[0.55] mix-blend-overlay pointer-events-none z-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none z-10" />
+        {/* Overall dim + stronger top and bottom falloff for legibility */}
+        <div className="absolute inset-0 bg-black/25 pointer-events-none z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/90 pointer-events-none z-10" />
+        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/70 to-transparent pointer-events-none z-10" />
 
         {/* Ambient color pulse orbs for atmosphere */}
         <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] rounded-full bg-[#DEDBC8]/10 blur-[120px] pointer-events-none mix-blend-screen animate-pulse" />
@@ -44,8 +47,8 @@ export function HeroSection() {
               <div className="relative">
                 <WordsPullUp
                   text="Elixpo"
-                  showAsterisk
-                  className="text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] xl:text-[16vw] font-medium leading-[0.85] tracking-[-0.05em] text-[#E1E0CC]"
+                  logoSrc="/logos/logo.png"
+                  className="text-[14vw] sm:text-[22vw] md:text-[20vw] lg:text-[12vw] xl:text-[16vw] font-medium leading-[0.85] tracking-[-0.05em] text-[#E1E0CC] drop-shadow-[0_4px_30px_rgba(0,0,0,0.55)]"
                 />
               </div>
             </div>
