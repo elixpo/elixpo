@@ -10,7 +10,7 @@ export const metadata = {
     title: "Community | Elixpo",
     description:
       "Meet the contributors powering the Elixpo ecosystem.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 

@@ -16,7 +16,7 @@ const jsonLd = {
   "@type": "Organization",
   name: "Elixpo",
   url: "https://elixpo.com",
-  logo: "/logos/base_logo.png",
+  logo: "/logos/logo.webp",
   description:
     "A developer-first open-source ecosystem of interconnected projects spanning AI art, intelligent search, collaborative sketching, and more.",
   founder: {

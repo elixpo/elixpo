@@ -11,7 +11,7 @@ export const metadata = {
   openGraph: {
     title: "Open Source | Elixpo",
     description: "Contributing guides and community resources for the Elixpo ecosystem.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 

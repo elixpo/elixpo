@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: "Features | Elixpo",
     description: "What makes the Elixpo ecosystem unique.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 

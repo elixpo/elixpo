@@ -85,9 +85,12 @@ export const metadata: Metadata = {
   category: "technology",
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
-    icon: [{ url: "/logos/base_logo.png", type: "image/png" }],
-    shortcut: ["/logos/base_logo.png"],
-    apple: [{ url: "/logos/base_logo.png", type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logos/logo.webp", type: "image/webp" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/apple-icon.png" }],
   },
   openGraph: {
     type: "website",
@@ -98,9 +101,10 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/og-image.webp",
+        width: 1852,
+        height: 813,
+        type: "image/webp",
         alt: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
       },
     ],
@@ -110,7 +114,7 @@ export const metadata: Metadata = {
     title: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
     description:
       "A free, open-source ecosystem of interconnected AI and developer tools, built by 45+ contributors.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
     creator: "@elixpo",
   },
   robots: {

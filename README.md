@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/og-image.png" alt="Elixpo - Open Source Ecosystem of AI and Developer Tools" width="100%" />
+  <img src="public/og-image.webp" alt="Elixpo - Open Source Ecosystem of AI and Developer Tools" width="100%" />
 </p>
 
 <h1 align="center">Elixpo</h1>

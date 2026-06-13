@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: "About | Elixpo",
     description: "The mission, vision, and community behind Elixpo.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 
@@ -21,19 +21,19 @@ const TEAM_LEADS = [
     name: "Ayushman Bhattacharya",
     role: "Founder & Lead",
     github: "Circuit-Overtime",
-    img: "/members/Circuit-Overtime.jpeg",
+    img: "/members/Circuit-Overtime.webp",
   },
   {
     name: "Vivek Yadav",
     role: "Lead Co-Dev",
     github: "ez-vivek",
-    img: "/members/ez-vivek.jpeg",
+    img: "/members/ez-vivek.webp",
   },
   {
     name: "Anwesha Chakraborty",
     role: "Core Maintainer",
     github: "anwe-ch",
-    img: "/members/anwe-ch.jpeg",
+    img: "/members/anwe-ch.webp",
   },
 ];
 

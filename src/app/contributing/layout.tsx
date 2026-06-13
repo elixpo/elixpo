@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contributing | Elixpo",
     description: "How to contribute to the Elixpo open-source ecosystem.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 

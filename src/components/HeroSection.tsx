@@ -46,7 +46,7 @@ export function HeroSection() {
               <div className="relative">
                 <WordsPullUp
                   text="Elixpo"
-                  logoSrc="/logos/logo.png"
+                  logoSrc="/logos/logo.webp"
                   className="text-[14vw] sm:text-[22vw] md:text-[20vw] lg:text-[12vw] xl:text-[16vw] font-medium leading-[0.85] tracking-[-0.05em] text-[#E1E0CC] drop-shadow-[0_4px_30px_rgba(0,0,0,0.55)]"
                 />
               </div>

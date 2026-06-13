@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Code of Conduct | Elixpo",
     description: "Our community standards for a welcoming, inclusive experience.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 
