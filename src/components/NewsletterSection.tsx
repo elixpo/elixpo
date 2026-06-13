@@ -24,7 +24,7 @@ export function NewsletterSection() {
       <div className="h-16 relative z-10" />
 
       {/* Main "Coming soon" widget */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-12 text-center -translate-y-[8%] md:-translate-y-[5%] max-w-4xl mx-auto w-full">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-12 text-center max-w-4xl mx-auto w-full">
         {/* Animated Heading using Instrument Serif */}
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
