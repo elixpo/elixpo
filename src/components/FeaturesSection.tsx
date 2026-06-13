@@ -7,21 +7,15 @@ import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
 import { ELIXPO_LINKS, Segment } from "@/lib/elixpo-links";
 import { VIDEOS } from "@/lib/media";
 
-// Background clips per card. Reuse the available Elixpo clips as placeholders —
-// swap any `video` key to give a tool its own clip (see src/lib/media.ts).
+// Product cards — only the products that ship a clip are listed here.
+// `pos` is the Tailwind object-position for the panda subject — tweak per card.
 const featureCards = [
   {
-    title: "Elixpo Art Generator.",
-    cta: "Generate now",
-    href: ELIXPO_LINKS.generate,
-    video: VIDEOS.art,
-    badge: "00",
-  },
-  {
-    title: "LixSketch Canvas.",
+    title: "LixSketch.",
     cta: "Explore Sketch",
     href: ELIXPO_LINKS.sketch,
-    video: VIDEOS.hero,
+    video: VIDEOS.sketch,
+    pos: "object-center",
     badge: "01",
   },
   {
@@ -29,14 +23,40 @@ const featureCards = [
     cta: "Explore Blogs",
     href: ELIXPO_LINKS.blog,
     video: VIDEOS.blogs,
+    pos: "object-center",
     badge: "02",
   },
   {
     title: "Elixpo Accounts.",
     cta: "Open Accounts",
     href: ELIXPO_LINKS.accounts,
-    video: VIDEOS.hero,
+    video: VIDEOS.accounts,
+    pos: "object-center",
     badge: "03",
+  },
+  {
+    title: "Elixpo URL.",
+    cta: "Shorten a URL",
+    href: ELIXPO_LINKS.urlShortener,
+    video: VIDEOS.url,
+    pos: "object-center",
+    badge: "04",
+  },
+  {
+    title: "Portfolios.",
+    cta: "View Portfolio",
+    href: ELIXPO_LINKS.portfolio,
+    video: VIDEOS.portfolio,
+    pos: "object-center",
+    badge: "05",
+  },
+  {
+    title: "Oreo.",
+    cta: "Explore Oreo",
+    href: "https://oreo.elixpo.com",
+    video: VIDEOS.oreo,
+    pos: "object-center",
+    badge: "06",
   },
 ];
 
@@ -54,15 +74,15 @@ function FeatureVideoCard({ card, index }: FeatureVideoCardProps) {
       ref={ref}
       initial={{ scale: 0.95, opacity: 0 }}
       animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
-      transition={{ duration: 0.85, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group min-h-[380px] sm:min-h-[440px] lg:h-[480px] flex flex-col justify-between"
+      transition={{ duration: 0.85, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="relative rounded-2xl overflow-hidden bg-[#141414] border border-white/10 hover:border-primary/20 transition-colors duration-300 group aspect-[9/16] flex flex-col justify-between"
     >
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+        className={`absolute inset-0 w-full h-full object-cover ${card.pos} select-none pointer-events-none`}
       >
         <source src={card.video} type="video/mp4" />
       </video>
@@ -72,21 +92,21 @@ function FeatureVideoCard({ card, index }: FeatureVideoCardProps) {
       <div className="absolute inset-0 noise-overlay opacity-[0.2] pointer-events-none" />
 
       {/* Top index badge */}
-      <div className="relative z-10 flex items-center justify-end p-4 sm:p-6 md:p-8">
-        <span className="text-xs font-mono text-white/50">{card.badge}</span>
+      <div className="relative z-10 flex items-center justify-end p-3 sm:p-4">
+        <span className="text-[10px] font-mono text-white/50">{card.badge}</span>
       </div>
 
       {/* Bottom title + CTA */}
-      <div className="relative z-10 p-4 sm:p-6 md:p-8">
-        <p className="text-xl font-medium text-[#E1E0CC] mb-2">{card.title}</p>
+      <div className="relative z-10 p-3 sm:p-4">
+        <p className="text-base sm:text-lg font-medium text-[#E1E0CC] mb-1.5 leading-tight">{card.title}</p>
         <a
           href={card.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs text-primary/80 hover:text-primary transition-colors"
+          className="inline-flex items-center gap-1.5 text-[11px] text-primary/80 hover:text-primary transition-colors"
         >
           <span>{card.cta}</span>
-          <ArrowRight size={12} className="transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowRight size={11} className="transform -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </a>
       </div>
     </motion.div>
@@ -130,8 +150,8 @@ export function FeaturesSection() {
           />
         </div>
 
-        {/* 4-column video card grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+        {/* Portrait (9:16) product card grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-20">
           {featureCards.map((card, index) => (
             <FeatureVideoCard key={card.title} card={card} index={index} />
           ))}

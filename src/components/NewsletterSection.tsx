@@ -93,7 +93,7 @@ export function NewsletterSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <video
           ref={videoRef}
-          src={VIDEOS.blogs}
+          src={VIDEOS.contact}
           muted
           autoPlay
           playsInline

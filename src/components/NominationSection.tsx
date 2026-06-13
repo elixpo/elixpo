@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 import { Star, Heart, ArrowRight, ExternalLink, ShieldCheck, Cpu } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";

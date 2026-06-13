@@ -82,7 +82,7 @@ export function AboutSection() {
               playsInline
               className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
             >
-              <source src={VIDEOS.art} type="video/mp4" />
+              <source src={VIDEOS.about} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 pointer-events-none" />
             <div className="absolute inset-0 noise-overlay opacity-[0.22] pointer-events-none" />
