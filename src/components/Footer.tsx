@@ -48,7 +48,7 @@ export function Footer() {
             <h3 className="text-2xl font-serif italic text-[#E1E0CC] mb-3">Elixpo Chapter</h3>
             <p className="text-sm text-[#DEDBC8]/65 leading-relaxed max-w-xs mb-5">
               An open-source ecosystem of interconnected AI and developer tools, built by a
-              global community of {`45+`} contributors. Free and copyleft, forever.
+              global community of {`45+`} contributors. Free and open source, forever.
             </p>
             <div className="flex items-center gap-3">
               <a

@@ -269,7 +269,7 @@ export function NominationSection() {
             </div>
           </motion.div>
 
-          {/* Card 3: Copyleft Protocol (spans 3 columns on lg) */}
+          {/* Card 3: License Protocol (spans 3 columns on lg) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -281,10 +281,10 @@ export function NominationSection() {
                 <ShieldCheck className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block mb-1">Copyleft License Protocol</span>
-                <h4 className="text-lg font-light text-white mb-2">GNU GPL-3.0 Compliance</h4>
+                <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block mb-1">Open Source License</span>
+                <h4 className="text-lg font-light text-white mb-2">MIT & CC-BY-4.0</h4>
                 <p className="text-xs text-[#DEDBC8]/75 leading-relaxed">
-                  We believe in ethical, open development. Our code, packages, and systems are shared under copyleft standards to ensure derivatives remain free for everybody forever.
+                  We believe in ethical, open development. Our code, packages, and systems are shared under permissive open-source standards to ensure derivatives remain free for everybody forever.
                 </p>
               </div>
             </div>
@@ -300,7 +300,7 @@ export function NominationSection() {
               </div>
               <div>
                 <span className="text-white/40 block text-[9px] uppercase tracking-wider">License Standards</span>
-                <span className="text-white/90 font-medium block mt-0.5">GPL-3.0 Copyleft</span>
+                <span className="text-white/90 font-medium block mt-0.5">MIT & CC-BY-4.0</span>
               </div>
             </div>
           </motion.div>

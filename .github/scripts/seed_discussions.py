@@ -36,7 +36,7 @@ SEEDS = [
         "body": """\
 # Welcome to **Elixpo Chapter** 👋
 
-Elixpo is an open-source ecosystem of interconnected AI and developer tools - built in the open by a global community of **35+ contributors** and shared under **GNU GPL-3.0**, free forever.
+Elixpo is an open-source ecosystem of interconnected AI and developer tools - built in the open by a global community of **45+ contributors** and shared under **MIT & CC-BY-4.0**, free forever.
 
 ## What lives in the ecosystem
 - 🎨 **Elixpo Art** - AI image generation · <https://elixpo.com>
@@ -51,7 +51,7 @@ Elixpo is an open-source ecosystem of interconnected AI and developer tools - bu
 - 🧭 Propose features in **Ideas**
 - ❓ Ask anything in **Q&A**
 
-Everything is community-driven and copyleft. Glad you're here! 🌱
+Everything is community-driven and open source. Glad you're here! 🌱
 """,
     },
     {
@@ -77,7 +77,7 @@ Building something open source? It could be **featured across the Elixpo ecosyst
 Share it here with:
 
 - **Project name & one-liner**
-- **Repository link** (open source / copyleft preferred)
+- **Repository link** (open source preferred)
 - **What it does** and who it's for
 - **How it connects** to the Elixpo ecosystem (tools, packages, AI, dev workflow…)
 - A screenshot, demo, or short clip if you have one

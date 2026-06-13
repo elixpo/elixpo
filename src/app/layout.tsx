@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     "Cloudflare",
     "Pollinations AI",
     "Hacktoberfest",
-    "copyleft",
+    "MIT license",
   ],
   authors: [{ name: "Ayushman Bhattacharya", url: "https://github.com/Circuit-Overtime" }],
   creator: "Elixpo",

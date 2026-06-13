@@ -13,10 +13,10 @@ export function AboutSection() {
   const segments: Segment[] = [
     { text: "Welcome to Elixpo-Chapter,", className: "font-normal" },
     { text: "an Open Source Repository.", className: "italic font-serif text-primary" },
-    { text: "Built over 9 projects, engaged a global community, and participated in numerous programs.", className: "font-normal" }
+    { text: "Built over 13+ projects, engaged a global community, and participated in numerous programs.", className: "font-normal" }
   ];
 
-  const bodyText = "Begun in 2023 as a collegiate project, this series has grown into a collaborative workspace with 45+ global contributors. We empower developers and artists with fully copyleft tools, backed by Pollinations AI and Microsoft for Startups.";
+  const bodyText = "Begun in 2023 as a collegiate project, this series has grown into a collaborative workspace with 45+ global contributors. We empower developers and artists with fully open-source tools, backed by Pollinations AI and Microsoft for Startups.";
 
   return (
     <section
@@ -85,7 +85,7 @@ export function AboutSection() {
 
             <div className="absolute bottom-0 left-0 p-5 sm:p-7">
               <span className="text-[10px] uppercase font-mono tracking-widest text-primary/80 block mb-1">
-                Open Source · GPL-3.0
+                Open Source · MIT & CC-BY-4.0
               </span>
               <p className="text-lg sm:text-2xl font-serif italic text-white leading-tight">
                 Built in the open, together.

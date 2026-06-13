@@ -76,7 +76,7 @@ function NpmPackageCard({ label, href, name, install, downloads, description, sp
           <span className="w-px h-3 bg-white/10" />
           <span>v1.x</span>
           <span className="w-px h-3 bg-white/10" />
-          <span className="text-primary/70">GPL-3.0</span>
+          <span className="text-primary/70">MIT</span>
         </div>
       </div>
 
@@ -159,7 +159,7 @@ function VsCodeExtCard({ label, href, name, install, installs, description }: Vs
           <span className="w-px h-3 bg-white/10" />
           <span>Marketplace</span>
           <span className="w-px h-3 bg-white/10" />
-          <span className="text-primary/70">GPL-3.0</span>
+          <span className="text-primary/70">MIT</span>
         </div>
       </div>
 
@@ -228,8 +228,8 @@ export function PackagesSection() {
             }
             specs={[
               { key: "Core", value: "Interactive Canvas", right: "SVG Whiteboard" },
-              { key: "Theme", value: "Hand-Drawn Vector", right: "Copyleft Free" },
-              { key: "Docs", value: "github.com/elixpo/lixsketch", right: "GPL-3.0" },
+              { key: "Theme", value: "Hand-Drawn Vector", right: "MIT License" },
+              { key: "Docs", value: "github.com/elixpo/lixsketch", right: "MIT" },
             ]}
           />
 
@@ -247,8 +247,8 @@ export function PackagesSection() {
             }
             specs={[
               { key: "Core", value: "Block Editor", right: "BlockNote" },
-              { key: "Theme", value: "Rich WYSIWYG", right: "Copyleft Free" },
-              { key: "Docs", value: "github.com/elixpo/lixeditor", right: "GPL-3.0" },
+              { key: "Theme", value: "Rich WYSIWYG", right: "MIT License" },
+              { key: "Docs", value: "github.com/elixpo/lixeditor", right: "MIT" },
             ]}
           />
 

@@ -31,5 +31,5 @@
     { "platform": "discussions", "href": "https://github.com/orgs/elixpo/discussions" },
     { "platform": "twitter", "href": "https://twitter.com/elixpo" }
   ],
-  "copyright": "2023-2026 Elixpo. Licensed under GNU GPL-3.0."
+  "copyright": "2023-2026 Elixpo. Licensed under MIT & CC-BY-4.0."
 }
