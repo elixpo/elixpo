@@ -84,19 +84,19 @@ export default async function CommunityPage() {
       {/* Stats bar */}
       <div className="max-w-4xl mx-auto px-6 mb-20">
         <div className="grid grid-cols-3 gap-4">
-          <div className="rounded-2xl bg-white border border-border p-6 text-center animate-fade-in-up community-stagger-1">
+          <div className="rounded-2xl bg-card border border-border p-6 text-center animate-fade-in-up community-stagger-1">
             <p className="text-3xl md:text-4xl font-bold text-accent">
               {displayContributors.length}
             </p>
             <p className="text-sm text-muted mt-1">Contributors</p>
           </div>
-          <div className="rounded-2xl bg-white border border-border p-6 text-center animate-fade-in-up community-stagger-2">
+          <div className="rounded-2xl bg-card border border-border p-6 text-center animate-fade-in-up community-stagger-2">
             <p className="text-3xl md:text-4xl font-bold text-accent">
               {totalContributions > 0 ? `${totalContributions}+` : "500+"}
             </p>
             <p className="text-sm text-muted mt-1">Contributions</p>
           </div>
-          <div className="rounded-2xl bg-white border border-border p-6 text-center animate-fade-in-up community-stagger-3">
+          <div className="rounded-2xl bg-card border border-border p-6 text-center animate-fade-in-up community-stagger-3">
             <p className="text-3xl md:text-4xl font-bold text-accent">13+</p>
             <p className="text-sm text-muted mt-1">Projects</p>
           </div>
@@ -127,7 +127,7 @@ export default async function CommunityPage() {
               href={contributor.html_url || `https://github.com/${contributor.login}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-2xl bg-white border border-border p-5 flex flex-col items-center text-center hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 hover:-translate-y-1"
+              className="group relative rounded-2xl bg-card border border-border p-5 flex flex-col items-center text-center hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 hover:-translate-y-1"
               style={{ animationDelay: `${Math.min(i * 50, 1500)}ms` }}
             >
               {/* Rank badge for top 3 */}
@@ -204,7 +204,7 @@ export default async function CommunityPage() {
                 href={`https://github.com/${GITHUB_ORG}/${GITHUB_REPO}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-border text-foreground font-medium text-sm hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-border text-foreground font-medium text-sm hover:bg-card transition-colors"
               >
                 <svg
                   className="w-5 h-5"

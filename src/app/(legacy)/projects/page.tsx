@@ -53,7 +53,7 @@ export default function ProjectsPage() {
               href={project.url}
               target={project.url !== "#" ? "_blank" : undefined}
               rel={project.url !== "#" ? "noopener noreferrer" : undefined}
-              className={`group block rounded-3xl bg-white border border-border p-8 transition-all duration-300 ${
+              className={`group block rounded-3xl bg-card border border-border p-8 transition-all duration-300 ${
                 project.url !== "#" ? "hover:shadow-lg hover:border-transparent" : ""
               }`}
             >
@@ -74,7 +74,7 @@ export default function ProjectsPage() {
                   <p className="text-sm text-muted leading-relaxed mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {project.tech.map((t) => (
-                      <span key={t} className="text-[11px] px-2.5 py-1 rounded-full bg-gray-100 text-muted font-medium">
+                      <span key={t} className="text-[11px] px-2.5 py-1 rounded-full bg-card-hover text-muted font-medium">
                         {t}
                       </span>
                     ))}

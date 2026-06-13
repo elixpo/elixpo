@@ -34,7 +34,7 @@ export default function AboutPage() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {statsData.items.map((item) => (
-            <div key={item.label} className="rounded-2xl bg-white border border-border p-6 text-center">
+            <div key={item.label} className="rounded-2xl bg-card border border-border p-6 text-center">
               <p className="text-3xl font-bold text-accent">{item.value}</p>
               <p className="text-sm text-muted mt-1">{item.label}</p>
             </div>
@@ -46,7 +46,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-8">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {teamData.values.map((value) => (
-              <div key={value} className="rounded-2xl bg-white border border-border p-6">
+              <div key={value} className="rounded-2xl bg-card border border-border p-6">
                 <p className="font-medium">{value}</p>
               </div>
             ))}
@@ -58,7 +58,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-8">Recognition & Programs</h2>
           <div className="flex flex-wrap gap-4">
             {teamData.programs.map((program) => (
-              <div key={program.name} className="rounded-2xl bg-white border border-border px-6 py-4">
+              <div key={program.name} className="rounded-2xl bg-card border border-border px-6 py-4">
                 <p className="font-semibold">{program.name}</p>
                 <p className="text-sm text-muted">{program.description}</p>
               </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
         {/* Founder */}
         <div>
           <h2 className="text-3xl font-bold mb-8">Founder</h2>
-          <div className="inline-flex items-center gap-4 rounded-2xl bg-white border border-border px-8 py-6">
+          <div className="inline-flex items-center gap-4 rounded-2xl bg-card border border-border px-8 py-6">
             <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl">
               A
             </div>

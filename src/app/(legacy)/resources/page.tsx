@@ -59,7 +59,7 @@ export default function ResourcesPage() {
               href={resource.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-3xl bg-white border border-border p-8 hover:shadow-lg transition-shadow"
+              className="group rounded-3xl bg-card border border-border p-8 hover:shadow-lg transition-shadow"
             >
               <h3 className="text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
                 {resource.title}

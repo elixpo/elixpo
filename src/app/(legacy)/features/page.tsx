@@ -62,7 +62,7 @@ export default function FeaturesPage() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-3xl bg-white border border-border p-8 hover:shadow-lg transition-shadow"
+              className="rounded-3xl bg-card border border-border p-8 hover:shadow-lg transition-shadow"
             >
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
               <p className="text-sm text-muted leading-relaxed">{feature.description}</p>
