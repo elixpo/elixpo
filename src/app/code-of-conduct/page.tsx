@@ -13,6 +13,7 @@ export default function CodeOfConductPage() {
 
   useEffect(() => {
     fetch(RAW_URL)
+    
       .then((res) => res.text())
       .then((text) => {
         setMarkdown(text);

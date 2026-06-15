@@ -19,7 +19,8 @@ const community = [
 const legal = [
   { label: "Terms of Service", href: ELIXPO_LINKS.terms, external: false },
   { label: "Privacy Policy", href: ELIXPO_LINKS.privacy, external: false },
-  { label: "License", href: `${ELIXPO_LINKS.githubChapter}/blob/main/LICENSE`, external: true },
+  { label: "Code of Conduct", href: ELIXPO_LINKS.coc, external: false },
+  { label: "License", href: ELIXPO_LINKS.license, external: false },
 ];
 
 export function Footer() {
