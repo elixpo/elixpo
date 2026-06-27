@@ -19,6 +19,7 @@ const marks = [
   { name: "Mascot mark", file: "/brand/marks/mascot_elixpo_oreo.webp", note: "Oreo, the panda mascot" },
   { name: "Wordmark", file: "/brand/marks/elixpo_word_mask_text.webp", note: "The Elixpo wordmark" },
   { name: "Lockup", file: "/brand/marks/elixpo_lock_up_text_mascot.webp", note: "Mascot + wordmark lockup" },
+  { name: "Site Partnership", file: "/brand/marks/elixpo_partnership_banner.webp", note: "Mascot + Wordmark Partnership"}
 ];
 
 const icons = [
