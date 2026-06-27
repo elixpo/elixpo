@@ -159,12 +159,12 @@ Elixpo uses one **licensing standard** across every repository:
 The Oreo mascot, the chest E-badge, and the "Elixpo" and "Oreo" names, domains,
 and palette are reserved - this protects the brand and its royalties while
 keeping the code and assets free. See [`LICENSE`](LICENSE) and the per-product
-notice board, [`NOTICE`](NOTICE).
+notice board, [`NOTICE`](LICENSES/NOTICE).
 
 ## Exclusive
 
 > Per-repo "exclusive" artifacts (an npm package, a VS Code extension, a hosted
-> SaaS, a paid tier) are declared here and in [`NOTICE`](NOTICE).
+> SaaS, a paid tier) are declared here and in [`NOTICE`](LICENSES/NOTICE).
 
 **This repository:** None - it is the website source.
 

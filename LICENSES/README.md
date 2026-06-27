@@ -30,7 +30,7 @@ notices/      Third-party attributions (the upstream credit list).
 
 Per-product reservations (an exclusive npm package, VS Code extension, hosted
 SaaS, paid tier, etc.) are NOT placed here. They go in the root
-[`NOTICE`](../NOTICE) file - the "notice board" - which is read together with
+[`NOTICE`](NOTICE) file - the "notice board" - which is read together with
 the LICENSE.
 
 ## Contributions
