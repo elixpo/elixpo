@@ -1,4 +1,6 @@
-import { KeyRound, Mail, CreditCard, Globe, Rocket, Activity } from "lucide-react";
+import {
+  Network, ShieldCheck, Database, KeyRound, Globe, Rocket, Layers, Activity,
+} from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { MermaidDiagram } from "@/components/MermaidDiagram";
 import { VIDEOS } from "@/lib/media";
@@ -6,86 +8,127 @@ import { VIDEOS } from "@/lib/media";
 export const metadata = {
   title: "Architecture",
   description:
-    "How the Elixpo ecosystem fits together: shared SSO, mail, and payouts services back the SaaS products and the lixrl flagship, with standalone surfaces and ops dashboards, all on Cloudflare.",
+    "The Elixpo high-level design: Cloudflare DNS and edge gateway (Workers, Pages), Workers KV and D1 data, shared SSO/mail/payouts, the SaaS products and the lixrl flagship, plus ops dashboards.",
   alternates: { canonical: "/architecture" },
   openGraph: {
     title: "Architecture | Elixpo",
-    description: "How the Elixpo ecosystem fits together.",
+    description: "The Elixpo high-level design, edge-first on Cloudflare.",
     images: ["/og-image.webp"],
   },
 };
 
-const ARCH_CHART = `graph TB
-  classDef shared fill:#1d1d1d,stroke:#DEDBC8,color:#E1E0CC;
+const ARCH_CHART = `graph TD
+  classDef edge fill:#1c1610,stroke:#F6821F,color:#F2D8BE,stroke-width:1.5px;
+  classDef gw fill:#1d1d1d,stroke:#DEDBC8,color:#E1E0CC,stroke-width:1.5px;
+  classDef data fill:#0f1a18,stroke:#00B4A5,color:#CDECE8,stroke-width:1.5px;
+  classDef shared fill:#1d1d1d,stroke:#DEDBC8,color:#E1E0CC,stroke-width:1.5px;
   classDef saas fill:#141414,stroke:#9a9a9a,color:#E1E0CC;
-  classDef flag fill:#2a2410,stroke:#FFBE1E,color:#ffffff;
-  classDef solo fill:#141414,stroke:#00B4A5,color:#E1E0CC;
-  classDef ops fill:#141414,stroke:#FF5D68,color:#E1E0CC;
+  classDef flag fill:#2a2410,stroke:#FFBE1E,color:#ffffff,stroke-width:1.5px;
+  classDef solo fill:#121a14,stroke:#3CC864,color:#D7ECDB;
+  classDef ops fill:#1a1214,stroke:#FF5D68,color:#F3D4D8;
 
-  subgraph SHARED["Shared platform"]
-    ACC["accounts.elixpo · SSO"]:::shared
-    MAIL["mails.elixpo · Mail"]:::shared
-    PAY["payouts.elixpo · Payments"]:::shared
+  USER([Users / Browsers]):::solo
+
+  subgraph CF[" Cloudflare "]
+    direction TB
+    DNS["Cloudflare DNS<br/>*.elixpo.com routing"]:::edge
+    GW["Edge Gateway<br/>Workers · Pages · WAF"]:::gw
+    subgraph DATA["Data layer"]
+      direction LR
+      KV[("Workers KV<br/>sessions · cache")]:::data
+      D1[("D1<br/>relational store")]:::data
+    end
   end
 
-  subgraph PRODUCTS["SaaS products · require login"]
+  subgraph CORE["Identity &amp; shared services"]
+    direction LR
+    ACC["accounts.elixpo<br/>SSO / identity"]:::shared
+    MAIL["mails.elixpo<br/>mail infra"]:::shared
+    PAY["payouts.elixpo<br/>payments"]:::shared
+  end
+
+  subgraph SAAS["SaaS products · authenticated"]
+    direction LR
     BLOGS["blogs.elixpo"]:::saas
-    ART["art.elixpo (under dev)"]:::saas
-    CHAT["chat.elixpo (under dev)"]:::saas
     SKETCH["sketch.elixpo"]:::saas
     SEARCH["search.elixpo"]:::saas
+    ART["art.elixpo · dev"]:::saas
+    CHAT["chat.elixpo · dev"]:::saas
   end
 
-  LIXRL["lixrl.com · URL shortener · flagship"]:::flag
+  LIXRL["lixrl.com<br/>URL shortener · flagship"]:::flag
 
   subgraph SOLO["Standalone · no login"]
+    direction LR
     HOME["elixpo.com"]:::solo
     OREO["oreo.elixpo"]:::solo
     ME["me.elixpo"]:::solo
   end
 
   subgraph OPS["Operations"]
-    ADMIN["admin.elixpo · Dashboard"]:::ops
-    STATUS["status.elixpo · Monitoring"]:::ops
+    direction LR
+    ADMIN["admin.elixpo<br/>dashboard"]:::ops
+    STATUS["status.elixpo<br/>monitoring"]:::ops
   end
 
-  BLOGS & ART & CHAT & SKETCH & SEARCH & LIXRL --> ACC
-  BLOGS & ART & CHAT & SKETCH & SEARCH & LIXRL --> MAIL
-  BLOGS & ART & CHAT & SKETCH & SEARCH & LIXRL --> PAY
-  ADMIN -.- ACC
-  STATUS -.- MAIL
+  USER --> DNS
+  DNS --> GW
+  GW --> ACC
+  GW --> BLOGS & SKETCH & SEARCH & ART & CHAT
+  GW --> LIXRL
+  GW --> HOME & OREO & ME
+  BLOGS & SKETCH & SEARCH & ART & CHAT & LIXRL --> ACC
+  BLOGS & SKETCH & SEARCH & ART & CHAT & LIXRL --> MAIL
+  BLOGS & SKETCH & SEARCH & ART & CHAT & LIXRL --> PAY
+  ACC --> KV
+  ACC --> D1
+  MAIL --> D1
+  PAY --> D1
+  LIXRL --> KV
+  ADMIN -.-> GW
+  STATUS -.-> GW
 `;
 
 const layers = [
   {
-    icon: KeyRound,
-    title: "Shared platform",
-    text: "accounts.elixpo (SSO), mails.elixpo (mail infra), and payouts.elixpo (payments) back the whole ecosystem.",
+    icon: Network,
+    title: "Cloudflare DNS",
+    text: "All *.elixpo.com hostnames resolve through Cloudflare DNS and route into the edge.",
   },
   {
-    icon: Globe,
+    icon: ShieldCheck,
+    title: "Edge gateway",
+    text: "Cloudflare Workers + Pages (with WAF) serve SSR, APIs, and static assets at the edge.",
+  },
+  {
+    icon: Database,
+    title: "Data layer",
+    text: "Workers KV holds sessions and cache; D1 is the relational store behind identity and services.",
+  },
+  {
+    icon: KeyRound,
+    title: "Identity & shared",
+    text: "accounts.elixpo (SSO), mails.elixpo (mail), and payouts.elixpo (payments) back every product.",
+  },
+  {
+    icon: Layers,
     title: "SaaS products",
-    text: "Blogs, Art, Chat, Sketch, and Search authenticate via Accounts and share the Mail and Payouts infrastructure.",
+    text: "Blogs, Sketch, Search, Art (dev) and Chat (dev) authenticate via SSO and share mail + payouts.",
   },
   {
     icon: Rocket,
     title: "Flagship",
-    text: "lixrl.com, our URL shortener, uses all three shared services - Accounts, Mail, and Payouts.",
+    text: "lixrl.com, our URL shortener, uses all three shared services plus KV for hot lookups.",
   },
   {
-    icon: Mail,
+    icon: Globe,
     title: "Standalone",
-    text: "elixpo.com, oreo.elixpo, and me.elixpo are public, login-free surfaces that stand on their own.",
+    text: "elixpo.com, oreo.elixpo and me.elixpo are public, login-free surfaces.",
   },
   {
     icon: Activity,
     title: "Operations",
-    text: "admin.elixpo is the operations dashboard and status.elixpo handles monitoring across the platform.",
-  },
-  {
-    icon: CreditCard,
-    title: "Edge",
-    text: "Everything runs on Cloudflare - workers, storage, and pages - for fast, global delivery.",
+    text: "admin.elixpo is the ops dashboard; status.elixpo monitors the platform.",
   },
 ];
 
@@ -93,20 +136,32 @@ export default function ArchitecturePage() {
   return (
     <div className="bg-black text-[#E1E0CC] select-none">
       <PageHero
-        eyebrow="How it fits together"
+        eyebrow="High-level design"
         title="Architecture"
-        subtitle="Shared SSO, mail, and payouts back the SaaS products and the lixrl flagship. Standalone surfaces stand alone. All on Cloudflare."
+        subtitle="Edge-first on Cloudflare: DNS into a Workers/Pages gateway, KV + D1 for data, shared SSO / mail / payouts behind every product."
         video={VIDEOS.sketch}
       />
 
       <section className="max-w-6xl mx-auto px-6 py-20">
-        {/* Diagram */}
-        <div className="rounded-2xl bg-[#0d0d0d] border border-white/10 p-4 sm:p-8 mb-16 noise-overlay">
-          <MermaidDiagram chart={ARCH_CHART} id="architecture" />
+        {/* Diagram - embedded frame */}
+        <div className="relative rounded-3xl border border-white/10 bg-gradient-to-b from-[#0e0e0e] to-[#080808] overflow-hidden mb-16 shadow-2xl">
+          <div className="flex items-center justify-between px-5 py-3 border-b border-white/10 bg-white/[0.02]">
+            <span className="text-[10px] uppercase tracking-widest font-mono text-[#DEDBC8]/60">
+              elixpo · system topology
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#FF5D68]/70" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#FFBE1E]/70" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#3CC864]/70" />
+            </span>
+          </div>
+          <div className="p-4 sm:p-8 bg-[radial-gradient(circle_at_50%_0%,rgba(222,219,200,0.05),transparent_60%)]">
+            <MermaidDiagram chart={ARCH_CHART} id="architecture" />
+          </div>
         </div>
 
         {/* Legend / layers */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {layers.map((l) => {
             const Icon = l.icon;
             return (

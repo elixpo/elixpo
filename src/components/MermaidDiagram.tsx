@@ -8,8 +8,9 @@ interface MermaidDiagramProps {
 }
 
 /**
- * Renders a Mermaid diagram, themed to match the site (dark + cream). Mermaid
- * is lazy-imported so its weight only loads on routes that use it.
+ * Renders a Mermaid diagram themed to match the site (dark + cream), laid out
+ * spaciously and scaled to fill its frame so it feels embedded in the page.
+ * Mermaid is lazy-imported so its weight only loads on routes that use it.
  */
 export function MermaidDiagram({ chart, id = "diagram" }: MermaidDiagramProps) {
   const [svg, setSvg] = useState("");
@@ -25,18 +26,26 @@ export function MermaidDiagram({ chart, id = "diagram" }: MermaidDiagramProps) {
           securityLevel: "loose",
           theme: "base",
           themeVariables: {
-            background: "#000000",
+            background: "transparent",
             primaryColor: "#161616",
             primaryTextColor: "#E1E0CC",
             primaryBorderColor: "#DEDBC8",
             secondaryColor: "#141414",
             tertiaryColor: "#0d0d0d",
-            lineColor: "#9a9a9a",
+            lineColor: "#7a7a7a",
             fontFamily: "Almarai, ui-sans-serif, system-ui, sans-serif",
             fontSize: "14px",
             clusterBkg: "rgba(255,255,255,0.02)",
-            clusterBorder: "rgba(255,255,255,0.12)",
+            clusterBorder: "rgba(255,255,255,0.14)",
             edgeLabelBackground: "#0d0d0d",
+          },
+          flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: "basis",
+            padding: 18,
+            nodeSpacing: 46,
+            rankSpacing: 64,
           },
         });
         const { svg } = await mermaid.render(`mmd-${id}`, chart);
@@ -61,15 +70,18 @@ export function MermaidDiagram({ chart, id = "diagram" }: MermaidDiagramProps) {
 
   if (!svg) {
     return (
-      <div className="flex items-center justify-center py-16 text-xs font-mono text-[#DEDBC8]/40">
-        Rendering diagram…
+      <div className="flex flex-col items-center justify-center gap-3 py-20">
+        <span className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
+        <span className="text-[10px] font-mono uppercase tracking-widest text-[#DEDBC8]/40">
+          Rendering topology
+        </span>
       </div>
     );
   }
 
   return (
     <div
-      className="mermaid-wrap w-full overflow-x-auto [&_svg]:mx-auto [&_svg]:max-w-full [&_svg]:h-auto"
+      className="mermaid-wrap w-full overflow-x-auto animate-fade-in [&_svg]:w-full [&_svg]:max-w-full [&_svg]:h-auto [&_svg]:mx-auto [&_.cluster_rect]:rounded-xl [&_.node_rect]:rounded-lg [&_.edgeLabel]:text-[11px]"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
