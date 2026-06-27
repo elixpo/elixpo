@@ -59,7 +59,7 @@ Some Elixpo products ship exclusive artifacts on top of their source - a
 published npm package, a VS Code Marketplace extension, a hosted SaaS service,
 a paid tier, and so on. Any such product-specific reservation is declared in:
 
-	NOTICE   (the notice board, at the repository root)
+	LICENSES/NOTICE   (the notice board, at the repository root)
 
 Where the NOTICE file adds a reservation for an exclusive artifact, that
 reservation governs that artifact, in addition to this LICENSE.
