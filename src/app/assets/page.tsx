@@ -59,13 +59,13 @@ export default function AssetsPage() {
             Brand <span className="italic font-serif text-primary">marks</span>
           </h2>
           <p className="text-sm text-[#DEDBC8]/60 font-mono mb-8">The core identity. Click to download.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="flex flex-wrap justify-center gap-5">
             {marks.map((m) => (
               <a
                 key={m.file}
                 href={m.file}
                 download
-                className="group rounded-2xl bg-[#141414] border border-white/10 p-6 hover:border-primary/30 transition-colors flex flex-col"
+                className="group rounded-2xl bg-[#141414] border border-white/10 p-6 hover:border-primary/30 transition-colors flex flex-col w-full sm:w-85"
               >
                 <div className="aspect-video rounded-xl bg-[#0d0d0d] border border-white/5 flex items-center justify-center mb-4 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
