@@ -40,6 +40,7 @@ export default async function ProductPage({ params }: Props) {
     name: product.name,
     description: product.description,
     url: product.url,
+    image: new URL(product.icon, "https://elixpo.com").toString(),
     ...(product.schemaType !== "Product" && { applicationCategory: product.eyebrow, operatingSystem: "Web" }),
     isPartOf: { "@type": "Organization", name: "Elixpo", url: "https://elixpo.com" },
   };

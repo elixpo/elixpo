@@ -25,6 +25,7 @@ export default function ProjectsPage() {
       position: index + 1,
       url: `https://elixpo.com/projects/${product.slug}`,
       name: product.name,
+      image: new URL(product.icon, "https://elixpo.com").toString(),
     })),
   };
 
@@ -48,9 +49,14 @@ export default function ProjectsPage() {
           {ECOSYSTEM_PRODUCTS.map((product, index) => (
             <article key={product.slug} className="rounded-2xl border border-white/10 bg-[#111] p-6 sm:p-8 flex flex-col min-h-[320px] hover:border-primary/30 transition-colors">
               <div className="flex items-start justify-between gap-4 mb-10">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-primary/70 font-mono">{product.eyebrow}</span>
+                <span
+                  aria-hidden="true"
+                  className="size-14 rounded-2xl border border-white/10 bg-white/[0.04] bg-center bg-cover shadow-[0_10px_35px_rgba(0,0,0,0.35)]"
+                  style={{ backgroundImage: `url("${product.icon}")` }}
+                />
                 <span className="text-[10px] text-white/35 font-mono">{String(index + 1).padStart(2, "0")}</span>
               </div>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-primary/70 font-mono mb-3">{product.eyebrow}</span>
               <h2 className="text-3xl sm:text-4xl font-serif italic text-white mb-4">{product.name}</h2>
               <p className="text-sm text-[#DEDBC8]/70 leading-relaxed mb-8 flex-1">{product.shortDescription}</p>
               <div className="flex flex-wrap items-center gap-4">

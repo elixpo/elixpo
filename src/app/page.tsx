@@ -33,6 +33,7 @@ const jsonLd = {
       name: product.name,
       url: product.url,
       description: product.shortDescription,
+      image: new URL(product.icon, "https://elixpo.com").toString(),
     },
   })),
 };

@@ -25,7 +25,12 @@ export function PackageCatalogSection() {
             <article key={item.name} className="rounded-2xl bg-[#111] border border-white/10 p-6 flex flex-col min-h-[300px] hover:border-primary/30 transition-colors group">
               <div className="flex items-center justify-between mb-10">
                 <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] font-mono text-white/45"><Package size={13} /> {item.type}</span>
-                <a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${item.name} on npm`} className="text-white/40 group-hover:text-primary transition-colors"><ArrowUpRight size={16} /></a>
+                <a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${item.name} on npm`} className="inline-flex items-center gap-2 text-white/40 group-hover:text-primary transition-colors">
+                  <span aria-hidden="true" className="inline-flex h-5 items-center rounded-sm bg-[#CB3837] px-2 font-sans text-[10px] font-black tracking-[-0.08em] text-white shadow-sm">
+                    npm
+                  </span>
+                  <ArrowUpRight size={16} />
+                </a>
               </div>
               <h3 className="text-xl font-mono text-white mb-4 break-all">{item.name}</h3>
               <p className="text-sm text-[#DEDBC8]/65 leading-relaxed mb-7 flex-1">{item.description}</p>
