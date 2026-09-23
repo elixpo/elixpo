@@ -16,7 +16,7 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="min-h-screen bg-black text-[#E1E0CC] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden select-none"
+      className="bg-black text-[#E1E0CC] pt-24 pb-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden select-none"
     >
       {/* Subtle background noise overlay */}
       <div className="absolute inset-0 bg-noise opacity-[0.15] mix-blend-overlay pointer-events-none z-0" />
@@ -40,7 +40,7 @@ export function FeaturesSection() {
           />
         </div>
 
-        <div className="mb-20">
+        <div>
           <ProductDirectoryTeaser />
         </div>
       </div>
