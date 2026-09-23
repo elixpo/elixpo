@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { ECOSYSTEM_PRODUCTS, getProduct } from "@/lib/catalog";
+import { serializeJsonLd } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,7 +18,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${product.name} — ${product.eyebrow}`,
     description: product.shortDescription,
-    keywords: product.keywords,
     alternates: { canonical: path },
     openGraph: {
       type: "website",
@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <main className="bg-black text-[#E1E0CC] pt-32 pb-24 px-4 sm:px-6 lg:px-8 min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
       <article className="max-w-5xl mx-auto">
         <Link href="/projects" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#DEDBC8]/50 hover:text-white transition-colors mb-14">
           <ArrowLeft size={13} /> All products

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { ECOSYSTEM_PRODUCTS } from "@/lib/catalog";
+import { serializeJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Products and Open-Source Projects",
@@ -31,7 +32,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="bg-black text-[#E1E0CC] pt-32 pb-24 px-4 sm:px-6 lg:px-8 min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
       <div className="max-w-7xl mx-auto">
         <header className="mb-14 sm:mb-20 max-w-4xl">
           <span className="text-[10px] uppercase tracking-widest font-mono text-primary/80 block mb-3">

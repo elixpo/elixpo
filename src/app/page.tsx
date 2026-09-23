@@ -4,6 +4,7 @@ import { NominationSection } from "@/components/NominationSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { PackageCatalogSection } from "@/components/PackageCatalogSection";
 import { ECOSYSTEM_PRODUCTS } from "@/lib/catalog";
+import { serializeJsonLd } from "@/lib/seo";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { Contributors } from "@/components/Contributors";
 import { FeatureProjectCTA } from "@/components/FeatureProjectCTA";
@@ -43,7 +44,7 @@ export default function Home() {
     <main className="bg-black text-[#E1E0CC]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <LandingHero />
       <AboutSection />

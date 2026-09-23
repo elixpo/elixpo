@@ -5,6 +5,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { MegaNavbar } from "@/components/MegaNavbar";
 import { Footer } from "@/components/Footer";
+import { SITE_URL } from "@/lib/seo";
 
 // Global dark shell - overrides the semantic theme tokens to dark so every
 // route matches, and applies the design font.
@@ -48,8 +49,6 @@ const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://elixpo.com";
-
 const SITE_DESCRIPTION =
   "Explore Elixpo's open-source tools for publishing, visual collaboration, AI-assisted search, portfolios, identity, short links, QR codes, and software packages.";
 
@@ -57,39 +56,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: "Elixpo",
   title: {
-    default: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
+    default: "Elixpo — Open-Source Tools for Creators and Developers",
     template: "%s | Elixpo",
   },
   description: SITE_DESCRIPTION,
-  keywords: [
-    "Elixpo",
-    "open source",
-    "AI",
-    "Artificial Intelligence",
-    "AI tools",
-    "developer tools",
-    "LixSketch",
-    "LixEditor",
-    "Elixpo Blogs",
-    "Elixpo Accounts",
-    "SVG whiteboard",
-    "block editor",
-    "AI art generation",
-    "Next.js",
-    "Cloudflare",
-    "Pollinations AI",
-    "Hacktoberfest",
-    "MIT license",
-    "Developer Platform",
-    "Developer Tools",
-    "Open Source Software",
-    "Productivity",
-    "Next.js",
-  ],
   authors: [{ name: "Ayushman Bhattacharya", url: "https://github.com/Circuit-Overtime" }],
   creator: "Elixpo",
   publisher: "Elixpo",
   category: "technology",
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
     icon: [
@@ -104,7 +81,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Elixpo",
-    title: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
+    title: "Elixpo — Open-Source Tools for Creators and Developers",
     description: SITE_DESCRIPTION,
     images: [
       {
@@ -118,8 +95,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
-    description: SITE_DESCRIPTION,
     images: ["/og-image.webp"],
     creator: "@elixpo",
   },

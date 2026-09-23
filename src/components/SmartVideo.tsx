@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 interface SmartVideoProps {
   src: string;
@@ -8,6 +8,17 @@ interface SmartVideoProps {
   desktopOnly?: boolean;
   priority?: boolean;
   poster?: string;
+}
+function subscribeToDesktop(callback: () => void) {
+  const query = window.matchMedia("(min-width: 768px)");
+  query.addEventListener("change", callback);
+  return () => query.removeEventListener("change", callback);
+}
+function getDesktopSnapshot() {
+  return window.matchMedia("(min-width: 768px)").matches;
+}
+function getServerDesktopSnapshot() {
+  return false;
 }
 
 /** Plays background video only when it is useful, visible, and data-safe. */
@@ -19,16 +30,8 @@ export function SmartVideo({
   poster,
 }: SmartVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [canRender, setCanRender] = useState(!desktopOnly);
-
-  useEffect(() => {
-    if (!desktopOnly) return;
-    const query = window.matchMedia("(min-width: 768px)");
-    const update = () => setCanRender(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
-  }, [desktopOnly]);
+  const isDesktop = useSyncExternalStore(subscribeToDesktop, getDesktopSnapshot, getServerDesktopSnapshot);
+  const canRender = !desktopOnly || isDesktop;
 
   useEffect(() => {
     const video = videoRef.current;

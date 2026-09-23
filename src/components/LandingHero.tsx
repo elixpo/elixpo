@@ -27,7 +27,7 @@ export function LandingHero() {
         <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-black/35 via-transparent to-black/20" />
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/45 to-transparent" />
 
-        <div className="relative z-10 flex min-h-[calc(100svh-1.25rem)] md:min-h-[720px] md:h-full flex-col justify-between p-5 pt-20 sm:p-8 sm:pt-24 md:p-12 lg:p-16">
+        <div className="relative z-10 flex min-h-[calc(100svh-1.25rem)] md:min-h-[720px] md:h-full flex-col p-5 pt-20 sm:p-8 sm:pt-24 md:p-12 lg:p-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,33 +42,24 @@ export function LandingHero() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 lg:gap-14 items-end">
+          <div className="flex flex-1 items-center justify-center py-10 sm:py-14 md:py-16">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.08, ease }}
-              className="md:col-span-8 lg:col-span-9"
+              className="flex w-full max-w-5xl flex-col items-center text-center"
             >
-              <p className="mb-3 text-[10px] font-mono uppercase tracking-[0.2em] text-primary/70 md:hidden">
+              <p className="mb-4 text-[10px] font-mono uppercase tracking-[0.24em] text-[#E1E0CC]/65 sm:mb-5">
                 Create · Research · Build
               </p>
-              <h1 className="font-serif italic text-[#E1E0CC] text-[clamp(4.5rem,22vw,7rem)] md:text-[clamp(7rem,15vw,14rem)] leading-[0.72] tracking-[-0.055em] drop-shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
+              <h1 className="font-serif italic text-[#E1E0CC] text-[clamp(4.75rem,22vw,7rem)] md:text-[clamp(8rem,13vw,12rem)] leading-[0.72] tracking-[-0.055em] drop-shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
                 Elixpo
               </h1>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.22, ease }}
-              className="md:col-span-4 lg:col-span-3 md:pb-2"
-            >
-              <p className="text-sm sm:text-base leading-relaxed text-[#E1E0CC]/78 max-w-md md:max-w-sm">
+              <p className="mt-7 max-w-xl text-sm leading-relaxed text-[#E1E0CC]/78 sm:text-base md:mt-9 md:max-w-2xl md:text-lg">
                 <span className="md:hidden">Open-source tools for publishing, visual collaboration, research, identity, and developer workflows.</span>
                 <span className="hidden md:inline">A community-built ecosystem connecting creative platforms, research experiments, shared infrastructure, and developer tooling.</span>
               </p>
-
-              <div className="mt-5 md:mt-7 flex flex-wrap items-center gap-3">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8">
                 <Link
                   href="/projects"
                   className="group inline-flex h-11 items-center gap-4 rounded-full bg-[#DEDBC8] pl-5 pr-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-black transition-transform hover:scale-[1.02] active:scale-[0.98]"
