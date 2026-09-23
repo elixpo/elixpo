@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ECOSYSTEM_PRODUCTS } from "@/lib/catalog";
 
 export const dynamic = "force-static";
 
@@ -21,10 +22,19 @@ const routes: { path: string; freq: MetadataRoute.Sitemap[number]["changeFrequen
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return routes.map(({ path, freq, priority }) => ({
+  const staticRoutes = routes.map(({ path, freq, priority }) => ({
     url: `${baseUrl}${path}`,
     lastModified,
     changeFrequency: freq,
     priority,
   }));
+
+  const productRoutes: MetadataRoute.Sitemap = ECOSYSTEM_PRODUCTS.map(({ slug }) => ({
+    url: `${baseUrl}/projects/${slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...productRoutes];
 }

@@ -51,7 +51,7 @@ const instrumentSerif = Instrument_Serif({
 const SITE_URL = "https://elixpo.com";
 
 const SITE_DESCRIPTION =
-  "Elixpo is a developer-first, open-source ecosystem that brings together AI-powered applications, developer tools, creative platforms, and community-driven services. From collaborative whiteboards and code editors to blogging, authentication, URL management, and intelligent workflows, Elixpo empowers developers to build, collaborate, and innovate together. Proudly open source and maintained by a global community of contributors under MIT and CC BY 4.0 licenses.";
+  "Explore Elixpo's open-source tools for publishing, visual collaboration, AI-assisted search, portfolios, identity, short links, QR codes, and software packages.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -119,8 +119,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Elixpo - Open Source Ecosystem of AI and Developer Tools",
-    description:
-      "Build, collaborate, and innovate with Elixpo—an open-source ecosystem of AI-powered applications, developer tools, and community-drven platforms for modern developers.",
+    description: SITE_DESCRIPTION,
     images: ["/og-image.webp"],
     creator: "@elixpo",
   },

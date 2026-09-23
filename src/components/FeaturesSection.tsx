@@ -1,7 +1,7 @@
 "use client";
 
 import { WordsPullUpMultiStyle } from "./WordsPullUpMultiStyle";
-import { ProjectsGrid } from "./ProjectsGrid";
+import { ProductDirectoryTeaser } from "./ProductDirectoryTeaser";
 import { Segment } from "@/lib/elixpo-links";
 
 export function FeaturesSection() {
@@ -41,7 +41,7 @@ export function FeaturesSection() {
         </div>
 
         <div className="mb-20">
-          <ProjectsGrid />
+          <ProductDirectoryTeaser />
         </div>
       </div>
     </section>
