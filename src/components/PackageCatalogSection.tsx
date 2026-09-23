@@ -5,7 +5,7 @@ import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 export function PackageCatalogSection() {
   return (
     <section id="packages" aria-labelledby="packages-heading" className="bg-black text-[#E1E0CC] pt-12 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/3 w-[420px] h-[320px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute hidden md:block bottom-0 left-1/3 w-[420px] h-[320px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto relative">
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-3xl">

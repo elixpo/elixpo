@@ -9,6 +9,13 @@ import Lenis from "lenis";
  */
 export function SmoothScroll() {
   useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const touchPointer = window.matchMedia("(pointer: coarse)");
+
+    // Touch browsers already provide GPU-backed momentum scrolling. Avoiding
+    // a second animation loop improves responsiveness and battery life.
+    if (reducedMotion.matches || touchPointer.matches) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

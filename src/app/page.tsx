@@ -1,4 +1,4 @@
-import { HeroSection } from "@/components/HeroSection";
+import { LandingHero } from "@/components/LandingHero";
 import { AboutSection } from "@/components/AboutSection";
 import { NominationSection } from "@/components/NominationSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
@@ -45,7 +45,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <HeroSection />
+      <LandingHero />
       <AboutSection />
       <NominationSection />
       <FeaturesSection />
