@@ -85,7 +85,7 @@
     },
     {
       "name": "brand-production",
-      "repositoryUrl": "https://github.com/elixpo/brand-production",
+      "repositoryUrl": null,
       "disposition": "supporting-repository",
       "publicClass": null,
       "relationship": "core",

@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "lastVerified": "2026-10-17",
   "canonicalHome": "https://elixpo.com/assets",
-  "sourceRepository": "https://github.com/elixpo/brand-production",
+  "sourceRepository": "urn:github:repository:elixpo/brand-production",
   "migrationStatus": "complete",
   "visualDirection": {
     "name": "Open Field",
