@@ -910,22 +910,22 @@ svg { transition: transform .2s ease; }
 .recognition-brand { display: flex; align-items: center; gap: .75rem; }.recognition-brand img { border-radius: 50%; }
 .recognition-brand strong { display: block; font-size: 1.2rem; letter-spacing: -.03em; }.recognition-brand span,.recognition-series span { display: block; margin-top: .2rem; color: var(--leaf); font: 650 .54rem var(--font-ui-mono); letter-spacing: .14em; }
 .recognition-series { text-align: right; }.recognition-series b { display: block; margin-top: .55rem; font: 650 .72rem var(--font-ui-mono); }
-.recognition-copy { width: min(100%,980px); align-self: center; justify-self: center; padding: clamp(1.5rem,2.8vw,2.8rem) 5rem clamp(1.3rem,2.3vw,2.2rem); text-align: center; }
+.recognition-copy { width: min(100%,1040px); align-self: center; justify-self: center; padding: clamp(1.3rem,2.3vw,2.3rem) 5rem clamp(1.1rem,1.8vw,1.8rem); text-align: center; }
 .recognition-copy > p:first-child { margin: 0 0 .8rem; color: var(--leaf); font: 650 .66rem var(--font-ui-mono); letter-spacing: .18em; }
 .recognition-copy h1 { margin: 0; font: 520 clamp(3.4rem,6.5vw,6.8rem)/.85 var(--font-ui-sans); letter-spacing: -.075em; }
 .recognition-copy h1 em { display: inline-block; font-family: var(--font-display-serif); font-weight: 400; letter-spacing: -.055em; }
-.recognition-address { width: min(100%,760px); margin: clamp(1.1rem,2vw,1.8rem) auto 0; padding-top: clamp(.8rem,1.4vw,1.2rem); border-top: 1px solid rgba(20,32,24,.2); }
-.recognition-copy small { display: block; margin: 0; color: var(--muted); font-size: .72rem; letter-spacing: .04em; }
-.recognition-copy h2 { margin: .25rem 0 .8rem; font: 400 clamp(2rem,4.2vw,4.3rem)/.98 var(--font-display-serif); letter-spacing: -.045em; }
-.recognition-statement { max-width: 800px; margin: 0 auto; color: #4f5b53; font-size: clamp(.75rem,1.15vw,.98rem); line-height: 1.65; text-wrap: balance; }
+.recognition-address { width: min(100%,820px); margin: clamp(1rem,1.6vw,1.45rem) auto 0; padding-top: clamp(.7rem,1vw,.95rem); border-top: 1px solid rgba(20,32,24,.2); }
+.recognition-copy small { display: block; margin: 0; color: var(--muted); font-size: clamp(.72rem,.8vw,.82rem); letter-spacing: .04em; }
+.recognition-copy h2 { margin: .3rem 0 .85rem; font: 400 clamp(2.2rem,4.3vw,4.5rem)/.98 var(--font-display-serif); letter-spacing: -.045em; }
+.recognition-statement { max-width: 880px; margin: 0 auto; color: #435249; font-size: clamp(.92rem,1.2vw,1.08rem); line-height: 1.7; text-wrap: balance; }
 .recognition-seal { position: absolute; right: clamp(2.5rem,5vw,5.5rem); top: 50%; width: 145px; height: 145px; translate: 0 -12%; display: grid; place-content: center; justify-items: center; border: 1px solid rgba(11,98,60,.45); border-radius: 50%; color: var(--leaf); text-align: center; background: rgba(255,255,255,.5); box-shadow: 0 0 0 8px rgba(246,245,240,.75),0 0 0 9px rgba(11,98,60,.18); }
 .recognition-seal strong { margin: .5rem 0; font-size: .72rem; letter-spacing: .12em; }.recognition-seal span { font: 600 .5rem var(--font-ui-mono); letter-spacing: .1em; }
-.recognition-certificate > footer { grid-column: 1 / -1; padding-top: 1.1rem; display: grid; grid-template-columns: minmax(0,1fr) 230px 250px; gap: 1.7rem; align-items: end; border-top: 1px solid rgba(20,32,24,.22); }
+.recognition-certificate > footer { grid-column: 1 / -1; min-height: 112px; padding: 1.35rem 0 .35rem; display: grid; grid-template-columns: minmax(0,1fr) 230px 250px; gap: 1.7rem; align-items: end; border-top: 1px solid rgba(20,32,24,.22); }
 .recognition-certificate footer dl { margin: 0; display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; }
 .recognition-certificate footer dt,.recognition-verify span { color: var(--muted); font: .5rem var(--font-ui-mono); letter-spacing: .08em; text-transform: uppercase; }
 .recognition-certificate footer dd { margin: .3rem 0 0; font-size: .64rem; font-weight: 700; }
-.recognition-signature,.recognition-verify { padding-top: .7rem; border-top: 1px solid rgba(20,32,24,.28); }
-.recognition-signature i { display: block; height: 28px; margin-top: -36px; }
+.recognition-signature,.recognition-verify { padding-top: .7rem; }
+.recognition-signature i { display: block; height: 34px; }
 .recognition-signature span { display: block; font: 400 1rem var(--font-display-serif); }.recognition-signature b,.recognition-verify b { display: block; margin-top: .28rem; font: 600 .5rem/1.35 var(--font-ui-mono); overflow-wrap: anywhere; }
 .recognition-evidence { width: min(100%,1100px); margin: clamp(4rem,8vw,7rem) auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
 .recognition-evidence h2 { margin: 0; font-size: clamp(2.5rem,5vw,5rem); line-height: .95; letter-spacing: -.06em; }
