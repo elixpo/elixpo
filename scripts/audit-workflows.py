@@ -188,7 +188,12 @@ def main() -> int:
     if args.json:
         args.json.parent.mkdir(parents=True, exist_ok=True)
         args.json.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(result, indent=2))
+    print(
+        "Workflow audit: "
+        f"{audited} workflow(s), "
+        f"{result['counts']['errors']} error(s), "
+        f"{result['counts']['warnings']} warning(s)"
+    )
     return 1 if result["counts"]["errors"] else 0
 
 

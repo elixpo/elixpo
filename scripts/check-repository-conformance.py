@@ -100,6 +100,25 @@ def require_value(audit: Audit, manifest: dict[str, Any], path: tuple[str, ...])
     return value
 
 
+def reviewed_exception(manifest: dict[str, Any], exception_id: str) -> bool:
+    conformance = manifest.get("conformance")
+    if not isinstance(conformance, dict) or conformance.get("status") not in {"conformant-with-exceptions", "migration-in-progress"}:
+        return False
+    exceptions = conformance.get("exceptions")
+    if not isinstance(exceptions, list):
+        return False
+    return any(
+        isinstance(item, dict)
+        and item.get("id") == exception_id
+        and isinstance(item.get("reason"), str)
+        and bool(item["reason"].strip())
+        and isinstance(item.get("owner"), str)
+        and bool(item["owner"].strip())
+        and is_iso_date(item.get("review_at"))
+        for item in exceptions
+    )
+
+
 def validate_manifest(audit: Audit, manifest: dict[str, Any], repo: Path) -> None:
     manifest_version = manifest.get("schema_version")
     if manifest_version not in SUPPORTED_VERSIONS:
@@ -184,7 +203,10 @@ def validate_manifest(audit: Audit, manifest: dict[str, Any], repo: Path) -> Non
     if lifecycle in ACTIVE_LIFECYCLES:
         for filename, remediation in REQUIRED_FILES.items():
             if not (repo / filename).is_file():
-                audit.error("REQUIRED_FILE", filename, "Required repository document is missing.", remediation.capitalize() + ".")
+                if filename == "LICENSE" and reviewed_exception(manifest, "license-missing"):
+                    audit.warn("LICENSE_EXCEPTION", filename, "No license is published; reuse permission must not be inferred.", "Resolve the recorded legal review before claiming full conformance.")
+                else:
+                    audit.error("REQUIRED_FILE", filename, "Required repository document is missing.", remediation.capitalize() + ".")
 
     license_file = nested(manifest, "license", "current_file")
     if isinstance(license_file, str) and not (repo / license_file).is_file():
@@ -221,6 +243,17 @@ def validate_manifest(audit: Audit, manifest: dict[str, Any], repo: Path) -> Non
         exceptions = conformance.get("exceptions", [])
         if conformance.get("status") == "conformant-with-exceptions" and not exceptions:
             audit.error("EXCEPTIONS_REQUIRED", "conformance.exceptions", "The status claims exceptions but none are recorded.", "Record every exception with an owner, reason, and review date.")
+        if isinstance(exceptions, list):
+            for index, exception in enumerate(exceptions):
+                location = f"conformance.exceptions[{index}]"
+                if not isinstance(exception, dict):
+                    audit.error("EXCEPTION_FORMAT", location, "Exception must be a mapping.", "Record id, reason, owner, and review_at.")
+                    continue
+                for field in ["id", "reason", "owner"]:
+                    if not isinstance(exception.get(field), str) or not exception[field].strip():
+                        audit.error("EXCEPTION_FORMAT", f"{location}.{field}", "Required exception field is missing.", f"Add `{field}` to the reviewed exception.")
+                if not is_iso_date(exception.get("review_at")):
+                    audit.error("EXCEPTION_DATE", f"{location}.review_at", "Exception review date must use YYYY-MM-DD.", "Record a future review date.")
 
 
 def validate_registry_alignment(audit: Audit, manifest: dict[str, Any], registry_root: Path) -> None:
