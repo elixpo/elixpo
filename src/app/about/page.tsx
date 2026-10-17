@@ -1,10 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
-  Boxes,
-  GitBranch,
   Scale,
 } from "lucide-react";
 import { createPageMetadata, serializeJsonLd } from "@/lib/seo";
@@ -153,28 +151,27 @@ export default function AboutPage() {
           <p className="eyebrow">Why Elixpo exists</p>
           <h2>Publishing code is the beginning, not the finish.</h2>
         </div>
-        <div className="about-premise-copy">
-          <p>
-            Useful open-source work often stalls between “the code exists” and
-            “people can understand, trust, contribute to, and cite it.” A public
-            repository provides storage and collaboration tools, but it does not
-            automatically provide a shared objective, prepared work, responsive
-            review, accurate status, or a coherent release.
-          </p>
-          <p>
-            Elixpo works on that missing distance. It creates a bounded frame
-            around the next meaningful outcome and connects the repository to
-            its documentation, research, packages, contributors, decisions, and
-            history. The result is easier to discover because it is easier to
-            understand.
-          </p>
-        </div>
-        <div className="about-system-map" aria-label="The Elixpo public release system">
-          <div><GitBranch size={18} /><span>Repository</span><small>Source and history</small></div>
-          <i aria-hidden="true" />
-          <div className="is-focus"><Boxes size={18} /><span>Chapter</span><small>Coordinated public work</small></div>
-          <i aria-hidden="true" />
-          <div><BookOpen size={18} /><span>Release</span><small>Artifact and record</small></div>
+        <div className="about-premise-body">
+          <figure className="about-premise-artifact">
+            <Image src="/brand/diagrams/elixpo-ecosystem.svg" alt="Diagram showing open projects moving through an Elixpo Chapter into a public release and durable record" width={1200} height={560} sizes="(max-width: 900px) 100vw, 62vw" />
+            <figcaption><span>PUBLIC SYSTEM / VERIFIED ARTIFACT</span><Link href="/architecture">Explore the architecture <ArrowRight size={14}/></Link></figcaption>
+          </figure>
+          <div className="about-premise-copy">
+            <p>
+              Useful open-source work often stalls between “the code exists” and
+              “people can understand, trust, contribute to, and cite it.” A public
+              repository provides storage and collaboration tools, but it does not
+              automatically provide a shared objective, prepared work, responsive
+              review, accurate status, or a coherent release.
+            </p>
+            <p>
+              Elixpo works on that missing distance. It creates a bounded frame
+              around the next meaningful outcome and connects the repository to
+              its documentation, research, packages, contributors, decisions, and
+              history. The result is easier to discover because it is easier to
+              understand.
+            </p>
+          </div>
         </div>
       </section>
 
