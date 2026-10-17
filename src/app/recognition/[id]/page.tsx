@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${record.name} — Certificate of Contribution`,
     description: `Verify ${record.name}'s Elixpo Certificate of Contribution record ${record.id}, issued in appreciation of attributable open-source work.`,
     path: `/recognition/${record.id.toLowerCase()}`,
+    socialImage: `/social/recognition/${record.id.toLowerCase()}`,
   });
 }
 
