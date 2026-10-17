@@ -24,7 +24,7 @@ export function StoryHome() {
   return (
     <main className="story-home">
       <section className="story-hero">
-        <div className="hero-field" aria-hidden="true"><span /><span /><span /></div>
+        <div className="hero-field" aria-hidden="true"><span /><span /><span /><span /><span /></div>
         <div className="hero-copy">
           <div className="hero-copy-main">
             <p className="eyebrow">Elixpo · open-source project foundry</p>
