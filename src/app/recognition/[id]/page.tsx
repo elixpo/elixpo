@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const record = getRecord(id);
   if (!record) return {};
   return createPageMetadata({
-    title: `${record.name} — Appreciation for Contribution`,
-    description: `Verify ${record.name}'s Elixpo Appreciation for Contribution record ${record.id}, issued for attributable open-source work.`,
+    title: `${record.name} — Certificate of Contribution`,
+    description: `Verify ${record.name}'s Elixpo Certificate of Contribution record ${record.id}, issued in appreciation of attributable open-source work.`,
     path: `/recognition/${record.id.toLowerCase()}`,
   });
 }
@@ -40,7 +40,7 @@ export default async function RecognitionPage({ params }: PageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: `Appreciation for Contribution — ${record.name}`,
+    name: `Certificate of Contribution — ${record.name}`,
     identifier: record.id,
     datePublished: recognition.issuedAt,
     url: canonicalUrl,
@@ -55,9 +55,9 @@ export default async function RecognitionPage({ params }: PageProps) {
     <article className="recognition-certificate" aria-labelledby="certificate-recipient">
       <div className="recognition-geometry" aria-hidden="true"><i/><i/><i/><i/></div>
       <header><div className="recognition-brand"><Image src="/logos/logo.webp" width={42} height={42} alt=""/><div><strong>Elixpo</strong><span>OPEN-SOURCE PROJECT FOUNDRY</span></div></div><div className="recognition-series"><span>PUBLIC APPRECIATION RECORD</span><b>2026 / {record.id.slice(-3)}</b></div></header>
-      <section className="recognition-copy"><p>APPRECIATION FOR</p><h1>Contribution<span>.</span></h1><small>This appreciation is presented to</small><h2 id="certificate-recipient">{record.name}</h2><p className="recognition-statement">{record.statement}. The work is part of Elixpo&apos;s inspectable public record and helped move open work toward documented, usable outcomes.</p></section>
+      <section className="recognition-copy"><p>PUBLIC RECOGNITION OF OPEN-SOURCE WORK</p><h1>Certificate of<br/><em>Contribution.</em></h1><div className="recognition-address"><small>Presented with appreciation</small><h2 id="certificate-recipient">Dear {record.name},</h2></div><p className="recognition-statement">Elixpo recognizes you {record.statement}. Your work forms part of Elixpo&apos;s inspectable public record and helped move open work toward documented, usable outcomes.</p></section>
       <aside className="recognition-seal"><BadgeCheck size={29}/><strong>PUBLIC<br/>RECORD</strong><span>ELIXPO · 2026</span></aside>
-      <footer><dl><div><dt>Contribution period</dt><dd>{record.period}</dd></div><div><dt>GitHub identity</dt><dd>@{record.handle}</dd></div><div><dt>Issued</dt><dd>{issued}</dd></div><div><dt>Certificate ID</dt><dd>{record.id}</dd></div></dl><div className="recognition-signature"><span>Ayushman Bhattacharya</span><b>Founder and Project Lead</b></div><div className="recognition-verify"><span>VERIFY THE RECORD</span><b>elixpo.com/recognition/{record.id.toLowerCase()}</b></div></footer>
+      <footer><dl><div><dt>Contribution period</dt><dd>{record.period}</dd></div><div><dt>GitHub identity</dt><dd>@{record.handle}</dd></div><div><dt>Issued</dt><dd>{issued}</dd></div><div><dt>Certificate ID</dt><dd>{record.id}</dd></div></dl><div className="recognition-signature"><i aria-hidden="true"/><span>Ayushman Bhattacharya</span><b>Founder and Project Lead · Authorized signatory</b></div><div className="recognition-verify"><span>VERIFY THE RECORD</span><b>elixpo.com/recognition/{record.id.toLowerCase()}</b></div></footer>
     </article>
     <section className="recognition-evidence"><div><p className="eyebrow">Verification boundary</p><h2>This is appreciation, not accreditation.</h2></div><div><p>The record recognizes attributable public contribution. It does not assert employment, internship completion, academic credit, professional certification, or current organization membership.</p><a href={record.recordUrl} target={evidenceExternal ? "_blank" : undefined} rel={evidenceExternal ? "noreferrer" : undefined}>Inspect the contribution record <ArrowUpRight size={14}/></a><a href={`https://github.com/${record.handle}`} target="_blank" rel="noreferrer">Open the public GitHub identity <ArrowUpRight size={14}/></a></div></section>
   </main>;
