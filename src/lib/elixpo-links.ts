@@ -31,6 +31,8 @@ export const ELIXPO_LINKS = {
   blog: "https://blogs.elixpo.com",
   discussions: "https://github.com/orgs/elixpo/discussions",
   email: "hello@elixpo.com",
+  researchEmail: "ayushman.elixpo@gmail.com",
+  operationsEmail: "vivek@elixpo.com",
   terms: "/terms",
   privacy: "/privacy",
   architecture: "/architecture",
