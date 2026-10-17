@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Github, Mail, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, FlaskConical, Github, Mail, MessageCircle, Settings, ShieldCheck } from "lucide-react";
 import { ELIXPO_LINKS } from "@/lib/elixpo-links";
 import { createPageMetadata, serializeJsonLd } from "@/lib/seo";
 
@@ -17,6 +17,22 @@ const channels = [
     text: "Use email for organization-level questions, corrections, brand enquiries, and matters that do not belong to one public repository.",
     href: `mailto:${ELIXPO_LINKS.email}`,
     action: ELIXPO_LINKS.email,
+  },
+  {
+    icon: FlaskConical,
+    label: "Research",
+    title: "Discuss research",
+    text: "Use this address for research publications, reproducibility questions, author corrections, and potential research collaboration.",
+    href: `mailto:${ELIXPO_LINKS.researchEmail}`,
+    action: ELIXPO_LINKS.researchEmail,
+  },
+  {
+    icon: Settings,
+    label: "Operations",
+    title: "Contact operations",
+    text: "Use this address for operational coordination, organization administration, service ownership, and time-sensitive internal routing.",
+    href: `mailto:${ELIXPO_LINKS.operationsEmail}`,
+    action: ELIXPO_LINKS.operationsEmail,
   },
   {
     icon: MessageCircle,
@@ -56,7 +72,11 @@ export default function ContactPage() {
       name: "Elixpo",
       url: "https://elixpo.com",
       email: ELIXPO_LINKS.email,
-      contactPoint: { "@type": "ContactPoint", contactType: "general enquiries", email: ELIXPO_LINKS.email, availableLanguage: "English" },
+      contactPoint: [
+        { "@type": "ContactPoint", contactType: "general enquiries", email: ELIXPO_LINKS.email, availableLanguage: "English" },
+        { "@type": "ContactPoint", contactType: "research enquiries", email: ELIXPO_LINKS.researchEmail, availableLanguage: "English" },
+        { "@type": "ContactPoint", contactType: "operations", email: ELIXPO_LINKS.operationsEmail, availableLanguage: "English" },
+      ],
     },
   };
 
