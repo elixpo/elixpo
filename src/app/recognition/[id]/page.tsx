@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, BadgeCheck } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, BadgeCheck, Download } from "lucide-react";
 import recognition from "../../../../content/recognition.json";
-import { PrintCertificateButton } from "@/components/PrintCertificateButton";
 import { createPageMetadata, serializeJsonLd } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ id: string }> };
@@ -52,11 +51,11 @@ export default async function RecognitionPage({ params }: PageProps) {
 
   return <main className="recognition-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
-    <div className="recognition-toolbar"><Link href="/recognition"><ArrowLeft size={14}/> All recognition records</Link><PrintCertificateButton /></div>
+    <div className="recognition-toolbar"><Link href="/recognition"><ArrowLeft size={14}/> All recognition records</Link><a className="recognition-print" href={`/recognition/${record.id.toLowerCase()}/certificate.png`} download={`elixpo-${record.id.toLowerCase()}.png`}><Download size={15}/> Download certificate PNG</a></div>
     <article className="recognition-certificate" aria-labelledby="certificate-recipient">
       <div className="recognition-geometry" aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
       <header><div className="recognition-brand"><Image src="/logos/logo.webp" width={42} height={42} alt=""/><div><strong>Elixpo</strong><span>OPEN-SOURCE PROJECT FOUNDRY</span></div></div><div className="recognition-series"><span>PUBLIC APPRECIATION RECORD</span><b>2026 / {record.id.slice(-3)}</b></div></header>
-      <section className="recognition-copy"><p>PUBLIC RECOGNITION OF OPEN-SOURCE WORK</p><h1>Certificate of<br/><em>Contribution.</em></h1><div className="recognition-address"><small>Presented with appreciation</small><h2 id="certificate-recipient">Dear {record.name},</h2></div><p className="recognition-statement">Elixpo recognizes you {record.statement}. Your work forms part of Elixpo&apos;s inspectable public record and helped move open work toward documented, usable outcomes.</p></section>
+      <section className="recognition-copy"><p>PUBLIC RECOGNITION OF OPEN-SOURCE WORK</p><h1>Certificate of<br/><em>Contribution.</em></h1><div className="recognition-address"><small>Presented with appreciation</small><h2 id="certificate-recipient">Dear {record.name},</h2></div><p className="recognition-statement">Elixpo proudly recognizes you {record.statement}. Your care, skill, and willingness to build in public helped turn shared ideas into documented, usable outcomes. This contribution is preserved in Elixpo&apos;s inspectable public record so the work—and the person behind it—remains visible.</p></section>
       <aside className="recognition-seal"><BadgeCheck size={29}/><strong>PUBLIC<br/>RECORD</strong><span>ELIXPO · 2026</span></aside>
       <footer><dl><div><dt>Contribution period</dt><dd>{record.period}</dd></div><div><dt>GitHub identity</dt><dd>@{record.handle}</dd></div><div><dt>Issued</dt><dd>{issued}</dd></div><div><dt>Certificate ID</dt><dd>{record.id}</dd></div></dl><div className="recognition-signature"><i aria-hidden="true"/><span>Ayushman Bhattacharya</span><b>Founder and Project Lead · Authorized signatory</b></div><div className="recognition-verify"><span>VERIFY THE RECORD</span><b>elixpo.com/recognition/{record.id.toLowerCase()}</b></div></footer>
     </article>

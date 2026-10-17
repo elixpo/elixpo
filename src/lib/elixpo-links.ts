@@ -52,7 +52,7 @@ export const ELIXPO_LINKS = {
   tommy: "https://github.com/elixpo/tommy",
   nominate: "https://stars.github.com/nominate/",
   fundingPolicy: "https://github.com/elixpo/elixpo/blob/main/docs/policies/sponsorship.md",
-  licensingPolicy: "https://github.com/elixpo/elixpo/blob/main/docs/policies/licensing.md",
+  licensingPolicy: "/licensing",
   npmLixSketch: "https://www.npmjs.com/package/@elixpo/lixsketch",
   npmLixEditor: "https://www.npmjs.com/package/@elixpo/lixeditor",
   vsLixSketch: "https://marketplace.visualstudio.com/items?itemName=elixpo.lixsketch",

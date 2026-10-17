@@ -22,6 +22,9 @@ const moreLinks = [
   { label: "Branding", href: "/branding" },
   { label: "Community", href: "/community" },
   { label: "Recognition", href: "/recognition" },
+  { label: "Licensing", href: "/licensing" },
+  { label: "Code of conduct", href: "/code-of-conduct" },
+  { label: "Terms", href: "/terms" },
   { label: "Contact", href: "/contact" },
 ];
 
