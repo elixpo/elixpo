@@ -1,5 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import recognition from "../../../../../content/recognition.json";
+
+const CERTIFICATE_WIDTH = 3508;
+const CERTIFICATE_HEIGHT = 2480;
+const CERTIFICATE_SCALE = CERTIFICATE_WIDTH / 1600;
+const LOGO_DATA_URI = `data:image/webp;base64,${readFileSync(
+  join(process.cwd(), "public/logos/logo.webp"),
+).toString("base64")}`;
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -30,7 +40,8 @@ export async function GET(
   const recipientSize = record.name.length > 22 ? 55 : 64;
 
   return new ImageResponse(
-    <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", padding: "68px 78px 58px", color: "#142018", background: "#f6f5f0", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden", background: "#f6f5f0" }}>
+    <div style={{ width: 1600, height: 1131, flex: "none", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", padding: "68px 78px 58px", color: "#142018", background: "#f6f5f0", fontFamily: "Arial, sans-serif", transform: `scale(${CERTIFICATE_SCALE})`, transformOrigin: "top left" }}>
       <div style={{ position: "absolute", inset: 22, display: "flex", border: "1px solid rgba(20,32,24,.2)" }} />
       <div style={{ position: "absolute", width: 760, height: 760, right: -250, top: -330, display: "flex", borderRadius: 999, border: "1px solid rgba(20,32,24,.16)", background: "#e4ebfa" }} />
       <div style={{ position: "absolute", width: 390, height: 390, right: 115, top: 150, display: "flex", borderRadius: 999, border: "1px solid rgba(20,32,24,.16)" }} />
@@ -40,7 +51,7 @@ export async function GET(
 
       <div style={{ position: "relative", zIndex: 2, height: 86, display: "flex", justifyContent: "space-between", alignItems: "flex-start", borderBottom: "1px solid rgba(20,32,24,.22)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 46, height: 46, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 999, color: "white", background: "#0b623c", fontSize: 25, fontWeight: 700 }}>E</div>
+          <img src={LOGO_DATA_URI} width="46" height="46" alt="" style={{ width: 46, height: 46, borderRadius: 999, objectFit: "cover" }} />
           <div style={{ display: "flex", flexDirection: "column" }}><b style={{ fontSize: 23 }}>Elixpo</b><span style={{ marginTop: 5, color: "#0b623c", fontSize: 10, fontWeight: 700, letterSpacing: 2.2 }}>OPEN-SOURCE PROJECT FOUNDRY</span></div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}><span style={{ color: "#0b623c", fontSize: 10, fontWeight: 700, letterSpacing: 2.2 }}>PUBLIC APPRECIATION RECORD</span><b style={{ marginTop: 11, fontSize: 13, letterSpacing: 1.5 }}>2026 / {record.id.slice(-3)}</b></div>
@@ -57,7 +68,11 @@ export async function GET(
       </div>
 
       <div style={{ position: "absolute", zIndex: 3, width: 148, height: 148, right: 68, top: 492, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", borderRadius: 999, border: "1px solid rgba(11,98,60,.5)", boxShadow: "0 0 0 9px #f6f5f0, 0 0 0 10px rgba(11,98,60,.18)", color: "#0b623c", background: "rgba(255,255,255,.78)" }}>
-        <span style={{ fontSize: 27 }}>✓</span><b style={{ marginTop: 8, fontSize: 12, lineHeight: 1.35, textAlign: "center", letterSpacing: 2 }}>PUBLIC<br/>RECORD</b><span style={{ marginTop: 8, fontSize: 9, fontWeight: 700, letterSpacing: 1.5 }}>ELIXPO · 2026</span>
+        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15.5" cy="15.5" r="13.5" stroke="#0b623c" strokeWidth="2" />
+          <path d="M9.5 15.8L13.5 19.8L21.8 11.4" stroke="#0b623c" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <b style={{ marginTop: 8, fontSize: 12, lineHeight: 1.35, textAlign: "center", letterSpacing: 2 }}>PUBLIC<br/>RECORD</b><span style={{ marginTop: 8, fontSize: 9, fontWeight: 700, letterSpacing: 1.5 }}>ELIXPO · 2026</span>
       </div>
 
       <div style={{ position: "relative", zIndex: 2, minHeight: 132, paddingTop: 22, display: "flex", alignItems: "flex-end", borderTop: "1px solid rgba(20,32,24,.22)" }}>
@@ -67,10 +82,11 @@ export async function GET(
         <div style={{ width: 275, display: "flex", flexDirection: "column", paddingRight: 24 }}><span style={{ height: 42 }} /><span style={{ fontFamily: "Georgia, serif", fontSize: 22 }}>Ayushman Bhattacharya</span><b style={{ marginTop: 7, fontSize: 10, lineHeight: 1.35 }}>Founder and Project Lead · Authorized signatory</b></div>
         <div style={{ width: 320, display: "flex", flexDirection: "column" }}><span style={{ color: "#69746d", fontSize: 10, letterSpacing: 1.3 }}>VERIFY THE RECORD</span><b style={{ marginTop: 9, fontSize: 11 }}>{verificationUrl}</b></div>
       </div>
+    </div>
     </div>,
     {
-      width: 1600,
-      height: 1131,
+      width: CERTIFICATE_WIDTH,
+      height: CERTIFICATE_HEIGHT,
       headers: {
         "Content-Disposition": `attachment; filename="elixpo-${record.id.toLowerCase()}.png"`,
         "X-Robots-Tag": "noindex, nofollow",
