@@ -15,6 +15,7 @@ const primaryLinks = [
 ];
 
 const moreLinks = [
+  { label: "Chapter", href: "/chapter" },
   { label: "People", href: "/people" },
   { label: "History", href: "/history" },
   { label: "Architecture", href: "/architecture" },
