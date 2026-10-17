@@ -34,7 +34,7 @@ export interface DirectoryEntry {
 
 type RegistryEntry = (typeof registry.entries)[number];
 
-type DirectoryDetails = Omit<DirectoryEntry, "repository" | "repositoryUrl" | "family" | "lifecycle" | "relationship" | "licenseEvidence">;
+type DirectoryDetails = Omit<DirectoryEntry, "repository" | "repositoryUrl" | "family" | "lifecycle" | "relationship" | "verificationState" | "statusVerifiedAt" | "licenseEvidence">;
 const DETAILS = directory.entries as Record<string, DirectoryDetails>;
 const LICENSES = repositoryLicenses.entries as Record<string, DirectoryEntry["licenseEvidence"]>;
 
