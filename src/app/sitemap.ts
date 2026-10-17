@@ -3,6 +3,7 @@ import { DIRECTORY_ENTRIES, familyPath } from "@/lib/directory";
 import { PACKAGE_RECORDS } from "@/lib/packages";
 import { absoluteUrl } from "@/lib/seo";
 import contributors from "../../content/contributors.json";
+import recognition from "../../content/recognition.json";
 
 export const dynamic = "force-static";
 
@@ -12,6 +13,7 @@ const ROUTES = [
   "/research",
   "/services",
   "/contributors",
+  "/recognition",
   "/people",
   "/history",
   "/chapter",
@@ -51,6 +53,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.65,
   }));
+  const recognitionRoutes = recognition.records.map((record) => ({
+    url: absoluteUrl(`/recognition/${record.id.toLowerCase()}`),
+    changeFrequency: "yearly" as const,
+    priority: 0.62,
+  }));
 
-  return [...staticRoutes, ...directoryRoutes, ...packageRoutes, ...contributorRoutes];
+  return [...staticRoutes, ...directoryRoutes, ...packageRoutes, ...contributorRoutes, ...recognitionRoutes];
 }
