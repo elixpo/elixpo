@@ -92,6 +92,19 @@ Bulk tooling may prepare branches and pull requests, but it must never silently
 rewrite default branches or decide lifecycle, licensing, research claims, or
 maintainer authority.
 
+The portal migration tool is dry-run by default, refuses dirty repositories,
+does not overwrite current 1.0 manifests or existing policy documents, and
+never creates a license. A verified missing-license record may be carried as a
+dated, owned exception; this keeps the absence visible and does not grant reuse
+permission or claim full legal conformance.
+
+Preview and then explicitly write a selected migration batch:
+
+```bash
+npm run repository:migrate -- --repositories octabit qfabric Nano28C64
+npm run repository:migrate -- --write --repositories octabit qfabric Nano28C64
+```
+
 Run the conformance audit from the portal checkout:
 
 ```bash
