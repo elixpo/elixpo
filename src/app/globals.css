@@ -907,7 +907,9 @@ svg { transition: transform .2s ease; }
 .recognition-geometry i:nth-child(2) { width: 27%; aspect-ratio: 1; right: 8%; top: 13%; border-radius: 50%; }
 .recognition-geometry i:nth-child(3) { width: 16%; aspect-ratio: 1; right: 2%; bottom: -8%; border-radius: 38% 62% 45% 55%; transform: rotate(26deg); background: #f0e6d3; }
 .recognition-geometry i:nth-child(4) { width: 12px; height: 12px; right: 25%; bottom: 19%; border: 0; border-radius: 50%; background: #e76043; box-shadow: 30px 0 0 rgba(231,96,67,.45),60px 0 0 rgba(231,96,67,.18); }
-.recognition-certificate > header,.recognition-copy,.recognition-basis,.recognition-seal,.recognition-certificate > footer { position: relative; z-index: 1; }
+.recognition-geometry i:nth-child(5) { width: 28%; aspect-ratio: 1; left: -15%; top: 31%; border-radius: 50%; background: rgba(223,238,229,.58); }
+.recognition-geometry i:nth-child(6) { width: 13%; aspect-ratio: 1; left: 2%; top: 43%; border-radius: 50%; background: rgba(255,255,255,.42); box-shadow: 0 0 0 18px rgba(11,98,60,.035); }
+.recognition-certificate > header,.recognition-copy,.recognition-seal,.recognition-certificate > footer { position: relative; z-index: 1; }
 .recognition-certificate > header { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: start; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(20,32,24,.22); }
 .recognition-brand { display: flex; align-items: center; gap: .75rem; }.recognition-brand img { border-radius: 50%; }
 .recognition-brand strong { display: block; font-size: 1.2rem; letter-spacing: -.03em; }.recognition-brand span,.recognition-series span { display: block; margin-top: .2rem; color: var(--leaf); font: 650 .54rem var(--font-ui-mono); letter-spacing: .14em; }
@@ -920,10 +922,6 @@ svg { transition: transform .2s ease; }
 .recognition-copy small { display: block; margin: 0; color: var(--muted); font-size: clamp(.72rem,.8vw,.82rem); letter-spacing: .04em; }
 .recognition-copy h2 { margin: .3rem 0 .85rem; font: 400 clamp(2.2rem,4.3vw,4.5rem)/.98 var(--font-display-serif); letter-spacing: -.045em; }
 .recognition-statement { max-width: 880px; margin: 0 auto; color: #435249; font-size: clamp(.92rem,1.2vw,1.08rem); line-height: 1.7; text-wrap: balance; }
-.recognition-basis { position: absolute; left: clamp(2.5rem,5vw,5.5rem); top: 52%; width: 155px; translate: 0 -10%; padding: .2rem 0 .2rem 1rem; display: grid; gap: .48rem; border-left: 2px solid var(--leaf); background: rgba(246,245,240,.58); }
-.recognition-basis span,.recognition-basis small { color: var(--leaf); font: 650 .49rem var(--font-ui-mono); letter-spacing: .12em; }
-.recognition-basis strong { font-size: .67rem; line-height: 1.2; }
-.recognition-basis small { margin-top: .2rem; color: var(--muted); }
 .recognition-seal { position: absolute; right: clamp(2.5rem,5vw,5.5rem); top: 50%; width: 145px; height: 145px; translate: 0 -12%; display: grid; place-content: center; justify-items: center; border: 1px solid rgba(11,98,60,.45); border-radius: 50%; color: var(--leaf); text-align: center; background: rgba(255,255,255,.5); box-shadow: 0 0 0 8px rgba(246,245,240,.75),0 0 0 9px rgba(11,98,60,.18); }
 .recognition-seal strong { margin: .5rem 0; font-size: .72rem; letter-spacing: .12em; }.recognition-seal span { font: 600 .5rem var(--font-ui-mono); letter-spacing: .1em; }
 .recognition-certificate > footer { grid-column: 1 / -1; min-height: 112px; padding: 1.35rem 0 .35rem; display: grid; grid-template-columns: minmax(0,1fr) 230px 250px; gap: 1.7rem; align-items: end; border-top: 1px solid rgba(20,32,24,.22); }
