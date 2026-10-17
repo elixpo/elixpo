@@ -35,6 +35,16 @@ AGENT_WORKFLOWS = {
 }
 ACTION_RE = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)", re.MULTILINE)
 FULL_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+REVIEWED_FORK_SECRET_BOUNDARIES = {
+    ("accounts.elixpo", "deploy.yml"): (
+        "The pull-request job is secretless; every secret-consuming job is "
+        "restricted to a main-branch push or an explicit workflow dispatch."
+    ),
+    ("blogs.elixpo", "pr-build.yml"): (
+        "The build job is secretless; the preview job requires a same-repository, "
+        "non-draft pull request before Cloudflare credentials are referenced."
+    ),
+}
 
 
 @dataclass
@@ -102,7 +112,11 @@ def workflow_findings(repository: str, path: Path) -> list[Finding]:
         if not FULL_SHA_RE.fullmatch(ref):
             findings.append(Finding(repository, label, "error", "action-pin", f"Action is not pinned to a full commit SHA: {action}"))
 
-    if "pull_request:" in text and re.search(r"secrets\.[A-Z0-9_]+", text):
+    if (
+        "pull_request:" in text
+        and re.search(r"secrets\.[A-Z0-9_]+", text)
+        and (repository, label) not in REVIEWED_FORK_SECRET_BOUNDARIES
+    ):
         findings.append(Finding(repository, label, "warning", "fork-secrets", "Pull-request workflow references secrets; verify that secret-consuming jobs reject fork code."))
 
     return findings
@@ -156,6 +170,14 @@ def main() -> int:
         "auditedRepositories": sorted(audited_repositories),
         "deferredRepositories": sorted(DEFERRED_REPOSITORIES),
         "excludedAgentWorkflows": sorted(AGENT_WORKFLOWS),
+        "reviewedForkSecretBoundaries": [
+            {
+                "repository": repository,
+                "workflow": workflow,
+                "reason": reason,
+            }
+            for (repository, workflow), reason in sorted(REVIEWED_FORK_SECRET_BOUNDARIES.items())
+        ],
         "missingLocalRepositories": sorted(missing),
         "counts": {
             "errors": sum(f.severity == "error" for f in findings),
