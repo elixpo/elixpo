@@ -17,7 +17,7 @@
   <a href="https://packages.elixpo.com">Packages</a>
 </p>
 
-<!-- BEGIN ELIXPO SHARED · sha256:96814b275250e481659408c422fbb4cdddf17ba58e2e15377af5be5ec8d55463 · generated from elixpo/elixpo -->
+<!-- BEGIN ELIXPO SHARED · sha256:92db6e56cfd88d8bc98d5804e73d04985dc62594d7d49d2ab3173cc46346ab77 · generated from elixpo/elixpo -->
 
 ## What Elixpo is
 
