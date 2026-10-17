@@ -20,6 +20,7 @@ const moreLinks = [
   { label: "Architecture", href: "/architecture" },
   { label: "Branding", href: "/branding" },
   { label: "Community", href: "/community" },
+  { label: "Recognition", href: "/recognition" },
   { label: "Contact", href: "/contact" },
 ];
 

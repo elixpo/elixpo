@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 const work = [{ label: "Projects", href: "/projects" }, { label: "Research", href: "/research" }, { label: "Services", href: "/services" }, { label: "Developer packages", href: "/packages" }, { label: "Linux package hub", href: "https://packages.elixpo.com" }];
-const commons = [{ label: "About the foundry", href: "/about" }, { label: "Contributors", href: "/contributors" }, { label: "History", href: "/history" }, { label: "Contributing", href: "/contributing" }, { label: "Contact", href: "/contact" }];
+const commons = [{ label: "About the foundry", href: "/about" }, { label: "Contributors", href: "/contributors" }, { label: "Recognition records", href: "/recognition" }, { label: "History", href: "/history" }, { label: "Contributing", href: "/contributing" }, { label: "Contact", href: "/contact" }];
 const standards = [{ label: "Branding", href: "/branding" }, { label: "Architecture", href: "/architecture" }, { label: "Event partnerships", href: "/partnerships" }, { label: "Licensing", href: "https://github.com/elixpo/elixpo/blob/main/docs/policies/licensing.md" }, { label: "Code of conduct", href: "/code-of-conduct" }];
 
 export function Footer() {

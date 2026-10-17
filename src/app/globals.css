@@ -883,6 +883,49 @@ svg { transition: transform .2s ease; }
 .not-found-copy h1 em { font-family: var(--font-display-serif); font-weight: 400; }
 .not-found-copy > p:not(.eyebrow) { max-width: 700px; color: var(--muted); font-size: clamp(1rem,1.5vw,1.2rem); line-height: 1.7; }
 
+.recognition-index { width: min(100% - 3rem,1380px); }
+.recognition-list { border-top: 1px solid var(--line); }
+.recognition-list > a { min-height: 150px; padding: 1.5rem 0; display: grid; grid-template-columns: 40px minmax(0,1fr) auto; gap: 1.5rem; align-items: center; border-bottom: 1px solid var(--line); }
+.recognition-list > a > svg:first-child { color: var(--leaf); }
+.recognition-list span { color: var(--leaf); font: 650 .64rem var(--font-ui-mono); letter-spacing: .08em; }
+.recognition-list h2 { margin: .55rem 0 .35rem; font-size: clamp(1.8rem,3vw,3rem); letter-spacing: -.05em; }
+.recognition-list p { max-width: 780px; margin: 0; color: var(--muted); line-height: 1.6; }
+.recognition-page { min-height: 100vh; padding: 7.5rem 1rem 5rem; background: #e8e7e1; }
+.recognition-toolbar { width: min(100%,1400px); margin: 0 auto 1rem; display: flex; justify-content: space-between; align-items: center; }
+.recognition-toolbar > a,.recognition-print { display: inline-flex; align-items: center; gap: .45rem; color: var(--leaf); font-size: .75rem; font-weight: 700; }
+.recognition-print { padding: .7rem .9rem; border: 1px solid rgba(20,32,24,.2); border-radius: 999px; background: #fbfbf8; cursor: pointer; }
+.recognition-certificate { position: relative; width: min(100%,1400px); aspect-ratio: 297 / 210; margin: auto; padding: clamp(2rem,4vw,4.5rem); overflow: hidden; display: grid; grid-template-columns: minmax(0,1fr) 210px; grid-template-rows: auto 1fr auto; color: var(--ink); border: 1px solid #d6d8d1; background: #f6f5f0; box-shadow: 0 28px 80px rgba(20,32,24,.14); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+.recognition-certificate::before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(20,32,24,.18); pointer-events: none; }
+.recognition-certificate::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(20,32,24,.19) .65px,transparent .65px); background-size: 20px 20px; mask-image: linear-gradient(110deg,transparent 0 52%,#000 78%,transparent 100%); opacity: .24; pointer-events: none; }
+.recognition-geometry { position: absolute; inset: 0; pointer-events: none; }
+.recognition-geometry i { position: absolute; display: block; border: 1px solid rgba(20,32,24,.16); }
+.recognition-geometry i:nth-child(1) { width: 52%; aspect-ratio: 1; right: -17%; top: -30%; border-radius: 50%; background: rgba(223,233,255,.55); }
+.recognition-geometry i:nth-child(2) { width: 27%; aspect-ratio: 1; right: 8%; top: 13%; border-radius: 50%; }
+.recognition-geometry i:nth-child(3) { width: 16%; aspect-ratio: 1; right: 2%; bottom: -8%; border-radius: 38% 62% 45% 55%; transform: rotate(26deg); background: #f0e6d3; }
+.recognition-geometry i:nth-child(4) { width: 12px; height: 12px; right: 25%; bottom: 19%; border: 0; border-radius: 50%; background: #e76043; box-shadow: 30px 0 0 rgba(231,96,67,.45),60px 0 0 rgba(231,96,67,.18); }
+.recognition-certificate > header,.recognition-copy,.recognition-seal,.recognition-certificate > footer { position: relative; z-index: 1; }
+.recognition-certificate > header { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: start; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(20,32,24,.22); }
+.recognition-brand { display: flex; align-items: center; gap: .75rem; }.recognition-brand img { border-radius: 50%; }
+.recognition-brand strong { display: block; font-size: 1.2rem; letter-spacing: -.03em; }.recognition-brand span,.recognition-series span { display: block; margin-top: .2rem; color: var(--leaf); font: 650 .54rem var(--font-ui-mono); letter-spacing: .14em; }
+.recognition-series { text-align: right; }.recognition-series b { display: block; margin-top: .55rem; font: 650 .72rem var(--font-ui-mono); }
+.recognition-copy { align-self: center; max-width: 880px; padding: 2rem 2rem 1.4rem 0; }
+.recognition-copy > p:first-child { margin: 0 0 .65rem; color: var(--leaf); font: 650 .66rem var(--font-ui-mono); letter-spacing: .18em; }
+.recognition-copy h1 { margin: 0; font: 520 clamp(3.7rem,7vw,7.5rem)/.82 var(--font-ui-sans); letter-spacing: -.08em; }.recognition-copy h1 span { color: #e76043; }
+.recognition-copy small { display: block; margin-top: clamp(1.4rem,3vw,2.6rem); color: var(--muted); font-size: .72rem; }
+.recognition-copy h2 { margin: .25rem 0 .9rem; font: 400 clamp(2.4rem,5vw,5.2rem)/.95 var(--font-display-serif); letter-spacing: -.045em; }
+.recognition-statement { max-width: 760px; margin: 0; color: #4f5b53; font-size: clamp(.75rem,1.2vw,1rem); line-height: 1.65; }
+.recognition-seal { width: 165px; height: 165px; align-self: center; justify-self: end; display: grid; place-content: center; justify-items: center; border: 1px solid rgba(11,98,60,.45); border-radius: 50%; color: var(--leaf); text-align: center; background: rgba(255,255,255,.38); box-shadow: 0 0 0 8px rgba(246,245,240,.75),0 0 0 9px rgba(11,98,60,.18); }
+.recognition-seal strong { margin: .5rem 0; font-size: .72rem; letter-spacing: .12em; }.recognition-seal span { font: 600 .5rem var(--font-ui-mono); letter-spacing: .1em; }
+.recognition-certificate > footer { grid-column: 1 / -1; padding-top: 1.1rem; display: grid; grid-template-columns: minmax(0,1fr) 180px 250px; gap: 1.7rem; align-items: end; border-top: 1px solid rgba(20,32,24,.22); }
+.recognition-certificate footer dl { margin: 0; display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; }
+.recognition-certificate footer dt,.recognition-verify span { color: var(--muted); font: .5rem var(--font-ui-mono); letter-spacing: .08em; text-transform: uppercase; }
+.recognition-certificate footer dd { margin: .3rem 0 0; font-size: .64rem; font-weight: 700; }
+.recognition-signature,.recognition-verify { padding-top: .7rem; border-top: 1px solid rgba(20,32,24,.28); }
+.recognition-signature span { display: block; font: 400 1rem var(--font-display-serif); }.recognition-signature b,.recognition-verify b { display: block; margin-top: .28rem; font: 600 .5rem/1.35 var(--font-ui-mono); overflow-wrap: anywhere; }
+.recognition-evidence { width: min(100%,1100px); margin: clamp(4rem,8vw,7rem) auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.recognition-evidence h2 { margin: 0; font-size: clamp(2.5rem,5vw,5rem); line-height: .95; letter-spacing: -.06em; }
+.recognition-evidence > div:last-child p { color: var(--muted); line-height: 1.7; }.recognition-evidence a { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid var(--line); color: var(--leaf); font-size: .75rem; font-weight: 700; }
+
 .site-footer { margin: .7rem; padding: clamp(3rem,7vw,6rem); border-radius: 2rem; background: var(--ink); color: white; }
 .footer-lead { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding-bottom: 5rem; border-bottom: 1px solid rgba(255,255,255,.15); }
 .footer-lead h2 { margin: 0; font-size: clamp(2.5rem,5vw,4.8rem); line-height: .98; letter-spacing: -.055em; }
@@ -1204,6 +1247,17 @@ svg { transition: transform .2s ease; }
   .impact-sticker, .hero-field::before, .hero-field span { transform: none !important; }
 }
 
+@media (max-width: 760px) {
+  .recognition-index { width: min(100% - 1.25rem,1380px); }
+  .recognition-list > a { grid-template-columns: 30px minmax(0,1fr) 18px; gap: .8rem; }
+  .recognition-page { padding-inline: .5rem; overflow-x: auto; }
+  .recognition-toolbar,.recognition-certificate { min-width: 920px; }
+  .recognition-certificate { padding: 2.5rem; }
+  .recognition-evidence { grid-template-columns: 1fr; gap: 2rem; padding-inline: .75rem; }
+}
+
+@page certificate { size: A4 landscape; margin: 0; }
+
 @media print {
   @page { size: A4; margin: 14mm; }
   html, body { background: white !important; color: #111 !important; }
@@ -1241,4 +1295,8 @@ svg { transition: transform .2s ease; }
   .record-evidence > div:last-child a { grid-template-columns: 8mm 35mm 1fr; gap: 3mm; padding: 2.5mm 0; border-color: #aaa; }
   .record-evidence > div:last-child a svg { display: none; }
   .record-evidence a b, .record-evidence a span, .record-evidence a small { color: #111; font-size: 6.5pt; white-space: normal; overflow-wrap: anywhere; }
+  .recognition-page { page: certificate; min-height: 0; padding: 0; background: white !important; }
+  .recognition-toolbar,.recognition-evidence { display: none !important; }
+  .recognition-certificate { width: 297mm; height: 210mm; min-width: 0; margin: 0; padding: 18mm; border: 0; box-shadow: none; }
+  .recognition-certificate::before { inset: 6mm; }
 }
