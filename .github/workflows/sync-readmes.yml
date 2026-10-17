@@ -90,31 +90,37 @@ jobs:
             local checkout_path="$2"
             local generated_readme="$3"
             local destination="$4"
-            local branch="automation/sync-elixpo-readme"
+            local branch="automation/sync-elixpo-readme-${SOURCE_SHA:0:12}-${GITHUB_RUN_ID}"
 
             cd "$GITHUB_WORKSPACE/$checkout_path"
             git config user.name "elixpo-readme-sync[bot]"
             git config user.email "elixpo-readme-sync[bot]@users.noreply.github.com"
             git fetch origin main
-            if git fetch origin "+refs/heads/$branch:refs/remotes/origin/$branch"; then
-              git checkout -B "$branch" "origin/$branch"
-              if ! git rebase origin/main; then
-                git rebase --abort || true
-                git checkout -B "$branch" origin/main
-              fi
-            else
-              git checkout -B "$branch" origin/main
-            fi
+            git checkout -B "$branch" origin/main
+
+            close_stale_sync_prs() {
+              local stale
+              while IFS= read -r stale; do
+                [ -z "$stale" ] && continue
+                gh pr close "$stale" --repo "$repository" --delete-branch \
+                  --comment "Superseded by the README generated from elixpo/elixpo@${SOURCE_SHA}." || true
+              done < <(
+                gh pr list --repo "$repository" --state open --limit 100 \
+                  --json number,headRefName \
+                  --jq ".[] | select(.headRefName | startswith(\"automation/sync-elixpo-readme\")) | select(.headRefName != \"$branch\") | .number"
+              )
+            }
 
             cp "$GITHUB_WORKSPACE/$generated_readme" "$destination"
             if git diff --quiet -- "$destination"; then
               echo "$repository is already synchronized."
+              close_stale_sync_prs
               return
             fi
 
             git add "$destination"
             git commit -m "docs: synchronize Elixpo public brief"
-            git push --force-with-lease --set-upstream origin "$branch"
+            git push --set-upstream origin "$branch"
 
             local body
             body=$(printf '%s\n\n%s\n\n%s' \
@@ -122,18 +128,10 @@ jobs:
               "Source commit: elixpo/elixpo@$SOURCE_SHA" \
               'Do not edit the generated shared block directly; update the canonical registry or README source instead.')
 
-            local existing
-            existing=$(gh pr list --repo "$repository" --state open --head "$branch" --json number --jq '.[0].number // empty')
-            if [ -n "$existing" ]; then
-              gh pr edit "$existing" --repo "$repository" \
-                --title "docs: synchronize Elixpo public brief" \
-                --body "$body"
-              echo "Updated $repository PR #$existing."
-            else
-              gh pr create --repo "$repository" --base main --head "$branch" \
-                --title "docs: synchronize Elixpo public brief" \
-                --body "$body"
-            fi
+            close_stale_sync_prs
+            gh pr create --repo "$repository" --base main --head "$branch" \
+              --title "docs: synchronize Elixpo public brief" \
+              --body "$body"
           }
 
           sync_readme \
