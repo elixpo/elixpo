@@ -187,7 +187,6 @@ for (const [index, group] of (brandProvenance.groups ?? []).entries()) {
 if (provenanceFileCount !== brand.audit?.exactMasterDuplicates) addError("brandProvenance.groups", "verified group file count must match exactMasterDuplicates");
 if (!isDate(discussions.lastVerified)) addError("discussions.lastVerified", "expected YYYY-MM-DD");
 if (!isDate(recognition.lastVerified)) addError("recognition.lastVerified", "expected YYYY-MM-DD");
-if (!isDate(recognition.issuedAt)) addError("recognition.issuedAt", "expected YYYY-MM-DD");
 
 for (const [location, value] of [
   ["organization.lastVerified", organization.lastVerified],
@@ -207,7 +206,6 @@ for (const [location, value] of [
   ["brandProvenance.verifiedAt", brandProvenance.verifiedAt],
   ["discussions.lastVerified", discussions.lastVerified],
   ["recognition.lastVerified", recognition.lastVerified],
-  ["recognition.issuedAt", recognition.issuedAt],
 ]) validateFreshness(location, value);
 
 validateUrl("discussions.sourceRepository", discussions.sourceRepository);
@@ -684,6 +682,8 @@ for (const [index, record] of (recognition.records ?? []).entries()) {
   const normalizedHandle = record.handle.toLowerCase();
   if (recognitionHandles.has(normalizedHandle)) addError(`${location}.handle`, "duplicate recognized GitHub identity");
   recognitionHandles.add(normalizedHandle);
+  if (!isDate(record.issuedAt)) addError(`${location}.issuedAt`, "expected YYYY-MM-DD");
+  else validateFreshness(`${location}.issuedAt`, record.issuedAt);
   if (record.recordUrl.startsWith("http")) validateUrl(`${location}.recordUrl`, record.recordUrl);
   else if (!record.recordUrl.startsWith("/")) addError(`${location}.recordUrl`, "expected an absolute URL or root-relative public record");
 }
