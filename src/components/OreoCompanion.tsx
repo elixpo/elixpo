@@ -35,6 +35,8 @@ const FALLBACK = ["Hi! I'm Oreo.", "ship it ↗", "LGTM ✓"];
 const IDLE_LINE = "Still reading? Respect.";
 const DISMISS_KEY = "elixpo:oreo-dismissed";
 
+type FestiveWindow = Window & { ElixpoFestive?: { active: { greeting: string | null } | null } };
+
 const linesFor = (path: string) => [...(QUIPS.find(([route]) => (route.endsWith("/") ? path.startsWith(route) : path === route))?.[1] ?? []), ...FALLBACK];
 
 type Mode = "hidden" | "peek" | "up";
@@ -53,7 +55,8 @@ export function OreoCompanion() {
 }
 
 function Oreo({ pathname }: { pathname: string }) {
-  const lines = linesFor(pathname);
+  const [greeting, setGreeting] = useState<string | null>(null);
+  const lines = greeting ? [`${greeting}! 🎉`, ...linesFor(pathname)] : linesFor(pathname);
   const [line, setLine] = useState(0);
   const [idle, setIdle] = useState(false);
   const [mode, setMode] = useState<Mode>("hidden");
@@ -85,7 +88,11 @@ function Oreo({ pathname }: { pathname: string }) {
       window.clearTimeout(settle);
       settle = window.setTimeout(() => { ducking.current = false; rest(); }, 900);
     };
-    const enter = window.setTimeout(rest, 1200);
+    const enter = window.setTimeout(() => {
+      // The shared festive script (agent.elixpo.com/festive/theme.js) loads after hydration.
+      setGreeting((window as FestiveWindow).ElixpoFestive?.active?.greeting ?? null);
+      rest();
+    }, 1200);
     const idleTimer = window.setTimeout(() => setIdle(true), 45000);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
