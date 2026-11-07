@@ -48,6 +48,12 @@ export function StoryHome() {
             </div>
           </div>
         </div>
+        <div className="hero-oreo" aria-hidden="true">
+          <p className="oreo-bubble"><span>Hi! I&apos;m Oreo.</span><span>psst… scroll down ↓</span><span>ship it ↗</span><span>LGTM ✓</span></p>
+          <Image src="/logos/logo.webp" alt="" width={150} height={150} loading="eager" />
+          <i className="oreo-shadow" />
+        </div>
+        <a className="scroll-pill" href="#why-elixpo"><span className="scroll-pill-mouse" aria-hidden="true"><i /></span>Scroll to meet the work</a>
         <aside className="hero-tenure" aria-label={`${yearsSinceFounded} years of Elixpo since 2023`}>
           <span>OPEN SINCE</span>
           <strong>{yearsSinceFounded}<sup>+</sup></strong>
@@ -55,7 +61,7 @@ export function StoryHome() {
         </aside>
       </section>
 
-      <section className="story-statement section-wrap">
+      <section id="why-elixpo" className="story-statement section-wrap">
         <p className="eyebrow">Why Elixpo exists</p>
         <h2>Elixpo helps open-source work become easier to understand, contribute to, and release.</h2>
         <div className="statement-layout">

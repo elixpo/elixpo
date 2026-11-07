@@ -101,6 +101,30 @@ svg { transition: transform .2s ease; }
 .hero-tenure > span { color: var(--leaf); font: 650 .63rem var(--font-ui-mono); letter-spacing: .15em; }
 .hero-tenure strong { display: block; margin: .8rem 0 .6rem; font-size: 6.8rem; line-height: .8; letter-spacing: -.09em; }.hero-tenure sup { margin-left: .08em; color: #efb37a; font: 500 .28em var(--font-ui-mono); vertical-align: top; }
 .hero-tenure p { max-width: 220px; margin: 0; color: #68736c; font-size: .76rem; line-height: 1.55; }
+.hero-oreo { position: absolute; z-index: 3; right: calc(clamp(2rem,7vw,7rem) + 82px); top: calc(45% - 138px); width: 150px; }
+.hero-oreo img { position: relative; z-index: 1; display: block; width: 100%; height: auto; filter: drop-shadow(0 10px 18px rgba(20,32,24,.14)); animation: oreo-bob 3.4s ease-in-out infinite; transform-origin: 50% 100%; }
+.hero-oreo:hover img { animation: oreo-hop .7s cubic-bezier(.3,1.6,.5,1) infinite; }
+.oreo-shadow { position: absolute; left: 22%; right: 22%; bottom: 4px; height: 10px; border-radius: 50%; background: rgba(20,32,24,.16); filter: blur(3px); animation: oreo-shadow 3.4s ease-in-out infinite; }
+.oreo-bubble { position: absolute; z-index: 2; right: calc(100% - 6px); top: 12%; display: grid; margin: 0; padding: .6rem .8rem; border: 2px solid var(--ink); background: #fffdf7; box-shadow: 3px 3px 0 var(--ink); color: var(--ink); font: 650 .66rem/1.2 var(--font-ui-mono); letter-spacing: .02em; white-space: nowrap; transform: rotate(-3deg); }
+.oreo-bubble::after { content: ""; position: absolute; right: -8px; top: 50%; width: 10px; height: 10px; border: 2px solid var(--ink); border-left: 0; border-bottom: 0; background: #fffdf7; transform: translateY(-50%) rotate(45deg); }
+.oreo-bubble span { grid-area: 1 / 1; opacity: 0; animation: oreo-say 12s step-end infinite, oreo-say-in 12s ease-out infinite; }
+.oreo-bubble span:first-child { opacity: 1; }
+.oreo-bubble span:nth-child(2) { animation-delay: 3s; }.oreo-bubble span:nth-child(3) { animation-delay: 6s; }.oreo-bubble span:nth-child(4) { animation-delay: 9s; }
+@keyframes oreo-bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-7px) rotate(-1.5deg); } }
+@keyframes oreo-hop { 0%,100% { transform: translateY(0) scale(1,1); } 15% { transform: translateY(0) scale(1.06,.92); } 45% { transform: translateY(-22px) scale(.96,1.05) rotate(4deg); } 75% { transform: translateY(0) scale(1.04,.95); } }
+@keyframes oreo-shadow { 0%,100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(.82); opacity: .65; } }
+@keyframes oreo-say { 0% { opacity: 1; } 25% { opacity: 0; } }
+@keyframes oreo-say-in { 0% { transform: translateY(5px); } 3%,100% { transform: translateY(0); } }
+.scroll-pill { position: absolute; z-index: 4; left: 50%; bottom: 1.4rem; translate: -50% 0; display: inline-flex; align-items: center; gap: .65rem; padding: .5rem 1rem .5rem .55rem; border: 1px solid rgba(20,32,24,.18); border-radius: 999px; background: rgba(255,255,255,.62); backdrop-filter: blur(10px); color: var(--ink); font: 650 .62rem var(--font-ui-mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; transition: border-color .2s, background .2s; }
+.scroll-pill:hover { border-color: rgba(20,32,24,.4); background: rgba(255,255,255,.9); }
+.scroll-pill-mouse { position: relative; width: 18px; height: 26px; border: 1.5px solid var(--ink); border-radius: 10px; }
+.scroll-pill-mouse i { position: absolute; left: 50%; top: 5px; width: 3px; height: 6px; margin-left: -1.5px; border-radius: 2px; background: #e76043; animation: scroll-wheel 1.8s ease-in-out infinite; }
+@keyframes scroll-wheel { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(8px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
+@supports (animation-timeline: scroll()) {
+  .scroll-pill { animation: scroll-pill-out linear both; animation-timeline: scroll(root); animation-range: 0 35vh; }
+  @keyframes scroll-pill-out { to { opacity: 0; transform: translateY(12px); visibility: hidden; } }
+}
+#why-elixpo { scroll-margin-top: 5rem; }
 
 .story-statement { border-bottom: 1px solid var(--line); }
 .story-statement h2 { max-width: 1120px; font-size: clamp(2.7rem,5vw,4.7rem); }
@@ -616,6 +640,42 @@ svg { transition: transform .2s ease; }
 .history-ledger p { max-width: 750px; color: var(--muted); line-height: 1.7; }
 .history-evidence { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
 .history-evidence a { display: inline-flex; align-items: center; gap: .25rem; color: var(--leaf); font-size: .7rem; font-weight: 650; }
+.wiki-page .page-intro { margin-bottom: 3rem; }
+.wiki-layout { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: clamp(2rem,5vw,4.5rem); align-items: start; }
+.wiki-infobox { grid-column: 2; grid-row: 1; position: sticky; top: 7rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 1.25rem; background: var(--card); }
+.wiki-infobox h2 { margin: 0 0 1rem; font-size: 1.5rem; letter-spacing: -.03em; }
+.wiki-infobox dl { display: grid; grid-template-columns: 7.5rem 1fr; gap: .7rem 1rem; margin: 0; font-size: .86rem; line-height: 1.5; }
+.wiki-infobox dt { color: var(--muted); font: 600 .62rem/1.9 var(--font-ui-mono); text-transform: uppercase; letter-spacing: .08em; }
+.wiki-infobox dd { margin: 0; }
+.wiki-infobox a, .wiki-body a { color: var(--leaf); }
+.wiki-body { grid-column: 1; grid-row: 1; max-width: 780px; min-width: 0; color: var(--ink); line-height: 1.75; }
+.wiki-body section { padding-top: 2.5rem; scroll-margin-top: 6rem; }
+.wiki-body h2 { margin: 0 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); font: 400 clamp(1.7rem,3vw,2.3rem)/1.15 var(--font-display-serif); letter-spacing: -.02em; }
+.wiki-lead { margin: 0; font-size: 1.1rem; }
+.wiki-ref { margin-left: .1rem; font-size: .62rem; }
+.wiki-ref a { text-decoration: none; }
+.wiki-contents { display: inline-block; margin-top: 2rem; padding: 1rem 1.5rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--paper-deep); }
+.wiki-contents ol { margin: 0; padding-left: 1.25rem; }
+.wiki-timeline { padding-left: 0; list-style: none; }
+.wiki-timeline li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: .45rem 0; border-bottom: 1px dashed var(--line); }
+.wiki-timeline span { color: var(--leaf); font: 600 .72rem/2 var(--font-ui-mono); }
+.wiki-table-wrap { overflow-x: auto; }
+.wiki-table { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
+.wiki-table th, .wiki-table td { padding: .6rem .7rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.wiki-table thead th { color: var(--muted); font: 600 .62rem var(--font-ui-mono); text-transform: uppercase; letter-spacing: .08em; }
+.wiki-table td:nth-child(2), .wiki-table td:nth-child(3) { white-space: nowrap; color: var(--muted); }
+.wiki-note { color: var(--muted); font-size: .88rem; }
+.wiki-papers li { margin-bottom: .6rem; }
+.wiki-inline { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding-left: 0; list-style: none; }
+.wiki-references { font-size: .82rem; }
+.wiki-references a { display: inline-flex; align-items: center; gap: .25rem; }
+.wiki-references li:target { background: var(--warm); }
+@media (max-width: 900px) {
+  .wiki-layout { grid-template-columns: 1fr; }
+  .wiki-infobox { grid-column: 1; position: static; }
+  .wiki-body { grid-row: 2; }
+  .wiki-timeline li { grid-template-columns: 1fr; gap: 0; }
+}
 .community-page { background: #fbfbf8; }
 .community-hero { min-height: min(820px,100svh); padding: clamp(9rem,17vh,11rem) max(1.25rem,calc((100% - 1450px)/2)) 4rem; display: grid; grid-template-columns: minmax(0,1fr) 310px; gap: 5rem; align-items: center; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 86% 20%,#dce7ff 0 10%,transparent 10.2%),radial-gradient(circle at 81% 23%,transparent 0 20%,rgba(55,102,196,.2) 20.2% 20.35%,transparent 20.55%),#fbfbf8; }
 .community-hero h1 { max-width: 1100px; margin: 0; font: 510 clamp(4.2rem,8vw,8.3rem)/.89 var(--font-ui-sans); letter-spacing: -.075em; }.community-hero h1 em { font-family: var(--font-display-serif); font-weight: 400; }
@@ -974,6 +1034,9 @@ svg { transition: transform .2s ease; }
   .hero-copy { grid-template-columns: 1fr; }
   .hero-identity { display: none; }
   .hero-tenure { display: none; }
+  .hero-oreo { top: auto; right: 1.25rem; bottom: 1rem; width: 92px; }
+  .oreo-bubble { right: 30%; top: auto; bottom: calc(100% - 4px); font-size: .6rem; transform: rotate(2deg); }
+  .oreo-bubble::after { right: 18px; top: auto; bottom: -8px; border: 2px solid var(--ink); border-top: 0; border-left: 0; transform: rotate(45deg); }
   .statement-layout { grid-template-columns: 1fr; }
   .statement-visual { min-height: 280px; }
   .lead-developers-heading { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -1075,6 +1138,7 @@ svg { transition: transform .2s ease; }
 }
 @media (max-height: 720px) and (min-width: 621px) {
   .hero-copy { padding-top: 5.8rem; padding-bottom: 1.5rem; }
+  .scroll-pill { display: none; }
   .hero-copy h1 { font-size: clamp(3.2rem,7vw,5.7rem); }
   .hero-lede { max-width: 610px; margin-top: 1rem; font-size: .95rem; }
   .hero-actions { margin-top: 1rem; }
@@ -1106,7 +1170,9 @@ svg { transition: transform .2s ease; }
   .site-nav { min-height: 58px; padding: .4rem .5rem .4rem .8rem; }
   .story-hero { height: auto; min-height: max(700px, calc(100svh - .5rem)); margin: .25rem; border-radius: 1.3rem; }
   .research-hero,.packages-hero { margin: .25rem; border-radius: 1.3rem; }
-  .hero-copy { padding: 6.7rem 1.2rem 2rem; display: block; }
+  .hero-copy { padding: 6.7rem 1.2rem 9.5rem; display: block; }
+  .hero-oreo { width: 78px; right: .9rem; }
+  .scroll-pill { left: 1.2rem; translate: none; font-size: .56rem; letter-spacing: .08em; }
   .hero-copy h1 { font-size: clamp(2.7rem,13.5vw,4rem); line-height: .92; }
   .hero-lede { margin-top: 1.15rem; font-size: .9rem; line-height: 1.5; }
   .hero-actions { margin-top: 1.2rem; }
@@ -1285,6 +1351,8 @@ svg { transition: transform .2s ease; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
   video[aria-hidden="true"] { display: none !important; }
   .impact-sticker, .hero-field::before, .hero-field span { transform: none !important; }
+  .hero-oreo img, .oreo-shadow, .oreo-bubble span { animation: none !important; }
+  .scroll-pill-mouse i { animation: none !important; }
 }
 
 @media (max-width: 760px) {
