@@ -125,6 +125,44 @@ svg { transition: transform .2s ease; }
   @keyframes scroll-pill-out { to { opacity: 0; transform: translateY(12px); visibility: hidden; } }
 }
 #why-elixpo { scroll-margin-top: 5rem; }
+.oreo-speech, .oreo-companion-bubble, .footer-oreo-bubble { margin: 0; padding: .55rem .8rem; border: 2px solid var(--ink); background: #fffdf7; box-shadow: 3px 3px 0 var(--ink); color: var(--ink); font: 650 .66rem/1.3 var(--font-ui-mono); letter-spacing: .02em; }
+.oreo-companion { position: fixed; z-index: 40; right: clamp(.6rem,2vw,1.75rem); bottom: 0; width: 92px; transform: translateY(105%); transition: transform .5s cubic-bezier(.3,1.35,.5,1); pointer-events: none; }
+.oreo-companion[data-mode="peek"] { transform: translateY(48%); pointer-events: auto; }
+.oreo-companion[data-mode="up"] { transform: translateY(-.6rem); pointer-events: auto; }
+.oreo-companion-panda { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.oreo-companion-panda img { display: block; width: 100%; height: auto; filter: drop-shadow(0 8px 14px rgba(20,32,24,.22)); transform-origin: 50% 100%; transition: transform .35s; }
+.oreo-companion[data-mode="peek"] .oreo-companion-panda img { transform: rotate(-12deg); }
+.oreo-companion-panda img.is-hopping { animation: oreo-hop .6s cubic-bezier(.3,1.6,.5,1); }
+.oreo-companion-panda:focus-visible { outline: 2px solid var(--leaf); outline-offset: 4px; border-radius: 1rem; }
+.oreo-companion-bubble { position: absolute; right: 78%; bottom: 72%; display: flex; align-items: center; gap: .6rem; width: max-content; max-width: min(260px, calc(100vw - 7rem)); opacity: 0; transform: translateY(6px) scale(.9) rotate(-2deg); transform-origin: 100% 100%; transition: opacity .2s, transform .3s cubic-bezier(.3,1.5,.5,1); pointer-events: none; }
+.oreo-companion[data-mode="up"] .oreo-companion-bubble { opacity: 1; transform: rotate(-2deg); pointer-events: auto; }
+.oreo-companion-bubble span { animation: oreo-say-in .35s ease-out; }
+.oreo-companion-bubble button { flex: none; width: 1.3rem; height: 1.3rem; padding: 0; border: 1.5px solid var(--ink); border-radius: 50%; background: none; color: var(--ink); font: 700 .8rem/1 var(--font-ui-sans); cursor: pointer; }
+.oreo-companion-bubble button:hover { background: #e76043; border-color: #e76043; color: #fff; }
+.site-footer { position: relative; }
+.footer-oreo { position: absolute; z-index: 2; top: -74px; right: clamp(2rem,8vw,7rem); display: flex; align-items: flex-start; gap: .4rem; }
+.footer-oreo img { width: 92px; height: auto; transform-origin: 50% 100%; transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.footer-oreo:hover img { transform: translateY(-8px) rotate(6deg); }
+.footer-oreo-bubble { margin-top: .6rem; transform: rotate(-3deg); white-space: nowrap; transition: background .2s; }
+.footer-oreo:hover .footer-oreo-bubble { background: #dff4e8; }
+.not-found-oreo { position: absolute; z-index: 1; right: clamp(2rem,10vw,10rem); top: 50%; display: grid; justify-items: center; gap: .9rem; transform: translateY(-50%); }
+.not-found-oreo img { width: clamp(130px,14vw,190px); height: auto; animation: oreo-munch 1.6s ease-in-out infinite; transform-origin: 50% 100%; }
+.not-found-oreo .oreo-speech { transform: rotate(-3deg); }
+.not-found-oreo s { opacity: .55; }
+.not-found-crumbs { position: relative; width: 160px; height: 18px; }
+.not-found-crumbs i { position: absolute; width: 7px; height: 7px; background: #c9a77a; box-shadow: 1px 1px 0 rgba(20,32,24,.35); }
+.not-found-crumbs i:nth-child(1) { left: 10%; top: 2px; }.not-found-crumbs i:nth-child(2) { left: 28%; top: 10px; width: 5px; height: 5px; }.not-found-crumbs i:nth-child(3) { left: 55%; top: 4px; }.not-found-crumbs i:nth-child(4) { left: 74%; top: 12px; width: 4px; height: 4px; }.not-found-crumbs i:nth-child(5) { left: 88%; top: 0; width: 5px; height: 5px; }
+@keyframes oreo-munch { 0%,100% { transform: rotate(0) scale(1); } 20% { transform: rotate(-4deg) scale(1.03,.97); } 40% { transform: rotate(3deg) scale(.98,1.02); } 60% { transform: rotate(-2deg); } }
+@media (max-width: 900px) {
+  .not-found-oreo { position: relative; right: auto; top: auto; justify-self: start; justify-items: start; margin-bottom: 1.5rem; transform: none; }
+  .not-found-oreo img { width: 110px; }
+  .footer-oreo { top: -64px; right: 1.25rem; }
+  .footer-oreo img { width: 76px; }
+}
+@media (max-width: 620px) {
+  .oreo-companion { width: 70px; }
+  .footer-oreo-bubble { display: none; }
+}
 
 .story-statement { border-bottom: 1px solid var(--line); }
 .story-statement h2 { max-width: 1120px; font-size: clamp(2.7rem,5vw,4.7rem); }
@@ -640,41 +678,88 @@ svg { transition: transform .2s ease; }
 .history-ledger p { max-width: 750px; color: var(--muted); line-height: 1.7; }
 .history-evidence { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
 .history-evidence a { display: inline-flex; align-items: center; gap: .25rem; color: var(--leaf); font-size: .7rem; font-weight: 650; }
-.wiki-page .page-intro { margin-bottom: 3rem; }
-.wiki-layout { display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: clamp(2rem,5vw,4.5rem); align-items: start; }
-.wiki-infobox { grid-column: 2; grid-row: 1; position: sticky; top: 7rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 1.25rem; background: var(--card); }
-.wiki-infobox h2 { margin: 0 0 1rem; font-size: 1.5rem; letter-spacing: -.03em; }
-.wiki-infobox dl { display: grid; grid-template-columns: 7.5rem 1fr; gap: .7rem 1rem; margin: 0; font-size: .86rem; line-height: 1.5; }
-.wiki-infobox dt { color: var(--muted); font: 600 .62rem/1.9 var(--font-ui-mono); text-transform: uppercase; letter-spacing: .08em; }
-.wiki-infobox dd { margin: 0; }
-.wiki-infobox a, .wiki-body a { color: var(--leaf); }
-.wiki-body { grid-column: 1; grid-row: 1; max-width: 780px; min-width: 0; color: var(--ink); line-height: 1.75; }
-.wiki-body section { padding-top: 2.5rem; scroll-margin-top: 6rem; }
-.wiki-body h2 { margin: 0 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); font: 400 clamp(1.7rem,3vw,2.3rem)/1.15 var(--font-display-serif); letter-spacing: -.02em; }
-.wiki-lead { margin: 0; font-size: 1.1rem; }
+.wiki-layout { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: clamp(2rem,4vw,4rem); align-items: start; }
+.wiki-toc { position: sticky; top: 7rem; padding-top: .4rem; }
+.wiki-toc ol { display: grid; gap: .15rem; margin: 0; padding: 0; list-style: none; border-left: 1px solid var(--line); }
+.wiki-toc a { display: flex; gap: .7rem; margin-left: -1px; padding: .35rem .8rem; border-left: 2px solid transparent; color: var(--muted); font-size: .84rem; transition: color .15s, border-color .15s; }
+.wiki-toc a:hover { border-color: var(--leaf); color: var(--ink); }
+.wiki-toc a span { color: #9aa19b; font: 600 .7rem/1.7 var(--font-ui-mono); }
+.wiki-article { min-width: 0; color: var(--ink); line-height: 1.75; }
+.wiki-article::after { content: ""; display: table; clear: both; }
+.wiki-title { margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+.wiki-title h1 { margin: 0; font: 400 clamp(3.2rem,6vw,5.2rem)/1 var(--font-display-serif); letter-spacing: -.035em; }
+.wiki-title > p:last-child { margin: .75rem 0 0; color: var(--muted); font-size: .85rem; }
+.wiki-article a { color: var(--leaf); }
+.wiki-infobox { float: right; width: 320px; margin: 0 0 2rem 2.5rem; border: 1px solid var(--line); border-radius: 1.25rem; overflow: hidden; background: var(--card); box-shadow: 0 18px 40px -28px rgba(20,32,24,.35); }
+.wiki-infobox h2 { margin: 0; padding: .9rem 1.25rem; background: var(--ink); color: #fff; font: 400 1.35rem var(--font-display-serif); text-align: center; }
+.wiki-infobox figure { margin: 0; padding: 1.25rem 1rem .9rem; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 50% 45%,#e6eee8,transparent 65%); text-align: center; }
+.wiki-infobox figure img { margin-inline: auto; transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.wiki-infobox figure:hover img { transform: rotate(-6deg) scale(1.06); }
+.wiki-infobox figcaption { margin-top: .4rem; color: var(--muted); font-size: .72rem; }
+.wiki-infobox dl { display: grid; grid-template-columns: 6.5rem 1fr; margin: 0; font-size: .83rem; line-height: 1.5; }
+.wiki-infobox dt, .wiki-infobox dd { margin: 0; padding: .6rem 1.25rem; border-bottom: 1px solid var(--line); }
+.wiki-infobox dt { padding-right: 0; color: var(--muted); font: 600 .6rem/2.1 var(--font-ui-mono); text-transform: uppercase; letter-spacing: .08em; }
+.wiki-infobox dd { padding-left: .5rem; }
+.wiki-infobox dl > :nth-last-child(-n+2) { border-bottom: 0; }
+.wiki-lead { margin: 0 0 1.1rem; font-size: 1.08rem; }
 .wiki-ref { margin-left: .1rem; font-size: .62rem; }
 .wiki-ref a { text-decoration: none; }
-.wiki-contents { display: inline-block; margin-top: 2rem; padding: 1rem 1.5rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--paper-deep); }
-.wiki-contents ol { margin: 0; padding-left: 1.25rem; }
-.wiki-timeline { padding-left: 0; list-style: none; }
-.wiki-timeline li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: .45rem 0; border-bottom: 1px dashed var(--line); }
-.wiki-timeline span { color: var(--leaf); font: 600 .72rem/2 var(--font-ui-mono); }
-.wiki-table-wrap { overflow-x: auto; }
-.wiki-table { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
-.wiki-table th, .wiki-table td { padding: .6rem .7rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-.wiki-table thead th { color: var(--muted); font: 600 .62rem var(--font-ui-mono); text-transform: uppercase; letter-spacing: .08em; }
-.wiki-table td:nth-child(2), .wiki-table td:nth-child(3) { white-space: nowrap; color: var(--muted); }
+.wiki-article section { clear: both; padding-top: 3rem; scroll-margin-top: 6rem; }
+.wiki-article section:first-of-type { clear: none; }
+.wiki-article h2 { margin: 0 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); font: 400 clamp(1.8rem,3vw,2.4rem)/1.15 var(--font-display-serif); letter-spacing: -.02em; }
+.wiki-article h3 { margin: 0 0 .75rem; font-size: 1.05rem; letter-spacing: -.01em; }
+.wiki-timeline { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+.wiki-year { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; }
+.wiki-year h3 { margin: 0; color: var(--leaf); font: 400 1.6rem/1.2 var(--font-display-serif); }
+.wiki-year ol { margin: 0; padding: 0 0 0 1.4rem; list-style: none; border-left: 2px solid var(--line); }
+.wiki-year li { position: relative; padding: .15rem 0 .9rem; }
+.wiki-year li::before { content: ""; position: absolute; left: calc(-1.4rem - 6px); top: .6rem; width: 10px; height: 10px; border: 2px solid var(--leaf); border-radius: 50%; background: var(--paper); }
+.wiki-year li span { color: var(--muted); font: 600 .66rem var(--font-ui-mono); letter-spacing: .04em; text-transform: uppercase; }
+.wiki-year li p { margin: .1rem 0 0; }
+.wiki-cards { display: grid; grid-template-columns: repeat(auto-fill,minmax(230px,1fr)); gap: .8rem; margin: 1rem 0 1.5rem; }
+.wiki-cards.two { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.wiki-card { padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--card); line-height: 1.5; }
+.wiki-card h3 { margin-bottom: .35rem; }
+.wiki-card p { margin: 0; color: var(--muted); font-size: .86rem; }
+.wiki-entry { display: grid; align-content: start; gap: .5rem; color: var(--ink) !important; transition: border-color .15s, transform .15s; }
+.wiki-entry:hover { border-color: var(--leaf); transform: translateY(-2px); }
+.wiki-entry > div { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.wiki-entry .status-pill { padding: .2rem .5rem; font-size: .58rem; }
+.wiki-group h3 small { margin-left: .3rem; color: var(--muted); font: 600 .7rem var(--font-ui-mono); }
 .wiki-note { color: var(--muted); font-size: .88rem; }
-.wiki-papers li { margin-bottom: .6rem; }
-.wiki-inline { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding-left: 0; list-style: none; }
-.wiki-references { font-size: .82rem; }
-.wiki-references a { display: inline-flex; align-items: center; gap: .25rem; }
+.wiki-papers { display: grid; gap: .8rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.wiki-papers li { display: grid; grid-template-columns: auto 1fr; gap: 1rem; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--card); line-height: 1.5; }
+.wiki-papers li a { font-weight: 600; }
+.wiki-papers li p { margin: .3rem 0 .5rem; color: var(--muted); font-size: .84rem; }
+.wiki-year-badge { align-self: start; padding: .3rem .55rem; border-radius: .5rem; background: var(--ink); color: #fff; font: 650 .72rem var(--font-ui-mono); }
+.wiki-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.wiki-chips span, .wiki-chips a { padding: .25rem .65rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font: 600 .62rem var(--font-ui-mono); text-transform: uppercase; letter-spacing: .06em; }
+.wiki-chips.links a { padding: .45rem .9rem; color: var(--leaf); font-size: .68rem; background: var(--card); transition: border-color .15s; }
+.wiki-chips.links a:hover { border-color: var(--leaf); }
+.wiki-people { display: grid; grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); gap: .8rem; margin: 1rem 0; }
+.wiki-people a { display: flex; align-items: center; gap: .9rem; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--card); color: var(--muted) !important; font-size: .78rem; line-height: 1.4; }
+.wiki-people a:hover { border-color: var(--leaf); }
+.wiki-people img { border-radius: 50%; }
+.wiki-people strong { display: block; color: var(--ink); font-size: .95rem; }
+.wiki-oreo-note { display: flex; align-items: center; gap: .6rem; margin-bottom: 1rem; }
+.wiki-oreo-note img { animation: oreo-bob 3.4s ease-in-out infinite; }
+.wiki-oreo-note span { padding: .45rem .75rem; border: 2px solid var(--ink); background: #fffdf7; box-shadow: 3px 3px 0 var(--ink); font: 650 .66rem var(--font-ui-mono); transform: rotate(-1.5deg); }
+.wiki-references { columns: 2; column-gap: 2.5rem; margin: 0; padding-left: 1.6rem; font-size: .8rem; line-height: 1.55; }
+.wiki-references li { break-inside: avoid; margin-bottom: .45rem; padding-left: .2rem; }
+.wiki-references a { display: inline; }
+.wiki-references a svg { display: inline; margin-left: .2rem; vertical-align: -1px; }
 .wiki-references li:target { background: var(--warm); }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .wiki-layout { grid-template-columns: 1fr; }
-  .wiki-infobox { grid-column: 1; position: static; }
-  .wiki-body { grid-row: 2; }
-  .wiki-timeline li { grid-template-columns: 1fr; gap: 0; }
+  .wiki-toc { position: static; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--card); }
+  .wiki-toc ol { grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); border-left: 0; }
+  .wiki-toc a { margin-left: 0; padding-left: 0; border-left: 0; }
+}
+@media (max-width: 760px) {
+  .wiki-infobox { float: none; width: 100%; margin: 0 0 2rem; }
+  .wiki-cards.two { grid-template-columns: 1fr; }
+  .wiki-year { grid-template-columns: 1fr; gap: .5rem; }
+  .wiki-references { columns: 1; }
 }
 .community-page { background: #fbfbf8; }
 .community-hero { min-height: min(820px,100svh); padding: clamp(9rem,17vh,11rem) max(1.25rem,calc((100% - 1450px)/2)) 4rem; display: grid; grid-template-columns: minmax(0,1fr) 310px; gap: 5rem; align-items: center; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 86% 20%,#dce7ff 0 10%,transparent 10.2%),radial-gradient(circle at 81% 23%,transparent 0 20%,rgba(55,102,196,.2) 20.2% 20.35%,transparent 20.55%),#fbfbf8; }
@@ -1352,6 +1437,7 @@ svg { transition: transform .2s ease; }
   video[aria-hidden="true"] { display: none !important; }
   .impact-sticker, .hero-field::before, .hero-field span { transform: none !important; }
   .hero-oreo img, .oreo-shadow, .oreo-bubble span { animation: none !important; }
+  .oreo-companion, .oreo-companion-bubble, .oreo-companion-panda img, .not-found-oreo img { animation: none !important; transition: none !important; }
   .scroll-pill-mouse i { animation: none !important; }
 }
 

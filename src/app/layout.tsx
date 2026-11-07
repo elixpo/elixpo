@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { MegaNavbar } from "@/components/MegaNavbar";
 import { Footer } from "@/components/Footer";
 import { MotionPreferences } from "@/components/MotionPreferences";
+import { OreoCompanion } from "@/components/OreoCompanion";
 import { PortalAnalytics } from "@/components/PortalAnalytics";
 import { SITE_URL } from "@/lib/seo";
 
@@ -86,6 +87,7 @@ export default function RootLayout({
             <MegaNavbar />
             <div className="site-content">{children}</div>
             <Footer />
+            <OreoCompanion />
           </div>
         </MotionPreferences>
       </body>
