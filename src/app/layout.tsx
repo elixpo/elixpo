@@ -6,6 +6,7 @@ import { MegaNavbar } from "@/components/MegaNavbar";
 import { Footer } from "@/components/Footer";
 import { MotionPreferences } from "@/components/MotionPreferences";
 import { OreoCompanion } from "@/components/OreoCompanion";
+import { SparkGuard } from "@/components/SparkGuard";
 import { PortalAnalytics } from "@/components/PortalAnalytics";
 import { SITE_URL } from "@/lib/seo";
 
@@ -88,6 +89,7 @@ export default function RootLayout({
             <div className="site-content">{children}</div>
             <Footer />
             <OreoCompanion />
+            <SparkGuard />
           </div>
         </MotionPreferences>
       </body>

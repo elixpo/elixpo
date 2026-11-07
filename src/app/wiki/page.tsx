@@ -7,6 +7,7 @@ import people from "../../../content/people.json";
 import { DIRECTORY_ENTRIES, familyPath, type Lifecycle, type PublicFamily } from "@/lib/directory";
 import { RESEARCH_RECORDS, researchRecordPath } from "@/lib/research";
 import { createPageMetadata, serializeJsonLd } from "@/lib/seo";
+import { Sparks } from "@/components/Sparks";
 
 export const metadata = createPageMetadata({
   title: "Elixpo Wiki — encyclopedic overview",
@@ -76,7 +77,7 @@ export default function WikiPage() {
       </nav>
 
       <article className="wiki-article">
-        <header className="wiki-title">
+        <header className="wiki-title"><Sparks chips={["[citation needed]", "NPOV ✓", "sourced ✓"]} />
           <p className="eyebrow">Elixpo Wiki / every claim referenced</p>
           <h1>Elixpo</h1>
           <p>From the Elixpo public record. Corrections are welcome in <a href={organization.urls.discussions.url} target="_blank" rel="noreferrer">GitHub Discussions</a>.</p>
