@@ -4,6 +4,7 @@ import type { DirectoryEntry } from "@/lib/directory";
 import { discussionUrl, familyPath, RELATIONSHIP_DESCRIPTIONS, RELATIONSHIP_LABELS } from "@/lib/directory";
 import { serializeJsonLd } from "@/lib/seo";
 import { ProjectMark } from "@/components/ProjectMark";
+import { Sparks } from "@/components/Sparks";
 
 export function DossierPage({ entry }: { entry: DirectoryEntry }) {
   const path = familyPath(entry.family);
@@ -17,7 +18,7 @@ export function DossierPage({ entry }: { entry: DirectoryEntry }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
       <Link className="back-link" href={path}><ArrowLeft size={15} /> Back to {entry.family}</Link>
       <article>
-        <header className="dossier-hero">
+        <header className="dossier-hero"><Sparks chips={[`${entry.lifecycle} ✓`, "README ↗"]} />
           <div>
             <ProjectMark seed={entry.slug} icon={entry.icon} size="large" />
             <p className="eyebrow">{entry.family} dossier · {RELATIONSHIP_LABELS[entry.relationship]}</p>

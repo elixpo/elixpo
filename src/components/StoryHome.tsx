@@ -7,6 +7,7 @@ import people from "../../content/people.json";
 import { DIRECTORY_ENTRIES, familyPath, getDirectoryEntries } from "@/lib/directory";
 import { ELIXPO_PACKAGES } from "@/lib/packages";
 import { ProjectMark } from "@/components/ProjectMark";
+import { Sparks } from "@/components/Sparks";
 
 const featured = ["blogs", "lixsketch", "oreo", "oreolook", "kareixo", "lixrl"]
   .map((slug) => DIRECTORY_ENTRIES.find((entry) => entry.slug === slug))
@@ -48,6 +49,12 @@ export function StoryHome() {
             </div>
           </div>
         </div>
+        <div className="hero-oreo" aria-hidden="true" data-oreo-scene>
+          <p className="oreo-bubble"><span>Hi! I&apos;m Oreo.</span><span>psst… scroll down ↓</span><span>ship it ↗</span><span>LGTM ✓</span></p>
+          <Image src="/logos/logo.webp" alt="" width={150} height={150} loading="eager" />
+          <i className="oreo-shadow" />
+        </div>
+        <a className="scroll-pill" href="#why-elixpo"><span className="scroll-pill-mouse" aria-hidden="true"><i /></span>Scroll to meet the work</a>
         <aside className="hero-tenure" aria-label={`${yearsSinceFounded} years of Elixpo since 2023`}>
           <span>OPEN SINCE</span>
           <strong>{yearsSinceFounded}<sup>+</sup></strong>
@@ -55,11 +62,12 @@ export function StoryHome() {
         </aside>
       </section>
 
-      <section className="story-statement section-wrap">
+      <section id="why-elixpo" className="story-statement section-wrap">
         <p className="eyebrow">Why Elixpo exists</p>
         <h2>Elixpo helps open-source work become easier to understand, contribute to, and release.</h2>
         <div className="statement-layout">
           <figure className="statement-visual">
+            <Sparks className="statement-sparks" free chips={["PR merged ✓", "+1 contributor", "v1.0 released ↗"]} />
             <Image src="/brand/illustrations/open-source-release-path.webp" alt="Elixpo mascot connecting source code, contributors, review, packaging, and a public release" width={1670} height={940} sizes="(max-width: 900px) 100vw, 68vw" />
           </figure>
           <div className="statement-grid">
@@ -80,16 +88,19 @@ export function StoryHome() {
       </section>
 
       <section className="chapter-flow section-wrap">
-        <div className="section-heading">
+        <div className="section-heading"><Sparks chips={["frame ✓", "build ✓", "release ↗"]} />
           <p className="eyebrow">The Chapter process</p>
           <h2>Each Chapter follows a documented four-stage process.</h2>
         </div>
-        <ol>
-          <li><span>01</span><h3>Set the scope</h3><p>The maintainers define a release-sized goal, the evidence it needs, and the tasks that are ready for contributors.</p></li>
-          <li><span>02</span><h3>Develop in public</h3><p>Maintainers and contributors discuss decisions, review changes, and track progress in the open.</p></li>
-          <li><span>03</span><h3>Publish the release</h3><p>The project publishes its software, research, hardware, or infrastructure with the documentation required to use it.</p></li>
-          <li><span>04</span><h3>Preserve the record</h3><p>Elixpo records the release, its status, important decisions, and the people who contributed to it.</p></li>
-        </ol>
+        <div className="chapter-track">
+          <div className="chapter-walk" aria-hidden="true" data-oreo-scene><Image src="/logos/logo.webp" alt="" width={44} height={44} /></div>
+          <ol>
+            <li><span>01</span><h3>Set the scope</h3><p>The maintainers define a release-sized goal, the evidence it needs, and the tasks that are ready for contributors.</p></li>
+            <li><span>02</span><h3>Develop in public</h3><p>Maintainers and contributors discuss decisions, review changes, and track progress in the open.</p></li>
+            <li><span>03</span><h3>Publish the release</h3><p>The project publishes its software, research, hardware, or infrastructure with the documentation required to use it.</p></li>
+            <li><span>04</span><h3>Preserve the record</h3><p>Elixpo records the release, its status, important decisions, and the people who contributed to it.</p></li>
+          </ol>
+        </div>
         <Link className="text-link" href="/chapter">Learn how the Chapter works <ArrowRight size={15} /></Link>
       </section>
 
@@ -107,7 +118,7 @@ export function StoryHome() {
       </section>
 
       <section className="families section-wrap">
-        <div className="section-heading split">
+        <div className="section-heading split"><Sparks chips={["3 directories", "browse ↗"]} />
           <div><p className="eyebrow">The public directory</p><h2>Browse Elixpo’s work by category.</h2></div>
           <p>Projects, research, and operated services have different responsibilities. Every directory entry therefore identifies its lifecycle, stewardship relationship, source repository, and available evidence.</p>
         </div>
@@ -119,7 +130,7 @@ export function StoryHome() {
       </section>
 
       <section className="featured-work section-wrap">
-        <div className="section-heading split">
+        <div className="section-heading split"><Sparks chips={["featured ✦", "fresh build ✓"]} />
           <div><p className="eyebrow">Featured work</p><h2>Explore current work from across Elixpo.</h2></div>
           <Link className="text-link" href="/projects">View the complete directory <ArrowRight size={15} /></Link>
         </div>
@@ -137,7 +148,7 @@ export function StoryHome() {
       </section>
 
       <section className="release-surfaces section-wrap">
-        <div className="section-heading split"><div><p className="eyebrow">Research and distribution</p><h2>Research and package releases have dedicated indexes.</h2></div><p>The main portal provides an overview of the organization. The research and package sections provide the citations, reproducibility records, installation instructions, and distribution details required for those outputs.</p></div>
+        <div className="section-heading split"><Sparks chips={["cite me ↗", "apt ✓"]} /><div><p className="eyebrow">Research and distribution</p><h2>Research and package releases have dedicated indexes.</h2></div><p>The main portal provides an overview of the organization. The research and package sections provide the citations, reproducibility records, installation instructions, and distribution details required for those outputs.</p></div>
         <div className="surface-grid">
           <Link href="/research"><span>Research index</span><h3>Review papers, experiments, and supporting evidence.</h3><p>The research directory connects each project to its repository, released artifacts, lifecycle, and available reproducibility evidence.</p><b>Browse the research index <ArrowRight size={15}/></b></Link>
           <Link href="/packages"><span>Linux distribution</span><h3>Install packages released by Elixpo projects.</h3><p>The package directory explains the maintained applications, signed APT source, supported systems, releases, and installation options.</p><b>Explore Elixpo Packages <ArrowRight size={15}/></b></Link>
@@ -149,7 +160,7 @@ export function StoryHome() {
       </section>
 
       <section className="people-preview section-wrap">
-        <div className="section-heading split">
+        <div className="section-heading split"><Sparks chips={["+1 human", "thank you ♥"]} />
           <div><p className="eyebrow">Contributor recognition</p><h2>Contributor records explain who worked on each release.</h2></div>
           <p>Recognition is based on repository evidence, excludes declared project leads and automation, and describes the period and type of work rather than presenting a contribution count without context.</p>
         </div>
@@ -169,7 +180,7 @@ export function StoryHome() {
       </section>
 
       <section className="history-preview section-wrap">
-        <div className="section-heading"><p className="eyebrow">Organization history</p><h2>Elixpo documents how the organization and its projects have changed.</h2></div>
+        <div className="section-heading"><Sparks chips={["open ✓", "say hi ↗"]} /><p className="eyebrow">Organization history</p><h2>Elixpo documents how the organization and its projects have changed.</h2></div>
         <div className="timeline-strip">
           {history.entries.slice(0, 4).map((item) => <article key={item.period}><span>{item.period}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}
         </div>

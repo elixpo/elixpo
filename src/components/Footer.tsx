@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -8,6 +9,10 @@ const standards = [{ label: "Branding", href: "/branding" }, { label: "Architect
 export function Footer() {
   return (
     <footer className="site-footer">
+      <a className="footer-oreo" href="#" data-oreo-scene aria-label="Back to the top of the page">
+        <span className="footer-oreo-bubble">That&apos;s all, folks. Back up? ↑</span>
+        <Image src="/logos/logo.webp" alt="" width={92} height={92} />
+      </a>
       <div className="footer-lead">
         <h2>Open work deserves<br />a legible public life.</h2>
         <div><p>Elixpo is a project foundry for active software, reproducible research, and openly operated services. We build in public, credit the people who move the work, and preserve the release record.</p><a className="text-link" href="https://github.com/orgs/elixpo/discussions" target="_blank" rel="noreferrer">Open a discussion <ArrowUpRight size={14} /></a></div>
