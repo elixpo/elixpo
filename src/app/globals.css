@@ -1545,3 +1545,30 @@ svg { transition: transform .2s ease; }
   .recognition-certificate { width: 297mm; height: 210mm; min-width: 0; margin: 0; padding: 18mm; border: 0; box-shadow: none; }
   .recognition-certificate::before { inset: 6mm; }
 }
+
+/* Hero ticker, pointer parallax, and card spotlight (driven by PointerEffects). */
+.hero-ticker { position: absolute; z-index: 3; left: clamp(1.4rem,7vw,7rem); right: clamp(1.4rem,7vw,7rem); bottom: 5.4rem; display: flex; align-items: center; gap: 1rem; max-width: 1180px; }
+.hero-ticker-label { flex: none; padding: .45rem .8rem; border-radius: 999px; background: var(--ink); color: #fff; font: 650 .6rem var(--font-ui-mono); letter-spacing: .12em; text-transform: uppercase; }
+.hero-ticker-label::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: .5rem; border-radius: 50%; background: #18a466; vertical-align: 1px; animation: ticker-live 1.6s ease-in-out infinite; }
+.hero-ticker-track { position: relative; flex: 1; min-width: 0; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
+.hero-ticker-run { display: flex; width: max-content; animation: ticker-run 48s linear infinite; }
+.hero-ticker-run > span { display: contents; }
+.hero-ticker:hover .hero-ticker-run, .hero-ticker:focus-within .hero-ticker-run { animation-play-state: paused; }
+.hero-ticker a { display: inline-flex; align-items: center; gap: .45rem; margin-right: 1.6rem; color: var(--ink); font-size: .82rem; font-weight: 600; white-space: nowrap; transition: color .15s; }
+.hero-ticker a:hover { color: var(--leaf); }
+.hero-ticker a i { width: 5px; height: 5px; border-radius: 50%; background: #efb37a; }
+.hero-ticker a small { color: var(--muted); font: 500 .58rem var(--font-ui-mono); text-transform: uppercase; letter-spacing: .08em; }
+@keyframes ticker-run { to { transform: translateX(-50%); } }
+@keyframes ticker-live { 50% { opacity: .3; } }
+.hero-field span, .hero-field::before { transition: translate .6s cubic-bezier(.2,.8,.2,1); }
+.hero-field span:nth-child(1) { translate: calc(var(--mx,0) * -14px) calc(var(--my,0) * -10px); }
+.hero-field span:nth-child(2) { translate: calc(var(--mx,0) * 22px) calc(var(--my,0) * 16px); }
+.hero-field span:nth-child(3) { translate: calc(var(--mx,0) * 34px) calc(var(--my,0) * 26px); }
+.hero-field span:nth-child(4) { translate: calc(var(--mx,0) * -26px) calc(var(--my,0) * -18px); }
+.hero-field span:nth-child(5) { translate: calc(var(--mx,0) * 44px) calc(var(--my,0) * 34px); }
+.hero-field::before { translate: calc(var(--mx,0) * 10px) calc(var(--my,0) * 8px); }
+.featured-card { background-image: radial-gradient(260px circle at var(--px,-400px) var(--py,-400px), rgba(24,164,102,.09), transparent 70%); }
+.wiki-entry { background-image: radial-gradient(200px circle at var(--px,-400px) var(--py,-400px), rgba(24,164,102,.08), transparent 70%); }
+.family-grid > a, .family-grid > a:hover { background-image: radial-gradient(300px circle at var(--px,-400px) var(--py,-400px), rgba(115,213,162,.1), transparent 70%); }
+@media (max-width: 900px), (max-height: 720px) { .hero-ticker { display: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-ticker-run, .hero-ticker-label::before { animation: none; } .hero-ticker-track { overflow-x: auto; } }

@@ -24,6 +24,8 @@ const counts = {
   service: getDirectoryEntries("service").length,
 };
 const yearsSinceFounded = new Date().getUTCFullYear() - 2023;
+const building = DIRECTORY_ENTRIES.filter((entry) => entry.lifecycle === "active" && entry.repository !== "elixpo_chapter");
+const tickerItems = (copy: boolean) => building.map((entry) => <Link key={`${copy}-${entry.family}-${entry.slug}`} href={`${familyPath(entry.family)}/${entry.slug}`} tabIndex={copy ? -1 : undefined}><i />{entry.name}<small>{entry.family}</small></Link>);
 
 export function StoryHome() {
   return (
@@ -54,6 +56,10 @@ export function StoryHome() {
           <Image src="/logos/logo.webp" alt="" width={150} height={150} loading="eager" />
           <i className="oreo-shadow" />
         </div>
+        <nav className="hero-ticker" aria-label="Projects in active development">
+          <span className="hero-ticker-label">Now building</span>
+          <div className="hero-ticker-track"><div className="hero-ticker-run">{tickerItems(false)}<span aria-hidden="true">{tickerItems(true)}</span></div></div>
+        </nav>
         <a className="scroll-pill" href="#why-elixpo"><span className="scroll-pill-mouse" aria-hidden="true"><i /></span>Scroll to meet the work</a>
         <aside className="hero-tenure" aria-label={`${yearsSinceFounded} years of Elixpo since 2023`}>
           <span>OPEN SINCE</span>
