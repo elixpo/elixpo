@@ -1,11 +1,15 @@
 {
   "$schema": "./schemas/site-favicons.schema.json",
   "schemaVersion": 1,
-  "lastVerified": "2026-11-07",
+  "lastVerified": "2026-11-15",
   "entries": {
     "accounts.elixpo": {
       "path": "/brand/favicons/accounts.elixpo.webp",
       "source": "https://accounts.elixpo.com/icon1.png"
+    },
+    "admin.elixpo": {
+      "path": "/brand/favicons/admin.elixpo.webp",
+      "source": "https://admin.elixpo.com/icon-512.png"
     },
     "agent.elixpo": {
       "path": "/brand/favicons/agent.elixpo.webp",
@@ -38,6 +42,10 @@
     "packages.elixpo": {
       "path": "/brand/favicons/packages.elixpo.webp",
       "source": "https://packages.elixpo.com/favicon.png"
+    },
+    "payouts.elixpo": {
+      "path": "/brand/favicons/payouts.elixpo.webp",
+      "source": "https://payouts.elixpo.com/icon-512.png"
     },
     "sketch.elixpo": {
       "path": "/brand/favicons/sketch.elixpo.webp",
