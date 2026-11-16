@@ -41,7 +41,7 @@
       ],
       "conformantWithExceptions": ["agent.elixpo", "crumb.elixpo"],
       "deferredAgentRepositories": ["oreoPI"],
-      "outOfScopeRepositories": [".github", "brand-production", "search.elixpo"],
+      "outOfScopeRepositories": [".github", "brand-production", "diwali.elixpo", "search.elixpo"],
       "centrallyRecordedArchives": [
         "art.elixpo",
         "chat.elixpo",
@@ -227,6 +227,20 @@
       "verificationState": "verified",
       "statusVerifiedAt": "2026-10-17",
       "statusOwner": "elixpo"
+    },
+    {
+      "name": "diwali.elixpo",
+      "repositoryUrl": "https://github.com/elixpo/diwali.elixpo",
+      "disposition": "public-entry",
+      "publicClass": "project",
+      "relationship": "connected",
+      "lifecycle": "active",
+      "custody": "mirrored",
+      "githubArchived": false,
+      "verificationState": "verified",
+      "statusVerifiedAt": "2026-11-16",
+      "statusOwner": "elixpo",
+      "notes": "The Light Within by Arya Bhagat, imported with its full commit history from github.com/Aryaaa-21/Diya with the author's agreement. Elixpo operates the diwali.elixpo.com deployment; Arya Bhagat remains the copyright holder of the original MIT-licensed work."
     },
     {
       "name": "elixpo",
