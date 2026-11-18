@@ -473,7 +473,7 @@
     },
     {
       "name": "oreo",
-      "repositoryUrl": "https://github.com/elixpo/oreo",
+      "repositoryUrl": "https://github.com/elixpo/falera",
       "disposition": "public-entry",
       "publicClass": "project",
       "relationship": "core",

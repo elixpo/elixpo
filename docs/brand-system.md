@@ -8,7 +8,7 @@ Open Field is the visual language for Elixpo. It aims to make software,
 research, services, people, and historical records feel related without forcing
 every project to look identical. It is an original system built around editorial
 clarity, warm institutional colour, lightweight geometry, and careful use of the
-Oreo mascot.
+Lumi mascot.
 
 This specification is approved as the organization-wide direction. The reviewed
 public asset migration is complete. Restricted masters, prompts, and generation
@@ -60,12 +60,12 @@ geometric fallback from the Open Field colour and line system. Do not substitute
 unrelated stock symbols or imitate another organization's signature visual
 language.
 
-## Oreo mascot
+## Lumi, the mascot
 
-Oreo is a human signal, not a mandatory watermark.
+Lumi is a human signal, not a mandatory watermark.
 
-Use Oreo for the primary Elixpo identity, community invitations, events, sticker
-artwork, and friendly onboarding moments. Avoid placing Oreo by default on
+Use Lumi for the primary Elixpo identity, community invitations, events, sticker
+artwork, and friendly onboarding moments. Avoid placing Lumi by default on
 research papers, dense technical documentation, infrastructure status views, or
 every package and project card. Those surfaces should prioritize evidence,
 diagrams, status, and the project's own identity.

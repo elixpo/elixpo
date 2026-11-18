@@ -86,8 +86,8 @@ export default function WikiPage() {
         <aside className="wiki-infobox" aria-label="Elixpo at a glance">
           <h2>Elixpo</h2>
           <figure data-oreo-scene>
-            <Image src="/logos/logo.webp" alt="Oreo, the Elixpo pixel panda mascot" width={132} height={132} />
-            <figcaption>Oreo, the Elixpo mascot</figcaption>
+            <Image src="/logos/logo.webp" alt="Lumi, the Elixpo pixel panda mascot" width={132} height={132} />
+            <figcaption>Lumi, the Elixpo mascot</figcaption>
           </figure>
           <dl>
             <dt>Type</dt><dd>Open-source project foundry</dd>

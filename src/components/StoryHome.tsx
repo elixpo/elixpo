@@ -52,7 +52,7 @@ export function StoryHome() {
           </div>
         </div>
         <div className="hero-oreo" aria-hidden="true" data-oreo-scene>
-          <p className="oreo-bubble"><span>Hi! I&apos;m Oreo.</span><span>psst… scroll down ↓</span><span>ship it ↗</span><span>LGTM ✓</span></p>
+          <p className="oreo-bubble"><span>Hi! I&apos;m Lumi.</span><span>psst… scroll down ↓</span><span>ship it ↗</span><span>LGTM ✓</span></p>
           <Image src="/logos/logo.webp" alt="" width={150} height={150} loading="eager" />
           <i className="oreo-shadow" />
         </div>

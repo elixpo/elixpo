@@ -666,7 +666,7 @@ if (npmPackageNames.has("@elixpo/claudeops")) {
 const researchRepositoryNames = new Set(
   repositories.entries.filter((entry) => entry.disposition === "public-entry" && entry.publicClass === "research").map((entry) => entry.name),
 );
-// Projects may also carry a research record (for example, a paper about Oreo).
+// Projects may also carry a research record (for example, a paper about FaleraOS).
 const researchHostNames = new Set(
   repositories.entries.filter((entry) => entry.disposition === "public-entry" && ["research", "project"].includes(entry.publicClass)).map((entry) => entry.name),
 );
