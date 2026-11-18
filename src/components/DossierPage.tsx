@@ -29,7 +29,7 @@ export function DossierPage({ entry }: { entry: DirectoryEntry }) {
             <div><dt>Lifecycle</dt><dd><span className={`status-pill status-${entry.lifecycle}`}>{entry.lifecycle}</span></dd></div>
             <div><dt>Relationship</dt><dd>{RELATIONSHIP_LABELS[entry.relationship]}</dd></div>
             <div><dt>Registry state</dt><dd>{entry.verificationState.replaceAll("-", " ")}</dd></div>
-            <div><dt>Repository</dt><dd>{entry.repository}</dd></div>
+            <div><dt>Repository</dt><dd>{entry.repositoryUrl?.replace(/\/$/, "").split("/").pop() ?? entry.repository}</dd></div>
             <div><dt>Repository license</dt><dd>{entry.licenseEvidence.spdxId ?? entry.licenseEvidence.classification.replaceAll("-", " ")}</dd></div>
           </dl>
         </header>
