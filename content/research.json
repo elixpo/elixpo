@@ -178,7 +178,7 @@
       "doi": "10.48550/arXiv.2610.35935",
       "technicalReportInstitution": null,
       "technicalReportNumber": null,
-      "codeUrl": "https://github.com/elixpo/oreo",
+      "codeUrl": "https://github.com/elixpo/falera",
       "artifacts": [
         {
           "kind": "evaluation",
@@ -197,7 +197,7 @@
       ],
       "reproducibility": {
         "status": "documented",
-        "summary": "The paper, its LaTeX source in elixpo/oreo/paper, and the Zenodo artifact with firmware, measurements and analysis scripts are public; results were measured on one ESP32-S3 board with two 10-second clips."
+        "summary": "The paper, its LaTeX source in elixpo/falera/paper, and the Zenodo artifact with firmware, measurements and analysis scripts are public; results were measured on one ESP32-S3 board with two 10-second clips."
       },
       "citation": {
         "text": "Bhattacharya and Chakraborty. RV565: Cross-Layer Co-Design for Frame-Independent Video Playback on MicroPython-Class ESP32-S3 Systems. arXiv:2610.35935 (2026).",

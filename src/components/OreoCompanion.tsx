@@ -31,7 +31,7 @@ const QUIPS: [string, string[]][] = [
   ["/assets", ["Yes, that's me. My good side.", "Please don't stretch my logo."]],
   ["/architecture", ["I drew none of these boxes.", "Arrows go that way. Probably."]],
 ];
-const FALLBACK = ["Hi! I'm Oreo.", "ship it ↗", "LGTM ✓"];
+const FALLBACK = ["Hi! I'm Lumi.", "ship it ↗", "LGTM ✓"];
 const IDLE_LINE = "Still reading? Respect.";
 const DISMISS_KEY = "elixpo:oreo-dismissed";
 
@@ -45,8 +45,8 @@ const readDismissed = () => { try { return sessionStorage.getItem(DISMISS_KEY) =
 const noSubscription = () => () => {};
 
 /**
- * Oreo peeks in from the bottom edge of every page. It ducks while the reader scrolls down,
- * steps aside while another Oreo ([data-oreo-scene]) is on screen, and pops up on hover or tap.
+ * Lumi peeks in from the bottom edge of every page. She ducks while the reader scrolls down,
+ * steps aside while another Lumi ([data-oreo-scene]) is on screen, and pops up on hover or tap.
  */
 export function OreoCompanion() {
   const pathname = usePathname();
@@ -132,9 +132,9 @@ function Oreo({ pathname }: { pathname: string }) {
     >
       <p className="oreo-companion-bubble">
         <span key={`${say}-${hop}`}>{say}</span>
-        <button type="button" onClick={shoo} aria-label="Send Oreo away for this visit">×</button>
+        <button type="button" onClick={shoo} aria-label="Send Lumi away for this visit">×</button>
       </p>
-      <button type="button" className="oreo-companion-panda" onClick={poke} aria-label={`Oreo the panda says: ${say} Press for another line.`}>
+      <button type="button" className="oreo-companion-panda" onClick={poke} aria-label={`Lumi the panda says: ${say} Press for another line.`}>
         <Image key={hop} className={hop ? "is-hopping" : undefined} src="/logos/logo.webp" alt="" width={96} height={96} />
       </button>
     </div>

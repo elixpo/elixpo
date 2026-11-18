@@ -19,9 +19,9 @@ export const metadata = {
 };
 
 const marks = [
-  { name: "Elixpo lock-up with Oreo", file: "/brand/source/marks/elixpo_lock_up_text_mascot.png" },
+  { name: "Elixpo lock-up with Lumi", file: "/brand/source/marks/elixpo_lock_up_text_mascot.png" },
   { name: "Elixpo word mark", file: "/brand/source/marks/elixpo_word_mask_text.png" },
-  { name: "Oreo mascot", file: "/brand/source/marks/mascot_elixpo_oreo.png" },
+  { name: "Lumi mascot", file: "/brand/source/marks/mascot_elixpo_oreo.png" },
 ];
 
 const socialAssets = [
@@ -57,7 +57,7 @@ export function BrandingContent({ canonicalPath = "/branding" }: { canonicalPath
   const jsonLd = { "@context": "https://schema.org", "@type": "CollectionPage", name: "Elixpo brand assets", description: BRAND_DESCRIPTION, url: `https://elixpo.com${canonicalPath}` };
   return <main className="page-shell brand-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
-    <header className="page-intro"><Sparks chips={["Oreo approved ✓", "SVG ↗", "no stretching"]} /><p className="eyebrow">Brand / Open Field</p><h1>A consistent identity for Elixpo&apos;s public work.</h1><p className="lede">The Elixpo identity combines clear institutional typography, warm paper, foundry green, and the Oreo mascot. This library provides the public colour system, typography guidance, reviewed organization marks, project assets, and the access rules for protected event material.</p></header>
+    <header className="page-intro"><Sparks chips={["Lumi approved ✓", "SVG ↗", "no stretching"]} /><p className="eyebrow">Brand / Open Field</p><h1>A consistent identity for Elixpo&apos;s public work.</h1><p className="lede">The Elixpo identity combines clear institutional typography, warm paper, foundry green, and Lumi, the mascot. This library provides the public colour system, typography guidance, reviewed organization marks, project assets, and the access rules for protected event material.</p></header>
     <section className="brand-direction"><div><p className="eyebrow">Visual principle</p><h2>{brand.visualDirection.name}</h2><p>{brand.visualDirection.principle}</p></div><div className="swatches">{brand.visualDirection.palette.map((color) => <div key={color.hex}><i style={{ background: color.hex }} /><span>{color.name}<small>{color.hex}</small></span></div>)}</div></section>
     <section className="asset-section brand-proof-section" aria-labelledby="brand-proofs-title">
       <div className="section-heading split"><Sparks stars={4} /><div><p className="eyebrow">System proofs</p><h2 id="brand-proofs-title">One grammar across six kinds of public record.</h2></div><p>These components test Open Field against the surfaces Elixpo actually maintains. They share structure without erasing the identity or evidence of each record.</p></div>
