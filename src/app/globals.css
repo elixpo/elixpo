@@ -97,6 +97,10 @@ svg { transition: transform .2s ease; }
 .hero-data dt { color: #68736c; font-size: .68rem; }
 .hero-data > p { margin: 0; color: #68736c; font-size: .68rem; white-space: nowrap; }
 .hero-data > p span { margin-right: .5rem; color: var(--leaf); font: 650 .62rem var(--font-ui-mono); letter-spacing: .1em; }
+.hero-registration { width: min(100%,850px); margin: .9rem 0 0; color: #68736c; font-size: .72rem; line-height: 1.5; }
+.hero-registration span { margin-right: .5rem; color: var(--leaf); font: 650 .62rem var(--font-ui-mono); letter-spacing: .1em; text-transform: uppercase; }
+.hero-registration a { display: inline-flex; align-items: center; gap: .2rem; min-height: 24px; color: inherit; font-family: var(--font-ui-mono); text-decoration: underline; text-underline-offset: .2em; }
+.hero-registration a:hover { color: var(--leaf); }
 .hero-tenure { position: absolute; z-index: 3; width: 265px; right: clamp(2rem,7vw,7rem); top: 45%; padding: 1.4rem 0 0 1.4rem; border-top: 1px solid rgba(20,32,24,.27); border-left: 1px solid rgba(20,32,24,.27); color: var(--ink); }
 .hero-tenure > span { color: var(--leaf); font: 650 .63rem var(--font-ui-mono); letter-spacing: .15em; }
 .hero-tenure strong { display: block; margin: .8rem 0 .6rem; font-size: 6.8rem; line-height: .8; letter-spacing: -.09em; }.hero-tenure sup { margin-left: .08em; color: #efb37a; font: 500 .28em var(--font-ui-mono); vertical-align: top; }
