@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import contributors from "../../content/contributors.json";
 import history from "../../content/history.json";
+import organization from "../../content/organization.json";
 import people from "../../content/people.json";
 import { DIRECTORY_ENTRIES, familyPath, getDirectoryEntries } from "@/lib/directory";
 import { ELIXPO_PACKAGES } from "@/lib/packages";
@@ -49,6 +50,10 @@ export function StoryHome() {
               </dl>
               <p><span>EST.</span> Building in public since 2023</p>
             </div>
+            <p className="hero-registration">
+              <span>Registered MSME</span> Government of India (Udyam) ·{" "}
+              <a href={organization.registration.verifyUrl} target="_blank" rel="noreferrer" aria-label={`Udyam Registration Number ${organization.registration.number}: verify on the Government of India Udyam portal`}>{organization.registration.number} <ArrowUpRight size={13} /></a>
+            </p>
           </div>
         </div>
         <div className="hero-oreo" aria-hidden="true" data-oreo-scene>
