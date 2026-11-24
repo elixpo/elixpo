@@ -97,10 +97,11 @@ svg { transition: transform .2s ease; }
 .hero-data dt { color: #68736c; font-size: .68rem; }
 .hero-data > p { margin: 0; color: #68736c; font-size: .68rem; white-space: nowrap; }
 .hero-data > p span { margin-right: .5rem; color: var(--leaf); font: 650 .62rem var(--font-ui-mono); letter-spacing: .1em; }
-.hero-registration { width: min(100%,850px); margin: .9rem 0 0; color: #68736c; font-size: .72rem; line-height: 1.5; }
-.hero-registration span { margin-right: .5rem; color: var(--leaf); font: 650 .62rem var(--font-ui-mono); letter-spacing: .1em; text-transform: uppercase; }
-.hero-registration a { display: inline-flex; align-items: center; gap: .2rem; min-height: 24px; color: inherit; font-family: var(--font-ui-mono); text-decoration: underline; text-underline-offset: .2em; }
-.hero-registration a:hover { color: var(--leaf); }
+.hero-registration { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; max-width: 100%; margin: 1.1rem 0 0; padding: .3rem .75rem .3rem .4rem; border: 1px solid rgba(20,32,24,.14); border-radius: 999px; background: rgba(255,255,255,.5); color: #68736c; font-size: .7rem; line-height: 1.4; }
+.hero-registration span { color: #4f5a53; font: 650 .6rem var(--font-ui-mono); letter-spacing: .08em; text-transform: uppercase; }
+.hero-registration a { display: inline-flex; align-items: center; gap: .2rem; min-height: 24px; color: var(--ink); font: 600 .68rem var(--font-ui-mono); text-decoration: underline; text-decoration-color: rgba(20,32,24,.3); text-underline-offset: .2em; }
+.hero-registration a:hover { color: var(--leaf); text-decoration-color: currentColor; }
+.india-flag { flex: none; width: 21px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(20,32,24,.12); }
 .hero-tenure { position: absolute; z-index: 3; width: 265px; right: clamp(2rem,7vw,7rem); top: 45%; padding: 1.4rem 0 0 1.4rem; border-top: 1px solid rgba(20,32,24,.27); border-left: 1px solid rgba(20,32,24,.27); color: var(--ink); }
 .hero-tenure > span { color: var(--leaf); font: 650 .63rem var(--font-ui-mono); letter-spacing: .15em; }
 .hero-tenure strong { display: block; margin: .8rem 0 .6rem; font-size: 6.8rem; line-height: .8; letter-spacing: -.09em; }.hero-tenure sup { margin-left: .08em; color: #efb37a; font: 500 .28em var(--font-ui-mono); vertical-align: top; }
@@ -1551,7 +1552,7 @@ svg { transition: transform .2s ease; }
 }
 
 /* Hero ticker, pointer parallax, and card spotlight (driven by PointerEffects). */
-.hero-ticker { position: absolute; z-index: 3; left: clamp(1.4rem,7vw,7rem); right: clamp(1.4rem,7vw,7rem); bottom: 5.4rem; display: flex; align-items: center; gap: 1rem; max-width: 1180px; }
+.hero-ticker { position: relative; z-index: 3; width: min(100%,850px); margin-top: 1rem; display: flex; align-items: center; gap: 1rem; }
 .hero-ticker-label { flex: none; padding: .45rem .8rem; border-radius: 999px; background: var(--ink); color: #fff; font: 650 .6rem var(--font-ui-mono); letter-spacing: .12em; text-transform: uppercase; }
 .hero-ticker-label::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: .5rem; border-radius: 50%; background: #18a466; vertical-align: 1px; animation: ticker-live 1.6s ease-in-out infinite; }
 .hero-ticker-track { position: relative; flex: 1; min-width: 0; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
