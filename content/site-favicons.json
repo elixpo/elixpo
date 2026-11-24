@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/site-favicons.schema.json",
   "schemaVersion": 1,
-  "lastVerified": "2026-11-17",
+  "lastVerified": "2026-11-24",
   "entries": {
     "accounts.elixpo": {
       "path": "/brand/favicons/accounts.elixpo.webp",
@@ -50,6 +50,10 @@
     "payouts.elixpo": {
       "path": "/brand/favicons/payouts.elixpo.webp",
       "source": "https://payouts.elixpo.com/icon-512.png"
+    },
+    "plumlang": {
+      "path": "/brand/favicons/plumlang.webp",
+      "source": "https://plum.elixpo.com/apple-icon.png"
     },
     "sketch.elixpo": {
       "path": "/brand/favicons/sketch.elixpo.webp",

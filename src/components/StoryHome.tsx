@@ -28,6 +28,19 @@ const yearsSinceFounded = new Date().getUTCFullYear() - 2023;
 const building = DIRECTORY_ENTRIES.filter((entry) => entry.lifecycle === "active" && entry.repository !== "elixpo_chapter");
 const tickerItems = (copy: boolean) => building.map((entry) => <Link key={`${copy}-${entry.family}-${entry.slug}`} href={`${familyPath(entry.family)}/${entry.slug}`} tabIndex={copy ? -1 : undefined}><i />{entry.name}<small>{entry.family}</small></Link>);
 
+// The national flag marks the Indian registration; the State Emblem is reserved for government use.
+function IndiaFlag() {
+  return (
+    <svg className="india-flag" viewBox="0 0 30 20" aria-hidden="true">
+      <rect width="30" height="20" fill="#fff" />
+      <rect width="30" height="6.67" fill="#ff9933" />
+      <rect y="13.33" width="30" height="6.67" fill="#138808" />
+      <circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" strokeWidth=".55" />
+      <circle cx="15" cy="10" r=".55" fill="#000080" />
+    </svg>
+  );
+}
+
 export function StoryHome() {
   return (
     <main className="story-home">
@@ -51,9 +64,14 @@ export function StoryHome() {
               <p><span>EST.</span> Building in public since 2023</p>
             </div>
             <p className="hero-registration">
-              <span>Registered MSME</span> Government of India (Udyam) ·{" "}
-              <a href={organization.registration.verifyUrl} target="_blank" rel="noreferrer" aria-label={`Udyam Registration Number ${organization.registration.number}: verify on the Government of India Udyam portal`}>{organization.registration.number} <ArrowUpRight size={13} /></a>
+              <IndiaFlag />
+              <span>Registered MSME · Government of India</span>
+              <a href={organization.registration.verifyUrl} target="_blank" rel="noreferrer" aria-label={`Udyam Registration Number ${organization.registration.number}: verify on the Government of India Udyam portal`}>{organization.registration.number} <ArrowUpRight size={12} /></a>
             </p>
+            <nav className="hero-ticker" aria-label="Projects in active development">
+              <span className="hero-ticker-label">Now building</span>
+              <div className="hero-ticker-track"><div className="hero-ticker-run">{tickerItems(false)}<span aria-hidden="true">{tickerItems(true)}</span></div></div>
+            </nav>
           </div>
         </div>
         <div className="hero-oreo" aria-hidden="true" data-oreo-scene>
@@ -61,10 +79,6 @@ export function StoryHome() {
           <Image src="/logos/logo.webp" alt="" width={150} height={150} loading="eager" />
           <i className="oreo-shadow" />
         </div>
-        <nav className="hero-ticker" aria-label="Projects in active development">
-          <span className="hero-ticker-label">Now building</span>
-          <div className="hero-ticker-track"><div className="hero-ticker-run">{tickerItems(false)}<span aria-hidden="true">{tickerItems(true)}</span></div></div>
-        </nav>
         <a className="scroll-pill" href="#why-elixpo"><span className="scroll-pill-mouse" aria-hidden="true"><i /></span>Scroll to meet the work</a>
         <aside className="hero-tenure" aria-label={`${yearsSinceFounded} years of Elixpo since 2023`}>
           <span>OPEN SINCE</span>
